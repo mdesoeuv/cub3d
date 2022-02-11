@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 12:33:06 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 13:44:23 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,28 +78,34 @@ typedef struct s_cub3d
 	int		player_y;
 	int		x;
 	int		y;
+	char	*texture_n;
+	char	*texture_s;
+	char	*texture_w;
+	char	*texture_e;
+	char	*texture_ground;
+	char	*texture_ceiling;
 	int		win_height;
 	int		win_width;
 	t_map	map;
 	t_img	img;
 
-}				t_so_long;
+}				t_cub3d;
 
-void	ft_check_file_extension(char *path, t_so_long *so_long);
-void	ft_print_error(char *str, t_so_long *so_long);
-void	ft_init_map(t_so_long *so_long);
-void	ft_create_map(char *path, t_so_long *so_long);
-void	ft_check_map(t_so_long *so_long);
-void	ft_init_window(t_so_long *so_long);
-void	ft_init_images(t_so_long *so_long);
+void	ft_check_file_extension(char *path, t_cub3d *so_long);
+void	ft_print_error(char *str, t_cub3d *so_long);
+void	ft_init_map(t_cub3d *so_long);
+void	ft_create_map(char *path, t_cub3d *so_long);
+void	ft_check_map(t_cub3d *so_long);
+void	ft_init_window(t_cub3d *so_long);
+void	ft_init_images(t_cub3d *so_long);
 
-int		handle_resize(t_so_long *so_long);
-int		handle_keypress(int keysym, t_so_long *so_long);
-int		handle_btnrealease(t_so_long *so_long);
-int		render(t_so_long *so_long);
-void	loop_images(t_so_long so_long);
-void	destroy_images(t_so_long *so_long);
-void	ft_move_player(t_so_long *so_long, int direction);
+int		handle_resize(t_cub3d *so_long);
+int		handle_keypress(int keysym, t_cub3d *so_long);
+int		handle_btnrealease(t_cub3d *so_long);
+int		render(t_cub3d *so_long);
+void	loop_images(t_cub3d so_long);
+void	destroy_images(t_cub3d *so_long);
+void	ft_move_player(t_cub3d *so_long, int direction);
 void	ft_free(char **tab);
 
 #endif

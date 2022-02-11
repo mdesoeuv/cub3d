@@ -6,13 +6,13 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:57:45 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 12:18:44 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 13:40:02 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_check_file_extension(char *path, t_so_long *cub3d)
+void	ft_check_file_extension(char *path, t_cub3d *cub3d)
 {
 	size_t	len;
 

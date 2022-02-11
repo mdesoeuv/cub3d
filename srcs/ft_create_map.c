@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 12:20:50 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 13:49:41 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,43 +41,63 @@ static void	get_map_content(t_so_long *cub3d)
 	cub3d->map.map[row_nbr] = NULL;
 }
 
-static int	count_lines_map(t_so_long *so_long)
+
+static int	ft_all_textures_declared(t_cub3d *cub3d)
 {
-	int		fd;
+	if (cub3d->texture_e && cub3d->texture_w
+		&& cub3d->texture_n && cub3d->texture_s
+		&& cub3d->texture_ceiling && cub3d->texture_ground)
+		return (0);
+	else
+		return (1);
+}
+
+static void	get_textures_path(t_cub3d *cub3d)
+{
+	char	*line;
+
+	line = get_next_line(cub3d->map.fd);
+	while (line && !ft_all_textures_declared(cub3d))
+	{
+		
+		free(line);
+		line = get_next_line(cub3d->map.fd);
+	}
+	close(cub3d->map.fd);
+}
+
+static int	count_lines_map(t_so_long *cub3d)
+{
 	char	*line;
 	int		line_count;
 
 	line_count = 0;
-	fd = open(so_long->map.path, O_RDONLY);
-	if (fd < 0)
-		ft_print_error(ERROR_FILE_OPENING, so_long);
-	else
+	line = get_next_line(cub3d->map.fd);
+	while (line)
 	{
-		line = get_next_line(fd);
-		while (line)
-		{
-			line_count++;
-			free(line);
-			line = get_next_line(fd);
-		}
-		close(fd);
+		line_count++;
+		free(line);
+		line = get_next_line(cub3d->map.fd);
 	}
+	close(cub3d->map.fd);
 	return (line_count);
 }
 
-void	ft_create_map(char *path, t_so_long *cub3d)
+void	ft_create_map(char *path, t_cub3d *cub3d)
 {
 	cub3d->map.path = path;
-	cub3d->map.line_count = count_lines_map(cub3d);
-	cub3d->map.map = ft_calloc(cub3d->map.line_count + 1, sizeof(char *));
-	if (!(cub3d->map.map))
-		ft_print_error(ERROR_MALLOC, cub3d);
 	cub3d->map.fd = open(path, O_RDONLY);
 	if (cub3d->map.fd < 0)
 		ft_print_error(ERROR_FILE_OPENING, cub3d);
 	else
 	{
+		get_textures_path(cub3d);
+		if (!ft_all_textures_declared(cub3d))
+			ft_print_error(ERROR_MISSING_TEXTURES, cub3d);
+		cub3d->map.line_count = count_lines_map(cub3d);
+		cub3d->map.map = ft_calloc(cub3d->map.line_count + 1, sizeof(char *));
+		if (!(cub3d->map.map))
+			ft_print_error(ERROR_MALLOC, cub3d);
 		get_map_content(cub3d);
-		close(cub3d->map.fd);
 	}
 }

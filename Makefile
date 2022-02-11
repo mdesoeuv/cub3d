@@ -6,7 +6,7 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/11 10:58:01 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/11 13:42:53 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS =	main.c \
 		ft_check_file_extension.c \
 		ft_check_map.c \
 		ft_create_map.c \
-		ft_init_map.c \
+		ft_init_vars.c \
 		ft_print_error.c \
 		ft_init_window_images.c \
 		handlers.c \
