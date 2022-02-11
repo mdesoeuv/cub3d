@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 14:24:36 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 14:29:57 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_create_map(char *path, t_cub3d *cub3d)
 		get_textures_path(cub3d);
 		if (!ft_all_textures_declared(cub3d))
 			ft_print_error(ERROR_MISSING_TEXTURES, cub3d);
-		cub3d->map.line_count = count_lines_map(cub3d);
+		cub3d->map.line_count = count_lines_map(cub3d);// ICI trimmer les lignes vides ou avec espaces
 		cub3d->map.map = ft_calloc(cub3d->map.line_count + 1, sizeof(char *));
 		if (!(cub3d->map.map))
 			ft_print_error(ERROR_MALLOC, cub3d);
