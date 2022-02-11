@@ -6,11 +6,11 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/01/20 15:26:12 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/11 10:58:01 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME = cub3d
 
 CC = gcc -Wall -Werror -Wextra
 
