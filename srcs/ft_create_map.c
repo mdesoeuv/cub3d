@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 13:49:41 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 14:24:36 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,6 @@ static void	get_map_content(t_so_long *cub3d)
 		line = get_next_line(cub3d->map.fd);
 	}
 	cub3d->map.map[row_nbr] = NULL;
-}
-
-
-static int	ft_all_textures_declared(t_cub3d *cub3d)
-{
-	if (cub3d->texture_e && cub3d->texture_w
-		&& cub3d->texture_n && cub3d->texture_s
-		&& cub3d->texture_ceiling && cub3d->texture_ground)
-		return (0);
-	else
-		return (1);
-}
-
-static void	get_textures_path(t_cub3d *cub3d)
-{
-	char	*line;
-
-	line = get_next_line(cub3d->map.fd);
-	while (line && !ft_all_textures_declared(cub3d))
-	{
-		
-		free(line);
-		line = get_next_line(cub3d->map.fd);
-	}
-	close(cub3d->map.fd);
 }
 
 static int	count_lines_map(t_so_long *cub3d)

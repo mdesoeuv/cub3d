@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 13:44:23 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 14:26:07 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ typedef struct s_cub3d
 	char	*texture_s;
 	char	*texture_w;
 	char	*texture_e;
-	char	*texture_ground;
-	char	*texture_ceiling;
+	char	*color_ground;
+	char	*color_ceiling;
 	int		win_height;
 	int		win_width;
 	t_map	map;
@@ -92,6 +92,11 @@ typedef struct s_cub3d
 }				t_cub3d;
 
 void	ft_check_file_extension(char *path, t_cub3d *so_long);
+
+/*TEXTURES*/
+int		ft_all_textures_declared(t_cub3d *cub3d);
+void	get_textures_path(t_cub3d *cub3d);
+
 void	ft_print_error(char *str, t_cub3d *so_long);
 void	ft_init_map(t_cub3d *so_long);
 void	ft_create_map(char *path, t_cub3d *so_long);

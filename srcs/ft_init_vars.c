@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:40:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 13:44:40 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 14:14:07 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_init_vars(t_cub3d *cub3d)
 	cub3d->texture_s = NULL;
 	cub3d->texture_n = NULL;
 	cub3d->texture_w = NULL;
-	cub3d->texture_ceiling = NULL;
-	cub3d->texture_ground = NULL;
+	cub3d->color_ceiling = NULL;
+	cub3d->color_ground = NULL;
 
 	
 	cub3d->x = 0;
