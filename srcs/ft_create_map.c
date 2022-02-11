@@ -6,14 +6,14 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/01/20 14:16:16 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 12:20:50 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/get_next_line.h"
 
-static void	get_map_content(t_so_long *so_long)
+static void	get_map_content(t_so_long *cub3d)
 {
 	char	*line;
 	int		row_nbr;
@@ -23,22 +23,22 @@ static void	get_map_content(t_so_long *so_long)
 	row_nbr = 0;
 	column_nbr = 0;
 	i = 0;
-	line = get_next_line(so_long->map.fd);
+	line = get_next_line(cub3d->map.fd);
 	while (line)
 	{
-		so_long->map.map[row_nbr] = ft_calloc(ft_strlen(line) + 1,
+		cub3d->map.map[row_nbr] = ft_calloc(ft_strlen(line) + 1,
 				sizeof(char));
-		if (!so_long->map.map[row_nbr])
-			ft_print_error(ERROR_MALLOC, so_long);
+		if (!cub3d->map.map[row_nbr])
+			ft_print_error(ERROR_MALLOC, cub3d);
 		while (line[i] != '\0')
-			so_long->map.map[row_nbr][column_nbr++] = line[i++];
-		so_long->map.map[row_nbr++][column_nbr] = '\0';
+			cub3d->map.map[row_nbr][column_nbr++] = line[i++];
+		cub3d->map.map[row_nbr++][column_nbr] = '\0';
 		column_nbr = 0;
 		i = 0;
 		free(line);
-		line = get_next_line(so_long->map.fd);
+		line = get_next_line(cub3d->map.fd);
 	}
-	so_long->map.map[row_nbr] = NULL;
+	cub3d->map.map[row_nbr] = NULL;
 }
 
 static int	count_lines_map(t_so_long *so_long)
@@ -65,19 +65,19 @@ static int	count_lines_map(t_so_long *so_long)
 	return (line_count);
 }
 
-void	ft_create_map(char *path, t_so_long *so_long)
+void	ft_create_map(char *path, t_so_long *cub3d)
 {
-	so_long->map.path = path;
-	so_long->map.line_count = count_lines_map(so_long);
-	so_long->map.map = ft_calloc(so_long->map.line_count + 1, sizeof(char *));
-	if (!(so_long->map.map))
-		ft_print_error(ERROR_MALLOC, so_long);
-	so_long->map.fd = open(path, O_RDONLY);
-	if (so_long->map.fd < 0)
-		ft_print_error(ERROR_FILE_OPENING, so_long);
+	cub3d->map.path = path;
+	cub3d->map.line_count = count_lines_map(cub3d);
+	cub3d->map.map = ft_calloc(cub3d->map.line_count + 1, sizeof(char *));
+	if (!(cub3d->map.map))
+		ft_print_error(ERROR_MALLOC, cub3d);
+	cub3d->map.fd = open(path, O_RDONLY);
+	if (cub3d->map.fd < 0)
+		ft_print_error(ERROR_FILE_OPENING, cub3d);
 	else
 	{
-		get_map_content(so_long);
-		close(so_long->map.fd);
+		get_map_content(cub3d);
+		close(cub3d->map.fd);
 	}
 }

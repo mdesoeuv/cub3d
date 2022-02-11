@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/01/20 14:37:06 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 12:33:06 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@
 # define W_RAND "assets/walls/wall_random.xpm"
 
 # define ERROR_FILE_EXTENSION_NAME "File given argument does not have \
-	 the .ber extension.\n"
+	 the .cub extension.\n"
 # define ERROR_FILE_OPENING "Can't open file given in argument.\n"
 # define ERROR_MALLOC "Malloc error. Please free memory space and retry.\n"
 # define ERROR_OTHER_CHARS "At least one character in the map is invalid.\
 		 (Not 0, 1, C, E or P)\n"
-# define ERROR_MISSING_CHARS "One of the characters \"0, 1, P, C, E\" \
-		 is missing in the map.\n"
+# define ERROR_MISSING_PLAYER "Need one player.\n"
 # define ERROR_TOO_MANY_PLAYERS "Too many players in the map.\n"
 # define ERROR_NOT_A_RECTANGLE "The map is not a rectangle.\n"
 # define ERROR_MINILIBX "Minilibix usage error.\n"
@@ -66,21 +65,15 @@ typedef struct s_map
 	int		fd;
 	int		line_count;
 	size_t	line_len;
-	int		count_p;
-	int		count_e;
-	int		count_c;
+	char	direction;
 	char	*path;
 	char	**map;
-	int		can_exit;
-	int		collected;
-
 }				t_map;
 
-typedef struct s_so_long
+typedef struct s_cub3d
 {
 	void	*mlx;
 	void	*win;
-	int		steps_count;
 	int		player_x;
 	int		player_y;
 	int		x;
