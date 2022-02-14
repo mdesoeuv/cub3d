@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 13:13:53 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 13:21:19 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,4 @@ void	get_textures_path(t_cub3d *cub3d)
 			ft_print_error(ERROR_MALLOC, cub3d);
 		}
 	}
-	close(cub3d->map.fd);
 }

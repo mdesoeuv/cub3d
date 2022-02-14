@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:53:05 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 13:44:37 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,30 @@ static void	get_map_content(t_cub3d *cub3d)
 	cub3d->map.map[row_nbr] = NULL;
 }
 
-static int	ft_is_empty_line(char *line)
+static char	*ft_pass_empty_lines(char *line, t_cub3d *cub3d)
 {
-	int	i;
+	char	*tmp;
 
-	i = 0;
-	while (line[i] && line[i] == ' ' )
-		i++;
-	if (!line[i])
-		return (1);
-	else
-		return (0);
+	while (line)
+	{
+		tmp = ft_strtrim(line, " ");
+		if (!tmp)
+		{
+			free(line);
+			close(cub3d->map.fd);
+			ft_print_error(ERROR_MALLOC, cub3d);
+		}
+		if (tmp[0] != '\n')
+		{
+			free(tmp);
+			return (line);
+		}
+		free(line);
+		free(tmp);
+		line = get_next_line(cub3d->map.fd);
+		cub3d->map.line_start_map_in_cub++;
+	}
+	return (line);
 }
 
 static int	count_lines_map(t_cub3d *cub3d)
@@ -75,14 +88,7 @@ static int	count_lines_map(t_cub3d *cub3d)
 	line_count = 0;
 	line = get_next_line(cub3d->map.fd);
 	cub3d->map.line_start_map_in_cub++;
-	while (line)
-	{
-		if (!ft_is_empty_line(line))
-			break ;
-		free(line);
-		line = get_next_line(cub3d->map.fd);
-		cub3d->map.line_start_map_in_cub++;
-	}
+	line = ft_pass_empty_lines(line, cub3d);
 	while (line)
 	{
 		line_count++;

@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 11:21:01 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 13:45:09 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 
 void	display_map_and_textures(t_cub3d *cub3d)
 {
-	dprintf(1, "texture NO=%s\n", cub3d->texture_n);
-	dprintf(1, "texture S=%s\n", cub3d->texture_s);
-	dprintf(1, "texture EAST=%s\n", cub3d->texture_e);
-	dprintf(1, "texture WEST=%s\n", cub3d->texture_w);
-	dprintf(1, "color ground=%s\n", cub3d->color_ground);
-	dprintf(1, "color ceilling=%s\n", cub3d->color_ceiling);
+	int	i;
+
+	i = 0;
+	dprintf(1, "texture NO=%s=", cub3d->texture_n);
+	dprintf(1, "texture S=%s=", cub3d->texture_s);
+	dprintf(1, "texture EAST=%s=", cub3d->texture_e);
+	dprintf(1, "texture WEST=%s=", cub3d->texture_w);
+	dprintf(1, "color ground=%s=", cub3d->color_ground);
+	dprintf(1, "color ceilling=%s=", cub3d->color_ceiling);
+	while (cub3d->map.map[i])
+	{
+		dprintf(1, "%s", cub3d->map.map[i]);
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
