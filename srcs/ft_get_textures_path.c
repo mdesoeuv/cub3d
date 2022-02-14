@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 11:16:37 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 11:24:16 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_all_textures_declared(t_cub3d *cub3d)
 	if (cub3d->texture_e && cub3d->texture_w
 		&& cub3d->texture_n && cub3d->texture_s
 		&& cub3d->color_ceiling && cub3d->color_ground)
-		return (0);
-	else
 		return (1);
+	else
+		return (0);
 }
 
 static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
@@ -111,7 +111,7 @@ void	get_textures_path(t_cub3d *cub3d)
 	cub3d->map.line_start_map_in_cub++;
 	while (line && !ft_all_textures_declared(cub3d))
 	{
-		dprintf(1,"%s",line);
+		dprintf(1,"eee%s",line);
 		ft_define_texture(cub3d, line);
 		free(line);
 		line = get_next_line(cub3d->map.fd);

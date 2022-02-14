@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 11:20:13 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 11:21:01 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		ft_check_file_extension(argv[1], &cub3d);
-				exit(0);
 		ft_init_vars(&cub3d);
 		ft_create_map(argv[1], &cub3d);
 		display_map_and_textures(&cub3d);
-
+		exit(0);
 		ft_check_map(&cub3d);
 		ft_init_window(&cub3d);
 		ft_init_images(&cub3d);

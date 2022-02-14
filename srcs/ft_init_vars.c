@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:40:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:46:58 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 11:23:52 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_init_vars(t_cub3d *cub3d)
 	cub3d->texture_w = NULL;
 	cub3d->color_ceiling = NULL;
 	cub3d->color_ground = NULL;
-	
+
 	/*cub3d->x = 0;
 	cub3d->y = 0;
 	cub3d->win_height = cub3d->map.line_count * IMG_SIZE;
