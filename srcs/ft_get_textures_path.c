@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 13:21:19 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 13:56:57 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	ft_define_texture(t_cub3d *cub3d, char *line)
 	tab = ft_split(line, ' ');
 	if (!tab)
 		ft_print_error(ERROR_MALLOC, cub3d);
-	if (tab[0][0] == '\n')
+	if (!tab[0])
 		return ;
 	while (tab[i])
 		i++;
@@ -97,7 +97,6 @@ static void	ft_define_texture(t_cub3d *cub3d, char *line)
 	}
 	if (ft_define_texture_2(cub3d, tab))
 	{
-		dprintf(1, "error=%s", line);
 		free (line);
 		ft_free_split(tab);
 		close(cub3d->map.fd);

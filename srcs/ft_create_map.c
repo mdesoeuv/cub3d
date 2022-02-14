@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 13:44:37 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 13:58:59 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char	*ft_pass_empty_lines(char *line, t_cub3d *cub3d)
 			close(cub3d->map.fd);
 			ft_print_error(ERROR_MALLOC, cub3d);
 		}
-		if (tmp[0] != '\n')
+		if (tmp[0])
 		{
 			free(tmp);
 			return (line);

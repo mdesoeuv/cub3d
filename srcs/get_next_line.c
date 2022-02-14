@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 17:01:03 by msanjuan          #+#    #+#             */
-/*   Updated: 2022/02/14 11:28:49 by vchevill         ###   ########lyon.fr   */
+/*   Created: 2022/02/14 13:50:29 by vchevill          #+#    #+#             */
+/*   Updated: 2022/02/14 13:55:41 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/get_next_line.h"
 #include "../includes/cub3d.h"
@@ -79,6 +80,8 @@ char	*ft_line_results(int ret, char *stock, char *buffer)
 	if (ret > 0)
 		ft_get_the_spare(buffer);
 	free(stock);
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
 	return (line);
 }
 
