@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 11:33:08 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 11:39:45 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static void	ft_define_texture(t_cub3d *cub3d, char *line)
 	tab = ft_split(line, ' ');
 	if (!tab)
 		ft_print_error(ERROR_MALLOC, cub3d);
+	if (tab[0][0] == '\n')
+		return ;
 	while (tab[i])
 		i++;
 	if (i > 2 || i == 1)
@@ -95,6 +97,7 @@ static void	ft_define_texture(t_cub3d *cub3d, char *line)
 	}
 	if (ft_define_texture_2(cub3d, tab))
 	{
+		dprintf(1, "line=%s", line);
 		free (line);
 		ft_free_split(tab);
 		close(cub3d->map.fd);
@@ -111,11 +114,9 @@ void	get_textures_path(t_cub3d *cub3d)
 	cub3d->map.line_start_map_in_cub++;
 	while (line && !ft_all_textures_declared(cub3d))
 	{
-		dprintf(1,"eee%s",line);
 		ft_define_texture(cub3d, line);
 		free(line);
 		line = get_next_line(cub3d->map.fd);
-		dprintf(1,"aaa%s",line);
 		cub3d->map.line_start_map_in_cub++;
 		if (line == NULL)
 		{
