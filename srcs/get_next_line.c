@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:39:06 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:39:07 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:45:15 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ char	*ft_line_results(int ret, char *stock, char *buffer)
 	if (ret > 0)
 		ft_get_the_spare(buffer);
 	free(stock);
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
 	return (line);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:39:18 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:45:23 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	get_textures_path(t_cub3d *cub3d)
 
 	cub3d->map.line_start_map_in_cub = 0;
 	line = get_next_line(cub3d->map.fd);
-	free(line);
 	cub3d->map.line_start_map_in_cub++;
 	while (line && !ft_all_textures_declared(cub3d))
 	{
