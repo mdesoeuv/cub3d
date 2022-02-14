@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:52:45 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:48:59 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_check_map(t_cub3d *cub3d)
 	{	
 		while (j < ft_strlen(cub3d->map.map[i]) - 1)
 		{
-			if (!ft_strchr("01NSEW", cub3d->map.map[i][j]))
+			if (!ft_strchr("01NSEW ", cub3d->map.map[i][j]))
 				ft_print_error(ERROR_OTHER_CHARS, cub3d);
 			j++;
 		}
