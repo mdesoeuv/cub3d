@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:44:18 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:53:05 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,11 @@ static int	count_lines_map(t_cub3d *cub3d)
 {
 	char	*line;
 	int		line_count;
-	int		is_empty_line;
 
 	line_count = 0;
 	line = get_next_line(cub3d->map.fd);
 	cub3d->map.line_start_map_in_cub++;
-	while (line && is_empty_line)
+	while (line)
 	{
 		if (!ft_is_empty_line(line))
 			break ;

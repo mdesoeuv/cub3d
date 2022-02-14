@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:39:00 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:57:10 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define ERROR_FILENAME_MISSING "Please pass one filename in parameter.\n"
 # define ERROR_MISSING_TEXTURES "At least one texture \
 							path has not been declared.\n"
+# define ERROR_INVALID_TEXTURE_ARG_NAME "Texture declaration error.\n"
+# define ERROR_TEXTURE_DEFINED_TWICE "A texture path has been declared twice.\n"
 
 # define IMG_SIZE 48
 
@@ -102,7 +104,7 @@ int		ft_all_textures_declared(t_cub3d *cub3d);
 void	get_textures_path(t_cub3d *cub3d);
 
 void	ft_print_error(char *str, t_cub3d *so_long);
-void	ft_init_map(t_cub3d *so_long);
+void	ft_init_vars(t_cub3d *so_long);
 void	ft_create_map(char *path, t_cub3d *so_long);
 void	ft_check_map(t_cub3d *so_long);
 void	ft_init_window(t_cub3d *so_long);

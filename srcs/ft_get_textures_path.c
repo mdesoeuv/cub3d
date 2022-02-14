@@ -6,11 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:39:58 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:58:21 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 #include "../includes/get_next_line.h"
 
 int	ft_all_textures_declared(t_cub3d *cub3d)
@@ -25,21 +25,21 @@ int	ft_all_textures_declared(t_cub3d *cub3d)
 
 static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
 {
-	if (ft_strcmp(tab, "SO"))
+	if (ft_strcmp(tab[0], "SO"))
 	{
 		if (!cub3d->texture_s)
 			cub3d->texture_s = ft_strdup(tab[1]);
 		else
 			return (1);
 	}
-	else if (ft_strcmp(tab, "WE"))
+	else if (ft_strcmp(tab[0], "WE"))
 	{
 		if (!cub3d->texture_w)
 			cub3d->texture_w = ft_strdup(tab[1]);
 		else
 			return (1);
 	}
-	else if (ft_strcmp(tab, "EA"))
+	else if (ft_strcmp(tab[0], "EA"))
 	{
 		if (!cub3d->texture_e)
 			cub3d->texture_e = ft_strdup(tab[1]);
@@ -51,21 +51,21 @@ static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
 
 static int	ft_define_texture_2(t_cub3d *cub3d, char **tab)
 {
-	if (tab[0] == 'C')
+	if (tab[0][0] == 'C')
 	{
 		if (!cub3d->color_ceiling)
 			cub3d->color_ceiling = ft_strdup(tab[1]);
 		else
 			return (1);
 	}
-	else if (tab[0] == 'F')
+	else if (tab[0][0] == 'F')
 	{
 		if (!cub3d->color_ground)
 			cub3d->color_ground = ft_strdup(tab[1]);
 		else
 			return (1);
 	}
-	else if (ft_strcmp(tab, "NO"))
+	else if (ft_strcmp(tab[0], "NO"))
 	{
 		if (!cub3d->texture_n)
 			cub3d->texture_n = ft_strdup(tab[1]);

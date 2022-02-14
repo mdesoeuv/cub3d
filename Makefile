@@ -6,7 +6,7 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/14 10:23:39 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/14 10:57:39 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,8 @@ SRCS =	main.c \
 		ft_create_map.c \
 		ft_init_vars.c \
 		ft_print_error.c \
-		ft_init_window_images.c \
-		handlers.c \
-		render.c \
-		ft_moves.c \
-		get_next_line.c \
-		get_next_line_utils.c
+		ft_get_textures_path.c \
+		get_next_line.c 
 
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 

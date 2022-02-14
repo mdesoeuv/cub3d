@@ -6,12 +6,12 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:46:19 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:52:45 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
+/*
 static void	ft_check_top_and_bottom(int row, t_so_long *so_long)
 {
 	int	i;
@@ -39,12 +39,12 @@ static void	ft_check_edges(t_so_long *so_long)
 			ft_print_error(ERROR_EDGES, so_long);
 		i++;
 	}
-}
+}*/
 
-static void	ft_get_start_direction(t_so_long *cub3d)
+static void	ft_get_start_direction(t_cub3d *cub3d)
 {
 	int		i;
-	size_t	j;
+	int		j;
 	int		count_direction;
 
 	i = 0;
@@ -73,7 +73,7 @@ static void	ft_get_start_direction(t_so_long *cub3d)
 void	ft_check_map(t_cub3d *cub3d)
 {
 	int		i;
-	size_t	j;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -89,6 +89,6 @@ void	ft_check_map(t_cub3d *cub3d)
 		i++;
 	}
 	ft_get_start_direction(cub3d);
-	ft_check_edges(cub3d);//ici
+	//ft_check_edges(cub3d);//ici
 	//FT_CHECK OPEN TEXTURES
 }
