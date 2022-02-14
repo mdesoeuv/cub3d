@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 13:56:57 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:04:27 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ static void	ft_define_texture(t_cub3d *cub3d, char *line)
 		close(cub3d->map.fd);
 		ft_print_error(ERROR_TEXTURE_DEFINED_TWICE, cub3d);
 	}
+	ft_free_split(tab);
 }
 
 void	get_textures_path(t_cub3d *cub3d)

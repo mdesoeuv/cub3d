@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 12:59:02 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:03:38 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,5 @@ int		render(t_cub3d *so_long);
 void	loop_images(t_cub3d so_long);
 void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
-void	ft_free(char **tab);
 
 #endif

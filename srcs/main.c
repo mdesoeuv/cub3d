@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 13:59:37 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:03:55 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		ft_create_map(argv[1], &cub3d);
 		ft_check_map(&cub3d);
 		display_map_and_textures(&cub3d);
+		ft_print_error(ERROR_FILENAME_MISSING, &cub3d);
 		exit(0);
 		ft_init_window(&cub3d);
 		ft_init_images(&cub3d);
@@ -52,7 +53,7 @@ int	main(int argc, char **argv)
 		mlx_destroy_window(cub3d.mlx, cub3d.win);
 		cub3d.win = NULL;
 		if (cub3d.map.map)
-			ft_free(cub3d.map.map);
+			ft_free_split(cub3d.map.map);
 	}
 	else
 		ft_print_error(ERROR_FILENAME_MISSING, &cub3d);

@@ -6,13 +6,13 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/14 13:14:53 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/14 14:00:23 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = gcc -Wall -Werror -Wextra -fsanitize=address -g3
+CC = gcc -Wall -Werror -Wextra
 
 SRCS =	main.c \
 		ft_check_file_extension.c \
