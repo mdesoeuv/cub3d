@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:21:58 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:46:19 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	ft_get_start_direction(t_so_long *cub3d)
 		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
 }
 
-void	ft_check_map(t_so_long *cub3d)
+void	ft_check_map(t_cub3d *cub3d)
 {
 	int		i;
 	size_t	j;
