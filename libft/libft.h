@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 11:37:18 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/05 21:02:34 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 11:03:18 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,5 @@ char			**free_return_null(char **tab, int j);
 char			**malloc_return(char ***tab, char const *s, char c);
 char			*ft_split_strdup(char const *s, int i, int len);
 long int		ft_atol(char const *str);
-
+void			ft_free_split(char **split);
 #endif
