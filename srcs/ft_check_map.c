@@ -6,11 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 14:29:36 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:21:58 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 
 static void	ft_check_top_and_bottom(int row, t_so_long *so_long)
 {

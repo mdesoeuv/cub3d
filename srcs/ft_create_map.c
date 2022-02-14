@@ -6,11 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 14:29:57 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:22:00 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 #include "../includes/get_next_line.h"
 
 static void	get_map_content(t_so_long *cub3d)

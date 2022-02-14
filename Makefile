@@ -6,7 +6,7 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/11 13:42:53 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/14 10:22:27 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ libft	:
 minilibx	:	
 			$(MAKE) -C minilibx 
 
-objs/%.o:	srcs/%.c	 includes/get_next_line.h includes/so_long.h libft/libft.h minilibx/mlx.h
+objs/%.o:	srcs/%.c	 includes/get_next_line.h includes/cub3d.h libft/libft.h minilibx/mlx.h
 			@mkdir -p objs
 			$(CC) -c $< -o $@ 
 			

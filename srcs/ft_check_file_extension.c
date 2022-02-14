@@ -6,11 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:57:45 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 13:40:02 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:21:50 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 
 void	ft_check_file_extension(char *path, t_cub3d *cub3d)
 {
