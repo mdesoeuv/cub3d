@@ -6,11 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:40:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 14:14:07 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:24:53 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 // recuperer les parametres
 
 void	ft_init_vars(t_cub3d *cub3d)

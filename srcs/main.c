@@ -6,11 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/11 13:39:28 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:24:32 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 #include "../includes/get_next_line.h"
 
 int	main(int argc, char **argv)
