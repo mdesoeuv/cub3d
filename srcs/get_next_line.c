@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 13:50:29 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 13:55:41 by vchevill         ###   ########lyon.fr   */
+/*   Created: 2022/02/14 14:39:06 by vchevill          #+#    #+#             */
+/*   Updated: 2022/02/14 14:39:07 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char	*ft_line_results(int ret, char *stock, char *buffer)
 	if (ret > 0)
 		ft_get_the_spare(buffer);
 	free(stock);
-	if (line[ft_strlen(line) - 1] == '\n')
-		line[ft_strlen(line) - 1] = '\0';
 	return (line);
 }
 
@@ -95,7 +93,7 @@ char	*get_next_line(int fd)
 	if ((read(fd, buffer, 0) == -1) || BUFFER_SIZE <= 0)
 		return (NULL);
 	ret = 1;
-	stock = ft_strjoin(stock, buffer);
+	stock = ft_strjoin_free_s1(stock, buffer);
 	while (ft_strchr(stock, '\n') == NULL && ret > 0)
 	{
 		ret = read(fd, buffer, BUFFER_SIZE);
@@ -105,7 +103,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		buffer[ret] = '\0';
-		stock = ft_strjoin(stock, buffer);
+		stock = ft_strjoin_free_s1(stock, buffer);
 	}
 	return (ft_line_results(ret, stock, buffer));
 }

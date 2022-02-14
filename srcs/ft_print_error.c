@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:03:16 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:03:15 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 14:26:24 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_print_error(char *str, t_cub3d *cub3d)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
-	if (cub3d->texture_e)
-		free(cub3d->texture_e);
 	if (cub3d->texture_s)
 		free(cub3d->texture_s);
 	if (cub3d->texture_n)
