@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:21:32 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 10:39:00 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define ERROR_MINILIBX "Minilibix usage error.\n"
 # define ERROR_EDGES "The edges of the map are invalid (must be walls -1-).\n"
 # define ERROR_FILENAME_MISSING "Please pass one filename in parameter.\n"
+# define ERROR_MISSING_TEXTURES "At least one texture \
+							path has not been declared.\n"
 
 # define IMG_SIZE 48
 
@@ -67,6 +69,7 @@ typedef struct s_map
 	int		line_count;
 	size_t	line_len;
 	char	direction;
+	int		line_start_map_in_cub;
 	char	*path;
 	char	**map;
 }				t_map;
