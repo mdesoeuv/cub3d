@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 11:24:16 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 11:33:08 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,9 @@ void	get_textures_path(t_cub3d *cub3d)
 		ft_define_texture(cub3d, line);
 		free(line);
 		line = get_next_line(cub3d->map.fd);
+		dprintf(1,"aaa%s",line);
 		cub3d->map.line_start_map_in_cub++;
-		if (!line)
+		if (line == NULL)
 		{
 			close(cub3d->map.fd);
 			ft_print_error(ERROR_MALLOC, cub3d);
