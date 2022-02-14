@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 10:57:10 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 12:59:02 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_cub3d
 
 }				t_cub3d;
 
+void	display_map_and_textures(t_cub3d *cub3d);
 void	ft_check_file_extension(char *path, t_cub3d *so_long);
 
 /*TEXTURES*/

@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 11:39:45 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/14 13:13:53 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ int	ft_all_textures_declared(t_cub3d *cub3d)
 
 static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
 {
-	if (ft_strcmp(tab[0], "SO"))
+	if (ft_strncmp(tab[0], "SO", 2) == 0)
 	{
 		if (!cub3d->texture_s)
 			cub3d->texture_s = ft_strdup(tab[1]);
 		else
 			return (1);
 	}
-	else if (ft_strcmp(tab[0], "WE"))
+	else if (ft_strncmp(tab[0], "WE", 2) == 0)
 	{
 		if (!cub3d->texture_w)
 			cub3d->texture_w = ft_strdup(tab[1]);
 		else
 			return (1);
 	}
-	else if (ft_strcmp(tab[0], "EA"))
+	else if (ft_strncmp(tab[0], "EA", 2) == 0)
 	{
 		if (!cub3d->texture_e)
 			cub3d->texture_e = ft_strdup(tab[1]);
@@ -65,7 +65,7 @@ static int	ft_define_texture_2(t_cub3d *cub3d, char **tab)
 		else
 			return (1);
 	}
-	else if (ft_strcmp(tab[0], "NO"))
+	else if (ft_strncmp(tab[0], "NO", 2) == 0)
 	{
 		if (!cub3d->texture_n)
 			cub3d->texture_n = ft_strdup(tab[1]);
@@ -97,7 +97,7 @@ static void	ft_define_texture(t_cub3d *cub3d, char *line)
 	}
 	if (ft_define_texture_2(cub3d, tab))
 	{
-		dprintf(1, "line=%s", line);
+		dprintf(1, "error=%s", line);
 		free (line);
 		ft_free_split(tab);
 		close(cub3d->map.fd);
