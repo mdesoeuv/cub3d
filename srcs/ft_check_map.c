@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 15:58:13 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 16:16:14 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 			else if (!map[i][j + 1] && map[i][j] == '0')
 				ft_print_error(ERROR_EDGES, cub3d);
 			else if (map[i][j] == '1' && first != -1)
-				last = j;
+				first = j;
 			else if (map[i][j] == '1')
 				first = j;
 		}
-		if (first == -1 || last == -1)
+		if (first == -1)
 			ft_print_error(ERROR_EDGES, cub3d);
 	}
 }
@@ -72,7 +72,6 @@ static char	**ft_malloc_rotated_map(char **map, t_cub3d *cub3d)
 	if (!rotated_tab)
 		ft_print_error(ERROR_MALLOC, cub3d);
 	rotated_tab[tab_size] = NULL;
-	dprintf(1, "tab_size=%i", cub3d->map.line_count);
 	while (--tab_size >= 0)
 		rotated_tab[tab_size]
 			= ft_calloc(cub3d->map.line_count + 1, sizeof(char));
@@ -85,14 +84,16 @@ char	**ft_rotate_map(char **map, t_cub3d *cub3d)
 	int		i;
 	int		j;
 	char	**rotated_tab;
-i = 0;
+
 	rotated_tab = ft_malloc_rotated_map(map, cub3d);
 	i = -1;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
+		{
 			rotated_tab[j][i] = map[i][j];
+		}
 	}
 	i = 0;
 	while (rotated_tab[i])
