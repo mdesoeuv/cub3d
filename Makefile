@@ -6,7 +6,7 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/21 17:56:47 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/21 18:41:41 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS =	main.c \
 		raycaster.c \
 		ft_init_window_images.c \
 		ft_handlers.c \
-		ft_moves.c
+		ft_moves.c \
+		ft_utils.c
 
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 

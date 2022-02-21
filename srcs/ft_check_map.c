@@ -6,13 +6,14 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:27:42 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 18:36:10 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	ft_check_spaces_in_line(char **map, t_cub3d *cub3d, int first, int i)
+static int
+	ft_check_spaces_in_line(char **map, t_cub3d *cub3d, int first, int i)
 {
 	int	j;
 

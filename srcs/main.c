@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 18:08:37 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 18:45:21 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		ft_check_map(&cub3d);
 		display_map_and_textures(&cub3d);
 		cub3d.win_height = cub3d.map.line_count * CUBE_SIZE;
-		cub3d.win_width = (longest_line) * CUBE_SIZE;// mettre la ligne la plus longue
+		cub3d.win_width = cub3d.map.longest_line * CUBE_SIZE;// mettre la ligne la plus longue
 		cub3d.player.x = 5 * CUBE_SIZE;
 		cub3d.player.y = 6 * CUBE_SIZE;
 		ft_init_window(&cub3d);

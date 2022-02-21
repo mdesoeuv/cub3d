@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:10:49 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 18:08:29 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 18:45:44 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	get_map_content(t_cub3d *cub3d)
 	line = go_to_map_first_line(cub3d);
 	while (line)
 	{
-		cub3d->map.map[row_nbr] = ft_calloc(longest_line + 1, //ici
-				sizeof(char));
+		cub3d->map.map[row_nbr]
+			= ft_calloc(cub3d->map.longest_line + 1, sizeof(char));
 		if (!cub3d->map.map[row_nbr])
 			ft_print_error(ERROR_MALLOC, cub3d);
 		while (line[i] != '\0')
@@ -92,6 +92,8 @@ static int	count_lines_map(t_cub3d *cub3d)
 	line = ft_pass_empty_lines(line, cub3d);
 	while (line)
 	{
+		if (ft_strlen(line) > cub3d->map.longest_line)
+			cub3d->map.longest_line = ft_strlen(line);
 		line_count++;
 		free(line);
 		line = get_next_line(cub3d->map.fd);

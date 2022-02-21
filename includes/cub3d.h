@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:56:12 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 18:41:34 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_map
 {
 	int		fd;
 	int		line_count;
-	size_t	line_len;
+	int		longest_line;
 	char	direction;
 	int		line_start_map_in_cub;
 	char	*path;
@@ -131,6 +131,9 @@ void	ft_move_player(t_cub3d *so_long, int direction);
 void	draw_tests(t_cub3d *cub3d);
 void	draw_player(t_cub3d *cub3d);
 void	draw_map(t_cub3d *cub3d, char **map);
+
+/*UTILS*/
+int		ft_get_map_width(char **map);
 
 void	create_map_image(t_cub3d *cub3d);
 
