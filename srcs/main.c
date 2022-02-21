@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:49:58 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:55:41 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	main(int argc, char **argv)
 
 		ft_check_map(&cub3d);
 		display_map_and_textures(&cub3d);
-		exit(0);
-	/*	ft_init_window(&cub3d);
-		ft_init_images(&cub3d);
-		render(&cub3d);
+		ft_init_window(&cub3d);
+		create_map_image(&cub3d);
+		draw_tests(&cub3d);
+		/*render(&cub3d);
 		loop_images(cub3d);
 		destroy_images(&cub3d);
 		mlx_destroy_window(cub3d.mlx, cub3d.window_ptr);

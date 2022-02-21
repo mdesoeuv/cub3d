@@ -6,7 +6,7 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/21 17:26:28 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/21 17:56:47 by vchevill         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SRCS =	main.c \
 		ft_get_textures_path.c \
 		get_next_line.c \
 		ft_rotate_map.c \
-		ft_define_texture.c
+		ft_define_texture.c \
+		raycaster.c \
+		ft_init_window_images.c \
+		ft_handlers.c \
+		ft_moves.c
 
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 

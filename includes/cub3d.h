@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:51:17 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:56:12 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,7 @@ void	ft_move_player(t_cub3d *so_long, int direction);
 void	draw_tests(t_cub3d *cub3d);
 void	draw_player(t_cub3d *cub3d);
 void	draw_map(t_cub3d *cub3d, char **map);
+
+void	create_map_image(t_cub3d *cub3d);
 
 #endif
