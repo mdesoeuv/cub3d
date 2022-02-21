@@ -6,13 +6,13 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:58:03 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 11:32:08 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 /*
-static void	ft_check_top_and_bottom(int row, t_so_long *so_long)
+static void	ft_check_top_and_bottom_edges(int row, t_so_long *so_long)
 {
 	int	i;
 
@@ -24,22 +24,29 @@ static void	ft_check_top_and_bottom(int row, t_so_long *so_long)
 		i++;
 	}
 }
-
-static void	ft_check_edges(t_so_long *so_long)
+*/
+static void	ft_check_left_and_right_edges(t_cub3d *cub3d)
 {
 	int	i;
+	int	j;
+	int	d;
 
-	i = 1;
-	ft_check_top_and_bottom(0, so_long);
-	ft_check_top_and_bottom(so_long->map.line_count - 1, so_long);
-	while (i < so_long->map.line_count - 1)
+	i = -1;
+	while (++i < cub3d->map.line_count - 1)
 	{
-		if (so_long->map.map[i][0] != '1'
-			|| so_long->map.map[i][ft_strlen(so_long->map.map[0]) - 2] != '1')
-			ft_print_error(ERROR_EDGES, so_long);
+		j = -1;
+		d = ft_strlen(cub3d->map.map[i]);
+		while (cub3d->map.map[i][++j])
+			if (cub3d->map.map[i][j] == '1')
+				break ;
+		while (d > 0)
+			if (cub3d->map.map[i][--d] == '1')
+				break ;
+		if (!cub3d->map.map[i][j] || d == j)
+			ft_print_error(ERROR_EDGES, cub3d);
 		i++;
 	}
-}*/
+}
 
 static void	ft_get_start_direction(t_cub3d *cub3d)
 {
@@ -54,7 +61,7 @@ static void	ft_get_start_direction(t_cub3d *cub3d)
 	{	
 		while (j < ft_strlen(cub3d->map.map[i]) - 1)
 		{
-			if (!ft_strchr("NSEW", cub3d->map.map[i][j]))
+			if (ft_strchr("NSEW", cub3d->map.map[i][j]))
 			{
 				cub3d->map.direction = cub3d->map.map[i][j];
 				count_direction++;
@@ -89,5 +96,6 @@ void	ft_check_map(t_cub3d *cub3d)
 		i++;
 	}
 	ft_get_start_direction(cub3d);
-	//ft_check_edges(cub3d);//ici
+	//ft_check_top_and_bottom_edges(cub3d);
+	ft_check_left_and_right_edges(cub3d);
 }
