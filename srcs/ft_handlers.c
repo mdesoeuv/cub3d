@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handlers.c                                         :+:      :+:    :+:   */
+/*   ft_handlers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:13:53 by vchevill          #+#    #+#             */
-/*   Updated: 2022/01/20 15:14:03 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:49:05 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
 
-int	handle_resize(t_so_long *so_long)
-{
-	render(so_long);
-	return (0);
-}
+#include "../includes/cub3d.h"
 
-int	handle_keypress(int keysym, t_so_long *so_long)
+int	handle_keypress(int keysym, t_cub3d *cub3d)
 {
 	if (keysym == 53)
 	{
-		destroy_images(so_long);
-		mlx_destroy_window(so_long->mlx, so_long->win);
-		so_long->win = NULL;
-		if (so_long->map.map)
-			ft_free(so_long->map.map);
+		// destroy_images(cub3d);
+		mlx_destroy_window(cub3d->mlx, cub3d->window_ptr);
+		cub3d->window_ptr = NULL;
+		// if (cub3d->map.map)
+		// 	ft_free(cub3d->map.map);
 		exit(0);
 	}
 	else if (keysym == 0 || keysym == 1 || keysym == 2 || keysym == 13)
-		ft_move_player(so_long, keysym);
+		ft_move_player(cub3d, keysym);
 	return (0);
 }
 
-int	handle_btnrealease(t_so_long *so_long)
+int	handle_btnrealease(t_cub3d *cub3d)
 {
-	destroy_images(so_long);
-	mlx_destroy_window(so_long->mlx, so_long->win);
-	so_long->win = NULL;
-	if (so_long->map.map)
-		ft_free(so_long->map.map);
+	// destroy_images(cub3d);
+	mlx_destroy_window(cub3d->mlx, cub3d->window_ptr);
+	cub3d->window_ptr = NULL;
+	// if (cub3d->map.map)
+	// 	ft_free(cub3d->map.map);
 	exit(0);
 	return (0);
 }

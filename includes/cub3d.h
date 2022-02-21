@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:28:47 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:48:42 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,9 @@
 
 # define IMG_SIZE 48
 
-typedef struct s_img
-{
-	void	*mlx_img;
-	int		width;
-	int		height;
-	void	*wall;
-	void	*exit_l;
-	void	*ground;
-	void	*player;
-	int		line_length;
-	void	*coin1;
-
-}	t_img;
+# define CUBE_SIZE 32
+# define TEST_MAP_SIZE 10
+# define MOVE_SIZE 6
 
 typedef struct s_map
 {
@@ -79,11 +69,8 @@ typedef struct s_map
 typedef struct s_cub3d
 {
 	void	*mlx;
-	void	*win;
-	int		player_x;
-	int		player_y;
-	int		x;
-	int		y;
+	void	*window_ptr;
+	t_pos	player;
 	char	*texture_n;
 	char	*texture_s;
 	char	*texture_w;
@@ -93,9 +80,26 @@ typedef struct s_cub3d
 	int		win_height;
 	int		win_width;
 	t_map	map;
-	t_img	img;
-
+	t_image	win_render;
 }				t_cub3d;
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
+typedef struct s_image
+{
+	void	*pointer;
+	int		height;
+	int		width;
+	char	*data;
+	int		bits_per_pixel;
+	int		line_size;
+	int		endian;
+}	t_image;
+
 
 /* PARSING */
 void	display_map_and_textures(t_cub3d *cub3d);
@@ -121,5 +125,11 @@ int		render(t_cub3d *so_long);
 void	loop_images(t_cub3d so_long);
 void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
+
+/*RAYCASTING*/
+
+void	draw_tests(t_cub3d *cub3d);
+void	draw_player(t_cub3d *cub3d);
+void	draw_map(t_cub3d *cub3d, char **map);
 
 #endif
