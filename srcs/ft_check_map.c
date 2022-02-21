@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 16:20:51 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 16:21:14 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 	int	i;
 	int	j;
 	int	first;
-	int	last;
 
 	i = -1;
 	while (map[++i])
 	{
 		j = -1;
 		first = -1;
-		last = -1;
 		while (map[i][++j])
 		{
 			if (map[i][j] == ' ')
@@ -42,8 +40,6 @@ static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 				ft_print_error(ERROR_EDGES, cub3d);
 			else if (!map[i][j + 1] && map[i][j] == '0')
 				ft_print_error(ERROR_EDGES, cub3d);
-			else if (map[i][j] == '1' && first != -1)
-				first = j;
 			else if (map[i][j] == '1')
 				first = j;
 		}
