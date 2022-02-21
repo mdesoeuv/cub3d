@@ -6,13 +6,13 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 13:43:53 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 15:58:13 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	ft_check_line_edges(t_map map, t_cub3d *cub3d)
+static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 {
 	int	i;
 	int	j;
@@ -20,31 +20,31 @@ static void	ft_check_line_edges(t_map map, t_cub3d *cub3d)
 	int	last;
 
 	i = -1;
-	while (++i < map.line_count - 1)
+	while (map[++i])
 	{
 		j = -1;
 		first = -1;
 		last = -1;
-		while (map.map[i][++j])
+		while (map[i][++j])
 		{
-			if (map.map[i][j] == ' ')
+			if (map[i][j] == ' ')
 			{
-				if (j > 0 && map.map[i][j - 1] == '0')
+				if (j > 0 && map[i][j - 1] == '0')
 					ft_print_error(ERROR_EDGES, cub3d);
-				while (map.map[i][j] == ' ')
-					if (!map.map[i][++j])
+				while (map[i][j] == ' ')
+					if (!map[i][++j])
 						ft_print_error(ERROR_EDGES, cub3d);
-				if (map.map[i][j] == '0')
+				if (map[i][j] == '0')
 					ft_print_error(ERROR_EDGES, cub3d);
 				first = j;
 			}
-			else if (map.map[i][j] == '0' && first == -1)
+			else if (map[i][j] == '0' && first == -1)
 				ft_print_error(ERROR_EDGES, cub3d);
-			else if (!map.map[i][j + 1] && map.map[i][j] == '0')
+			else if (!map[i][j + 1] && map[i][j] == '0')
 				ft_print_error(ERROR_EDGES, cub3d);
-			else if (map.map[i][j] == '1' && first != -1)
+			else if (map[i][j] == '1' && first != -1)
 				last = j;
-			else if (map.map[i][j] == '1')
+			else if (map[i][j] == '1')
 				first = j;
 		}
 		if (first == -1 || last == -1)
@@ -52,21 +52,56 @@ static void	ft_check_line_edges(t_map map, t_cub3d *cub3d)
 	}
 }
 
-char	**ft_rotate_map(t_map map)
+static char	**ft_malloc_rotated_map(char **map, t_cub3d *cub3d)
 {
-	int	tab_size;
-	int	i;
-	int	j;
+	int		tab_size;
+	int		i;
+	int		j;
+	char	**rotated_tab;
 
 	i = -1;
 	j = -1;
 	while (map[++i])
 	{
-		while (map.map[i][++j])
+		while (map[i][++j])
 			if (i == 1 || j > tab_size)
 				tab_size = j;
 		j = -1;
 	}
+	rotated_tab = malloc((++tab_size + 1) * sizeof(char *));
+	if (!rotated_tab)
+		ft_print_error(ERROR_MALLOC, cub3d);
+	rotated_tab[tab_size] = NULL;
+	dprintf(1, "tab_size=%i", cub3d->map.line_count);
+	while (--tab_size >= 0)
+		rotated_tab[tab_size]
+			= ft_calloc(cub3d->map.line_count + 1, sizeof(char));
+	return (rotated_tab);
+}
+
+
+char	**ft_rotate_map(char **map, t_cub3d *cub3d)
+{
+	int		i;
+	int		j;
+	char	**rotated_tab;
+i = 0;
+	rotated_tab = ft_malloc_rotated_map(map, cub3d);
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+			rotated_tab[j][i] = map[i][j];
+	}
+	i = 0;
+	while (rotated_tab[i])
+	{
+		dprintf(1, "%s\n", rotated_tab[i]);
+		i++;
+	}
+	dprintf(1, "\n");
+	return (rotated_tab);
 }
 
 static void	ft_get_start_direction(t_cub3d *cub3d)
@@ -118,8 +153,8 @@ void	ft_check_map(t_cub3d *cub3d)
 		i++;
 	}
 	ft_get_start_direction(cub3d);
-	ft_check_line_edges(cub3d->map, cub3d);
-	rotated_map = ft_rotate_map(cub3d->map);
+	ft_check_line_edges(cub3d->map.map, cub3d);
+	rotated_map = ft_rotate_map(cub3d->map.map, cub3d);
 	ft_check_line_edges(rotated_map, cub3d);
 	ft_free_split(rotated_map);
 }

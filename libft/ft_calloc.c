@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 11:45:12 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2021/11/05 17:10:35 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 15:58:37 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	while (i < (count * size))
 	{
-		tab[i] = 0;
+		tab[i] = '9';
 		i++;
 	}
+	tab[i - 1] = '\0';
 	return ((void *)tab);
 }
