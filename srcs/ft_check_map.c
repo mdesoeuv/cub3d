@@ -6,43 +6,50 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 16:25:21 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:09:24 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static int	ft_check_spaces_in_line(char **map, t_cub3d *cub3d, int first)
+{
+	int	j;
+
+	j = -1;
+	while (map[i][++j])
+	{
+		if (map[i][j] == ' ')
+		{
+			if (j > 0 && map[i][j - 1] == '0')
+				ft_print_error(ERROR_EDGES, cub3d);
+			while (map[i][j] == ' ')
+				if (!map[i][++j])
+					ft_print_error(ERROR_EDGES, cub3d);
+			if (map[i][j] == '0')
+				ft_print_error(ERROR_EDGES, cub3d);
+			first = j;
+		}
+		else if (map[i][j] == '0' && first == -1)
+			ft_print_error(ERROR_EDGES, cub3d);
+		else if (!map[i][j + 1] && map[i][j] == '0')
+			ft_print_error(ERROR_EDGES, cub3d);
+		else if (map[i][j] == '1')
+			first = j;
+	}
+	return (first);
+}
+
 static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 {
 	int	i;
-	int	j;
 	int	first;
 
 	i = -1;
 	while (map[++i])
 	{
-		j = -1;
 		first = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == ' ')
-			{
-				if (j > 0 && map[i][j - 1] == '0')
-					ft_print_error(ERROR_EDGES, cub3d);
-				while (map[i][j] == ' ')
-					if (!map[i][++j])
-						ft_print_error(ERROR_EDGES, cub3d);
-				if (map[i][j] == '0')
-					ft_print_error(ERROR_EDGES, cub3d);
-				first = j;
-			}
-			else if (map[i][j] == '0' && first == -1)
-				ft_print_error(ERROR_EDGES, cub3d);
-			else if (!map[i][j + 1] && map[i][j] == '0')
-				ft_print_error(ERROR_EDGES, cub3d);
-			else if (map[i][j] == '1')
-				first = j;
-		}
+		first = ft_check_spaces_in_line(map, cub3d, first));
 		if (first == -1)
 			ft_print_error(ERROR_EDGES, cub3d);
 	}
