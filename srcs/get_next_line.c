@@ -6,10 +6,9 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:39:06 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:45:15 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:26:56 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/get_next_line.h"
 #include "../includes/cub3d.h"

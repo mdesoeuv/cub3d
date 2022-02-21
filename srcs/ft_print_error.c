@@ -6,12 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:03:16 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:26:24 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:26:41 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
 
 void	ft_print_error(char *str, t_cub3d *cub3d)
 {

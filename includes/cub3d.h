@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/14 14:03:38 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:28:47 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,11 @@ typedef struct s_cub3d
 
 }				t_cub3d;
 
+/* PARSING */
 void	display_map_and_textures(t_cub3d *cub3d);
 void	ft_check_file_extension(char *path, t_cub3d *so_long);
+char	**ft_rotate_map(char **map, t_cub3d *cub3d);
+void	ft_define_texture(t_cub3d *cub3d, char *line);
 
 /*TEXTURES*/
 int		ft_all_textures_declared(t_cub3d *cub3d);
