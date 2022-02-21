@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 12:02:54 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 13:00:06 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ static void	ft_check_left_and_right_edges(t_cub3d *cub3d)
 		{
 			if (cub3d->map.map[i][j] == ' ')
 			{
-				while (cub3d->map.map[i][++j] == ' ')
-					if (!cub3d->map.map[i][j])
+				while (cub3d->map.map[i][j] == ' ')
+					if (!cub3d->map.map[i][++j])
 						ft_print_error(ERROR_EDGES, cub3d);
 				if (cub3d->map.map[i][j] == '0')
 					ft_print_error(ERROR_EDGES, cub3d);
 			}
 			else if (cub3d->map.map[i][j] == '0' && first == -1)
+				ft_print_error(ERROR_EDGES, cub3d);
+			else if (!cub3d->map.map[i][j + 1] && cub3d->map.map[i][j] == '0')
 				ft_print_error(ERROR_EDGES, cub3d);
 			else if (cub3d->map.map[i][j] == '1' && first != -1)
 				last = j;
@@ -62,7 +64,6 @@ static void	ft_check_left_and_right_edges(t_cub3d *cub3d)
 		}
 		if (first == -1 || last == -1)
 			ft_print_error(ERROR_EDGES, cub3d);
-		i++;
 	}
 }
 
