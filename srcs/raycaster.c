@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/21 17:55:19 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 18:00:47 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	draw_map(t_cub3d *cub3d, char **map)
 	t_pos	pos;
 
 	pos.y = 0;
-	while (pos.y < TEST_MAP_SIZE * CUBE_SIZE)
+	while (pos.y < cub3d->win_height)
 	{
 		pos.x = 0;
-		while (pos.x < TEST_MAP_SIZE * CUBE_SIZE)
+		while (pos.x < cub3d->win_width)
 		{
 			if (pos.y % CUBE_SIZE == 0 || pos.x % CUBE_SIZE == 0)
 				put_pixel_to_image(cub3d, pos, create_trgb(0, 255, 0, 0));
