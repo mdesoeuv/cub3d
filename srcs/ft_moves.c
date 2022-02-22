@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 10:10:37 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 10:24:14 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	check_if_can_move(t_cub3d *cub3d, int direction, char tile)
 	
 	x = cub3d->player.x;
 	y = cub3d->player.y;
-	if ((direction == 1
-		&& cub3d->map.map[lround((y - (MOVE_SIZE * sin(cub3d->player_angle))) / CUBE_SIZE)][lround((x - MOVE_SIZE * cos(cub3d->player_angle)) / CUBE_SIZE)] == tile)
-		|| (direction == 13
-		&& cub3d->map.map[lround((y + (MOVE_SIZE * sin(cub3d->player_angle))) / CUBE_SIZE)][lround((x + MOVE_SIZE * cos(cub3d->player_angle)) / CUBE_SIZE)] == tile)
+	if ((direction == DOWN
+		&& cub3d->map.map[(int)lround((y - (MOVE_SIZE * sin(cub3d->player_angle))) / CUBE_SIZE)][(int)lround((x - MOVE_SIZE * cos(cub3d->player_angle)) / CUBE_SIZE)] == tile)
+		|| (direction == UP
+		&& cub3d->map.map[(int)lround((y + (MOVE_SIZE * sin(cub3d->player_angle))) / CUBE_SIZE)][(int)lround((x + MOVE_SIZE * cos(cub3d->player_angle)) / CUBE_SIZE)] == tile)
 		)
 		return (1);
 	else
