@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 14:28:34 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:31:38 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,32 @@ void	draw_image(t_cub3d *cub3d)
 
 double	ft_ray_length(t_cub3d *cub3d, double angle)
 {
-	double		ray_length;
-
-
-	return (ray_length);
+	double		v_dy_length;
+	double		v_dx_length;
+	int			interesec_to_pass_x;
+	int			interesec_to_pass_y;
+	
+	interesec_to_pass_x = 0;
+	interesec_to_pass_y = 0;
+	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
+	{
+		if ( angle > 0 && angle < M_PI) // vecteur vers le haut (y positif)
+			v_dy_length = ((cub3d->player.y % CUBE_SIZE) + CUBE_SIZE * interesec_to_pass_y ) / sin(angle);
+		else // vecteur vers le haut (y negatif)
+			v_dy_length = (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + CUBE_SIZE * interesec_to_pass_y) / sin(angle);
+		if ( angle > M_PI/2 && angle < (3 * M_PI)/2) // vecteur vers le haut (x positif)
+			v_dx_length = ((cub3d->player.x % CUBE_SIZE) + CUBE_SIZE * interesec_to_pass_x) / cos(angle);
+		else // vecteur vers le haut (x negatif)
+			v_dx_length = (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + CUBE_SIZE * interesec_to_pass_x) / cos(angle);
+		if (v_dy_length > v_dx_length) // si longueur du vecteur qui s'arrete aux x < a celui qui s'arrete aux y
+			interesec_to_pass_x++;
+		else 
+			interesec_to_pass_y++;
+	}
+	if (v_dy_length > v_dx_length) // la longueur du rayon correspond à celle du vecteur qui a rencontré en premier un obstacle
+		return (v_dx_length);
+	else 
+		return (v_dy_length);
 }
 
 void	draw_rays(t_cub3d *cub3d)
