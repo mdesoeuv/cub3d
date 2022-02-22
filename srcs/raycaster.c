@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 10:47:51 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 11:40:49 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,24 @@ void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color)
 
 void	draw_image(t_cub3d *cub3d, char **map)
 {
-	t_pos	pos;
+	int	x;
+	int	y;
 
-	pos.y = 0;
-	while (pos.y < cub3d->win_height)
+	y = 0;
+	while (y < cub3d->win_height)
 	{
-		pos.x = 0;
-		while (pos.x < cub3d->win_width)
+		x = 0;
+		while (x < cub3d->win_width)
 		{
-			if (pos.y % CUBE_SIZE == 0 || pos.x % CUBE_SIZE == 0)
-				put_pixel_to_image(cub3d, pos.x, pos.y, create_trgb(0, 255, 0, 0));
-			else if (map[pos.y / CUBE_SIZE][pos.x / CUBE_SIZE] == '1')
-				put_pixel_to_image(cub3d, pos.x, pos.y, create_trgb(0, 0, 0, 0));
+			if (y % CUBE_SIZE == 0 || x % CUBE_SIZE == 0)
+				put_pixel_to_image(cub3d, x, y, create_trgb(0, 255, 0, 0));
+			else if (map[y / CUBE_SIZE][x / CUBE_SIZE] == '1')
+				put_pixel_to_image(cub3d, x, y, create_trgb(0, 0, 0, 0));
 			else
-				put_pixel_to_image(cub3d, pos.x, pos.y, create_trgb(0, 255, 255, 255));
-			(pos.x)++;
+				put_pixel_to_image(cub3d, x, y, create_trgb(0, 255, 255, 255));
+			(x)++;
 		}
-		(pos.y)++;
+		(y)++;
 	}
 	draw_player(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->window_ptr, cub3d->win_render.pointer, 0, 0);
