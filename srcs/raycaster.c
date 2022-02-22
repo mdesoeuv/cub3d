@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 14:22:30 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:28:34 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,24 @@ void	draw_image(t_cub3d *cub3d)
 		cub3d->win_render.pointer, 0, 0);
 }
 
+double	ft_ray_length(t_cub3d *cub3d, double angle)
+{
+	double		ray_length;
+
+
+	return (ray_length);
+}
+
 void	draw_rays(t_cub3d *cub3d)
 {
 	int		l;
+	double	ray_length;
 	double	dx;
 	double	dy;
 
+	ray_length = ft_ray_length(cub3d, cub3d->player_angle);
 	l = 1;
-	while (l < 11)
+	while (l < ray_length)
 	{
 		dx = l * cos(cub3d->player_angle);
 		dy = l * sin(cub3d->player_angle);
