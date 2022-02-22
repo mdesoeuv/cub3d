@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 16:34:04 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:43:31 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
 		if ( angle > 0 && angle < M_PI) // vecteur vers le haut (y positif)
 		{
-			v_dy_length = fabs(((cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
-			dprintf(1, "dy=%d, angle=%f\n", (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y)), angle);
+			v_dy_length = fabs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
+			dprintf(1, "dy=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))), angle);
 		}
 		else // vecteur vers le haut (y negatif)
 		{
-			v_dy_length = fabs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
-			dprintf(1, "dy=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))), angle);
+			v_dy_length = fabs(((cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
+			dprintf(1, "dy=%d, angle=%f\n", (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y)), angle);
 		}
 		if ( angle > M_PI / 2 && angle < (3 * M_PI)/2) // vecteur vers le haut (x positif)
 		{
