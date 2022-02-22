@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handlers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:13:53 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:49:05 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 11:50:25 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/cub3d.h"
 
