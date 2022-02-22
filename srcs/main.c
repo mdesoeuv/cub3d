@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 14:19:38 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:03:09 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	main(int argc, char **argv)
 		display_map_and_textures(&cub3d);
 		cub3d.win_height = cub3d.map.line_count * CUBE_SIZE;
 		cub3d.win_width = cub3d.map.longest_line * CUBE_SIZE;
-		cub3d.player.x = 5 * CUBE_SIZE;
-		cub3d.player.y = 6 * CUBE_SIZE;
+		cub3d.player.x = 6 * CUBE_SIZE + CUBE_SIZE / 2;
+		cub3d.player.y = 3 * CUBE_SIZE + CUBE_SIZE / 2;
 		cub3d.player_angle = 0; // donner orientation reelle parsée
 		ft_init_window(&cub3d);
 		ft_init_render_image(&cub3d);
