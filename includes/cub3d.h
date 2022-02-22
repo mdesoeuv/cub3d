@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 11:46:06 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 14:22:07 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,15 +133,11 @@ void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
 
 /*RAYCASTING*/
-
-void	draw_tests(t_cub3d *cub3d);
+void	ft_init_render_image(t_cub3d *cub3d);
+void	ft_rendering(t_cub3d *cub3d);
 void	draw_player(t_cub3d *cub3d);
-void	draw_image(t_cub3d *cub3d, char **map);
+void	draw_image(t_cub3d *cub3d);
 void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
 
-/*UTILS*/
-int		ft_get_map_width(char **map);
-
-void	create_map_image(t_cub3d *cub3d);
 
 #endif

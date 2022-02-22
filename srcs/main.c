@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 09:29:03 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 14:19:38 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	main(int argc, char **argv)
 		ft_check_map(&cub3d);
 		display_map_and_textures(&cub3d);
 		cub3d.win_height = cub3d.map.line_count * CUBE_SIZE;
-		cub3d.win_width = cub3d.map.longest_line * CUBE_SIZE;// mettre la ligne la plus longue
+		cub3d.win_width = cub3d.map.longest_line * CUBE_SIZE;
 		cub3d.player.x = 5 * CUBE_SIZE;
 		cub3d.player.y = 6 * CUBE_SIZE;
 		cub3d.player_angle = 0; // donner orientation reelle parsée
 		ft_init_window(&cub3d);
-		create_map_image(&cub3d);
-		draw_tests(&cub3d);
+		ft_init_render_image(&cub3d);
+		ft_rendering(&cub3d);
 		/*render(&cub3d);
 		loop_images(cub3d);
 		destroy_images(&cub3d);

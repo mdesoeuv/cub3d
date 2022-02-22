@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 11:49:49 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 14:22:19 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 		cub3d->player.x += lround(MOVE_SIZE * cos(cub3d->player_angle));
 		cub3d->player.y += lround(MOVE_SIZE * sin(cub3d->player_angle));
 	}
-	draw_image(cub3d, cub3d->map.map);
+	draw_image(cub3d);
 }
