@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 09:31:12 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 09:43:41 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	create_map_image(t_cub3d *cub3d)
 
 void	draw_player(t_cub3d *cub3d)
 {
-	int	l;
-	int	dx;
-	int	dy;
+	int		l;
+	double	dx;
+	double	dy;
 
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x, cub3d->player.y, create_trgb(0, 0, 0, 255));
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x + 1, cub3d->player.y, create_trgb(0, 0, 0, 255));

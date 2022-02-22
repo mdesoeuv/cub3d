@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 09:28:42 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 09:59:19 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@
 # define CUBE_SIZE 32
 # define TEST_MAP_SIZE 10
 # define MOVE_SIZE 6
+# define ANGLE_INC 0.2
+# define UP 13
+# define DOWN 1
+# define LEFT 0
+# define RIGHT 2
+# define ESC 53
 
 typedef struct s_image
 {
@@ -96,7 +102,7 @@ typedef struct s_cub3d
 	char	*color_ceiling;
 	int		win_height;
 	int		win_width;
-	int		player_angle;
+	double	player_angle;
 	t_map	map;
 	t_image	win_render;
 }				t_cub3d;
