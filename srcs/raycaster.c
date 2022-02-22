@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 17:19:07 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 23:01:43 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		else 
 			interesec_to_pass_y++;
 	}
-	// dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
-	// dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
+	 dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
+	 dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
 	if (v_dy_length > v_dx_length) // la longueur du rayon correspond à celle du vecteur qui a rencontré en premier un obstacle
 		return (v_dx_length);
 	else 
@@ -116,17 +116,20 @@ void	draw_rays(t_cub3d *cub3d)
 	double	dy;
 	int		i;
 
-	i = -1000;
-	while ( i < 1000)
+	i = -20;
+			 dprintf(1, "------------------------\n");
+
+	while ( i < 20)
 	{
-		ray_length = ft_ray_length(cub3d, cub3d->player_angle + M_PI / 4000 * i);
-		// dprintf(1, "------------------------\n");
-		// dprintf(1, "%f\n", ray_length);
+		ray_length = ft_ray_length(cub3d, cub3d->player_angle + M_PI / 40 * i);
+		 //dprintf(1, "%f\n", ray_length);
+		 			 dprintf(1, "-------\n");
+
 		l = 1;
 		while (l < ray_length)
 		{
-			dx = l * cos(cub3d->player_angle + M_PI / 4000 * i);
-			dy = l * sin(cub3d->player_angle + M_PI / 4000 * i);
+			dx = l * cos(cub3d->player_angle + M_PI / 40 * i);
+			dy = l * sin(cub3d->player_angle + M_PI / 40 * i);
 			put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 0, 255));
 			l++;
 		}
