@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 09:59:19 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 10:46:32 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,8 @@ void	ft_move_player(t_cub3d *so_long, int direction);
 
 void	draw_tests(t_cub3d *cub3d);
 void	draw_player(t_cub3d *cub3d);
-void	draw_map(t_cub3d *cub3d, char **map);
+void	draw_image(t_cub3d *cub3d, char **map);
+void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
 
 /*UTILS*/
 int		ft_get_map_width(char **map);

@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 10:37:04 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 10:48:22 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 		cub3d->player.x += MOVE_SIZE * cos(cub3d->player_angle);
 		cub3d->player.y += MOVE_SIZE * sin(cub3d->player_angle);
 	}
-	draw_map(cub3d, cub3d->map.map);
-	draw_player(cub3d);
+	draw_image(cub3d, cub3d->map.map);
 }
