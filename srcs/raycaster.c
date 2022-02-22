@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/21 18:00:47 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 09:31:12 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ void	create_map_image(t_cub3d *cub3d)
 
 void	draw_player(t_cub3d *cub3d)
 {
+	int	l;
+	int	dx;
+	int	dy;
+
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x, cub3d->player.y, create_trgb(0, 0, 0, 255));
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x + 1, cub3d->player.y, create_trgb(0, 0, 0, 255));
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x - 1, cub3d->player.y, create_trgb(0, 0, 0, 255));
@@ -67,6 +71,14 @@ void	draw_player(t_cub3d *cub3d)
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x, cub3d->player.y - 1, create_trgb(0, 0, 0, 255));
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x + 1, cub3d->player.y - 1, create_trgb(0, 0, 0, 255));
 	mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x - 1, cub3d->player.y - 1, create_trgb(0, 0, 0, 255));
+	l = 1;
+	while (l < 11)
+	{
+		dx = l * cos(cub3d->player_angle);
+		dy = l * sin(cub3d->player_angle);
+		mlx_pixel_put(cub3d->mlx, cub3d->window_ptr, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 0, 255));
+		l++;
+	}
 }
 
 void	draw_tests(t_cub3d *cub3d)

@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 09:08:19 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 09:28:42 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_cub3d
 	char	*color_ceiling;
 	int		win_height;
 	int		win_width;
-	int		start_angle;
+	int		player_angle;
 	t_map	map;
 	t_image	win_render;
 }				t_cub3d;
