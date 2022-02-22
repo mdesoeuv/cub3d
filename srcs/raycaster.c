@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 15:31:38 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:33:32 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ void	draw_map(t_cub3d *cub3d)
 	}
 }
 
-void	draw_image(t_cub3d *cub3d)
-{
-	draw_map(cub3d);
-	draw_player(cub3d);
-	draw_rays(cub3d);
-	mlx_put_image_to_window(cub3d->mlx, cub3d->window_ptr, \
-		cub3d->win_render.pointer, 0, 0);
-}
-
 double	ft_ray_length(t_cub3d *cub3d, double angle)
 {
 	double		v_dy_length;
@@ -106,7 +97,7 @@ void	draw_rays(t_cub3d *cub3d)
 	{
 		dx = l * cos(cub3d->player_angle);
 		dy = l * sin(cub3d->player_angle);
-		put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 0, 255));
+		put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 255, 0);
 		l++;
 	}
 }
@@ -134,6 +125,15 @@ void	draw_player(t_cub3d *cub3d)
 		put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 0, 255));
 		l++;
 	}
+}
+
+void	draw_image(t_cub3d *cub3d)
+{
+	draw_map(cub3d);
+	draw_player(cub3d);
+	draw_rays(cub3d);
+	mlx_put_image_to_window(cub3d->mlx, cub3d->window_ptr, \
+		cub3d->win_render.pointer, 0, 0);
 }
 
 void	ft_rendering(t_cub3d *cub3d)
