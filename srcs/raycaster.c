@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 15:33:32 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:34:14 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	int			interesec_to_pass_x;
 	int			interesec_to_pass_y;
 	
+	dprintf(1, "yo");
 	interesec_to_pass_x = 0;
 	interesec_to_pass_y = 0;
 	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
@@ -90,14 +91,14 @@ void	draw_rays(t_cub3d *cub3d)
 	double	ray_length;
 	double	dx;
 	double	dy;
-
+	
 	ray_length = ft_ray_length(cub3d, cub3d->player_angle);
 	l = 1;
 	while (l < ray_length)
 	{
 		dx = l * cos(cub3d->player_angle);
 		dy = l * sin(cub3d->player_angle);
-		put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 255, 0);
+		put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 255, 0));
 		l++;
 	}
 }
