@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:03:59 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:10:14 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	
 
 	offset = WINDOW_HEIGHT / 2;
-	x = -400;
-	while ( x < 400)
+	x = -(WINDOW_WIDTH / 2);
+	while (x < WINDOW_WIDTH / 2)
 	{
-		angle_tmp = cub3d->player_angle + M_PI / 1980 * x;
+		angle_tmp = cub3d->player_angle + M_PI / (WINDOW_WIDTH * 2.5) * x;
 		if (angle_tmp > 2 * M_PI)
 			angle_tmp -= 2 * M_PI;
 		ray_length = ft_ray_length(cub3d, angle_tmp);
