@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/22 23:01:43 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/23 09:59:39 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	interesec_to_pass_x = 0;
 	interesec_to_pass_y = 0;
 	
+	dprintf(2, "player angle %f\n", cub3d->player_angle);
 	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
 	{
 		//dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
-	//dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
+		//dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
 		if ( angle > 0 && angle < M_PI) // vecteur vers le haut (y positif)
 		{
 			v_dy_length = fabs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
@@ -78,12 +79,12 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 			v_dy_length = fabs(((cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
 			// dprintf(1, "dy=%d, angle=%f\n", (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y)), angle);
 		}
-		if ( angle > M_PI / 2 && angle < (3 * M_PI)/2) // vecteur vers le haut (x positif)
+		if ( angle > M_PI / 2 && angle < (3 * M_PI)/2) // vecteur vers le bas ?? (y positif ?)
 		{
 			v_dx_length = fabs(((cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))) / cos(angle));
 			// dprintf(1, "dx=%d, angle=%f\n", ((cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))), angle);
 		}
-		else // vecteur vers le haut (x negatif)
+		else // vecteur vers le haut (y negatif)
 		{
 			v_dx_length = fabs((CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))) / cos(angle));
 			// dprintf(1, "dx=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))), angle);
@@ -100,8 +101,8 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		else 
 			interesec_to_pass_y++;
 	}
-	 dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
-	 dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
+	// dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
+	// dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
 	if (v_dy_length > v_dx_length) // la longueur du rayon correspond à celle du vecteur qui a rencontré en premier un obstacle
 		return (v_dx_length);
 	else 
@@ -115,21 +116,22 @@ void	draw_rays(t_cub3d *cub3d)
 	double	dx;
 	double	dy;
 	int		i;
+	double	angle_tmp;
 
-	i = -20;
-			 dprintf(1, "------------------------\n");
-
-	while ( i < 20)
+	i = -10;
+	while ( i < 10)
 	{
-		ray_length = ft_ray_length(cub3d, cub3d->player_angle + M_PI / 40 * i);
-		 //dprintf(1, "%f\n", ray_length);
-		 			 dprintf(1, "-------\n");
-
+		angle_tmp = cub3d->player_angle + M_PI / 40 * i;
+		if (angle_tmp > 2 * M_PI)
+			angle_tmp -= 2 * M_PI;
+		ray_length = ft_ray_length(cub3d, angle_tmp);
+		 // dprintf(1, "%f\n", ray_length);
+		 // dprintf(1, "-------\n");
 		l = 1;
 		while (l < ray_length)
 		{
-			dx = l * cos(cub3d->player_angle + M_PI / 40 * i);
-			dy = l * sin(cub3d->player_angle + M_PI / 40 * i);
+			dx = l * cos(angle_tmp);
+			dy = l * sin(angle_tmp);
 			put_pixel_to_image(cub3d, cub3d->player.x + dx, cub3d->player.y + dy, create_trgb(0, 0, 0, 255));
 			l++;
 		}
