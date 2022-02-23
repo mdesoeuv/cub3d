@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 10:18:24 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 10:55:10 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@
 # define LEFT 0
 # define RIGHT 2
 # define ESC 53
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 
 typedef struct s_image
 {
@@ -137,10 +139,11 @@ void	ft_move_player(t_cub3d *so_long, int direction);
 void	ft_init_render_image(t_cub3d *cub3d);
 void	ft_rendering(t_cub3d *cub3d);
 void	draw_player(t_cub3d *cub3d);
-void	draw_image(t_cub3d *cub3d);
+void	draw_image_2d(t_cub3d *cub3d);
+void	draw_image_3d(t_cub3d *cub3d);
 void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
 int		create_trgb(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
-void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
+double	ft_ray_length(t_cub3d *cub3d, double angle);
 
 #endif
