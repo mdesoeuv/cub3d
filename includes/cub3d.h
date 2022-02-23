@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:33:44 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:41:36 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_cub3d
 	t_image	texture_e;
 	int		color_ground[3];
 	int		color_ceiling[3];
+	int		color_texture[3];
 	int		win_height;
 	int		win_width;
 	double	player_angle;
