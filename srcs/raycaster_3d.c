@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:35:26 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:38:24 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	draw_rays_3d(t_cub3d *cub3d)
 			angle_tmp -= 2 * M_PI;
 		ray_length = ft_ray_length(cub3d, angle_tmp);
 		angle_diff = angle_tmp - cub3d->player_angle;
-		// if (angle_diff < 0)
-		// 	angle_diff += 2 * M_PI;
-		// if (angle_diff  > 2 * M_PI)
-		// 	angle_diff -= 2 * M_PI;
-		// ray_length = ray_length * cos(angle_diff);
-		 // dprintf(1, "%f\n", ray_length);
-		 // dprintf(1, "-------\n");
+		if (angle_diff < 0)
+			angle_diff += 2 * M_PI;
+		if (angle_diff  > 2 * M_PI)
+			angle_diff -= 2 * M_PI;
+		ray_length = ray_length * cos(angle_diff);
+		//  dprintf(1, "%f\n", ray_length);
+		//  dprintf(1, "-------\n");
 		 
 		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
 		if (wall_size > WINDOW_HEIGHT)
