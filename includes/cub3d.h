@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:06:15 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:06:32 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@
 
 # define CUBE_SIZE 32
 # define TEST_MAP_SIZE 10
-# define MOVE_SIZE 6
+# define MOVE_SIZE 5
 # define ANGLE_INC 0.1
 # define UP 13
 # define DOWN 1
 # define LEFT 0
 # define RIGHT 2
+# define ROT_LEFT 123
+# define ROT_RIGHT 124
 # define ESC 53
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
