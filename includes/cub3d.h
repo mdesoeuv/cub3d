@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 10:55:10 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:52:36 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_map
 	int		line_start_map_in_cub;
 	char	*path;
 	char	**map;
+	int		ray_hit_x;
 }				t_map;
 
 typedef struct s_pos

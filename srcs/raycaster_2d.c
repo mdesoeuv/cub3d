@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:36:22 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:53:22 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	interesec_to_pass_y = 0;
 	is_x_updated = -1;
 	
+	cub3d->map.ray_hit_x = -1;
 	// dprintf(2, "player angle %f\n", cub3d->player_angle);
 	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
 	{
@@ -98,21 +99,25 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		{
 			is_x_updated = 1;
 			interesec_to_pass_x++;
+			cub3d->map.ray_hit_x = 1;
 		}
 		else if (v_dy_length > v_dx_length)
 		{
 			is_x_updated = 1;
 			interesec_to_pass_x--;
+			cub3d->map.ray_hit_x = 1;
 		}
 		else if (v_dy_length < v_dx_length && !( angle > 0 && angle < M_PI))
 		{
 			is_x_updated = 0;
 			interesec_to_pass_y--;
+			cub3d->map.ray_hit_x = 0;
 		}
 		else 
 		{
 			is_x_updated = 0;
 			interesec_to_pass_y++;
+			cub3d->map.ray_hit_x = 0;
 		}
 	}
 	// dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);

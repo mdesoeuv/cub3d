@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:37:33 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 12:01:41 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		if (angle_diff  > 2 * M_PI)
 			angle_diff -= 2 * M_PI;
 		ray_length = ray_length * cos(angle_diff);
-		 // dprintf(1, "%f\n", ray_length);
-		 // dprintf(1, "-------\n");
-		 
 		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
 		if (wall_size > WINDOW_HEIGHT)
 			wall_size = WINDOW_HEIGHT;
@@ -61,7 +58,12 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		y = offset - wall_size / 2;
 		while (y < wall_size / 2 + offset)
 		{
-			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 0, 255));
+			if (cub3d->map.ray_hit_x == 1  && angle_diff > M_PI / 2 && angle_diff < (3 * M_PI)/2)
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 0, 255));
+			else if (cub3d->map.ray_hit_x == 1)
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 255, 0));
+			else
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 255, 0, 0));
 			y++;
 		}
 		x++;
