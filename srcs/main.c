@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 10:26:19 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:17:26 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int argc, char **argv)
 		ft_create_map(argv[1], &cub3d);
 		ft_check_map(&cub3d);
 		display_map_and_textures(&cub3d);
-		// cub3d.win_height = cub3d.map.line_count * CUBE_SIZE;
-		// cub3d.win_width = cub3d.map.longest_line * CUBE_SIZE;
+		 cub3d.win_height = cub3d.map.line_count * CUBE_SIZE;
+		 cub3d.win_width = cub3d.map.longest_line * CUBE_SIZE;
 		ft_init_window(&cub3d);
 		ft_init_render_image(&cub3d);
 		ft_rendering(&cub3d);
