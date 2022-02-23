@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:05:14 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:32:56 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:36:57 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y)
 {
+	x = x % image.width;
+	y = y % image.height;
 	cub3d->color_texture[0] = image.data[y * image.line_size + \
 		x * image.bits_per_pixel / 8];
 	cub3d->color_texture[1] = image.data[(y * image.line_size + \
