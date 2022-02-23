@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:24:55 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/21 17:27:24 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:34:59 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_all_textures_declared(t_cub3d *cub3d)
 {
-	if (cub3d->texture_e && cub3d->texture_w
-		&& cub3d->texture_n && cub3d->texture_s
-		&& cub3d->color_ceiling && cub3d->color_ground)
+	if (cub3d->texture_e.ptr && cub3d->texture_w.ptr
+		&& cub3d->texture_n.ptr && cub3d->texture_s.ptr
+		&& cub3d->color_ceiling[0] != -1 && cub3d->color_ground[0] != -1)
 		return (1);
 	else
 		return (0);

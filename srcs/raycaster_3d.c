@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 16:18:52 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:41:10 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,23 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		{
 			if (cub3d->map.ray_hit_x == 1  && angle_tmp > M_PI / 2 && angle_tmp < (3 * M_PI)/2)
 			{
-				pix_color = ft_pixel_texture_color(cub3d->texture_e, x, y);
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, pix_color[0], pix_color[1], pix_color[2]));
+				ft_pixel_texture_color(cub3d->texture_e, x, y);
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_hit_x == 1)
 			{
-				pix_color = ft_pixel_texture_color(cub3d->texture_n, x, y);
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, pix_color[0], pix_color[1], pix_color[2]));
+				ft_pixel_texture_color(cub3d->texture_n, x, y);
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_hit_x == 0  && angle_tmp > 0 && angle_tmp < M_PI)
 			{
-				pix_color = ft_pixel_texture_color(cub3d->texture_n, x, y);
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, pix_color[0], pix_color[1], pix_color[2]));
+				t_pixel_texture_color(cub3d->texture_n, x, y);
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else
 			{
-				pix_color = ft_pixel_texture_color(cub3d->texture_n, x, y);
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, pix_color[0], pix_color[1], pix_color[2]));
+				ft_pixel_texture_color(cub3d->texture_n, x, y);
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			y++;
 		}

@@ -6,68 +6,58 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:22:58 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:39:56 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	ft_define_texture_4(t_cub3d *cub3d, char **tab)
+static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
 {
-	if (ft_strncmp(tab[0], "WE", 2) == 0)
+	if (ft_strncmp(tab[0], "SO", 2) == 0)
 	{
-		if (!cub3d->texture_w)
-			cub3d->texture_n.ptr = ft_strdup(tab[1]);
+		if (!cub3d->texture_s.ptr)
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_s));
 		else
 			return (1);
-		if (!cub3d->texture_w)
-			ft_print_error(ERROR_MALLOC, cub3d);
+	}
+	if (ft_strncmp(tab[0], "WE", 2) == 0)
+	{
+		if (!cub3d->texture_w.ptr)
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_w));
+		else
+			return (1);
 	}
 	else if (ft_strncmp(tab[0], "EA", 2) == 0)
 	{
-		if (!cub3d->texture_e)
-			cub3d->texture_e = ft_strdup(tab[1]);
+		if (!cub3d->texture_e.ptr)
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_e));
 		else
 			return (1);
-		if (!cub3d->texture_e)
-			ft_print_error(ERROR_MALLOC, cub3d);
 	}
 	return (0);
 }
 
-static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
-{
-	if (ft_strncmp(tab[0], "NO", 2) == 0)
-	{
-		if (!cub3d->texture_n)
-			cub3d->texture_n = ft_strdup(tab[1]);
-		else
-			return (1);
-		if (!cub3d->texture_n)
-			ft_print_error(ERROR_MALLOC, cub3d);
-	}
-	else if (ft_strncmp(tab[0], "SO", 2) == 0)
-	{
-		if (!cub3d->texture_s)
-			cub3d->texture_s = ft_strdup(tab[1]);
-		else
-			return (1);
-		if (!cub3d->texture_s)
-			ft_print_error(ERROR_MALLOC, cub3d);
-	}
-	return (ft_define_texture_4(cub3d, tab));
-}
-
-static void	ft_define_colors(t_cub3d *cub3d, char *string, int **result_tab)
+static void	ft_define_colors(t_cub3d *cub3d, char *string, int is_ground)
 {
 	char	**color_split;
 
 	color_split = ft_split(string, ',');
 	if (!color_split)
 		ft_print_error(ERROR_MALLOC, cub3d);
-	(*result_tab)[0] = ft_atoi(color_split[0]);
-	(*result_tab)[1] = ft_atoi(color_split[1]);
-	(*result_tab)[2] = ft_atoi(color_split[2]);
+	if (is_ground)
+	{
+		cub3d->color_ground[0] = ft_atoi(color_split[0]);
+		cub3d->color_ground[1] = ft_atoi(color_split[1]);
+		cub3d->color_ground[2] = ft_atoi(color_split[2]);
+	}
+	else
+	{
+		cub3d->color_ceiling[0] = ft_atoi(color_split[0]);
+		cub3d->color_ceiling[1] = ft_atoi(color_split[1]);
+		cub3d->color_ceiling[2] = ft_atoi(color_split[2]);
+	}
+		
 	free(color_split);
 }
 
@@ -77,14 +67,21 @@ static int	ft_define_texture_2(t_cub3d *cub3d, char **tab)
 	if (tab[0][0] == 'C')
 	{
 		if (cub3d->color_ceiling[0] == -1)
-			ft_define_colors(cub3d, tab[1], &(cub3d->color_ceiling));
+			ft_define_colors(cub3d, tab[1], 0);
 		else
 			return (1);
 	}
 	else if (tab[0][0] == 'F')
 	{
 		if (cub3d->color_ground[0] == -1)
-			ft_define_colors(cub3d, tab[1], &(cub3d->color_ground));
+			ft_define_colors(cub3d, tab[1], 1);
+		else
+			return (1);
+	}
+	else if (ft_strncmp(tab[0], "NO", 2) == 0)
+	{
+		if (!cub3d->texture_n.ptr)
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_n));
 		else
 			return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 13:35:22 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:34:19 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	display_map_and_textures(t_cub3d *cub3d)
 	int	i;
 
 	i = 0;
-	dprintf(1, "texture NO=%s=\n", cub3d->texture_n);
+	/*dprintf(1, "texture NO=%s=\n", cub3d->texture_n.);
 	dprintf(1, "texture S=%s=\n", cub3d->texture_s);
 	dprintf(1, "texture EAST=%s=\n", cub3d->texture_e);
-	dprintf(1, "texture WEST=%s=\n", cub3d->texture_w);
+	dprintf(1, "texture WEST=%s=\n", cub3d->texture_w);*/
 	dprintf(1, "color ground=%i,%i,%i=\n", cub3d->color_ground[0],cub3d->color_ground[1],cub3d->color_ground[2]);
 	dprintf(1, "color ceiling=%i,%i,%i=\n", cub3d->color_ceiling[0],cub3d->color_ceiling[1],cub3d->color_ceiling[2]);
 	while (cub3d->map.map[i])

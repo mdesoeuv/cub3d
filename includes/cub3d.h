@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:17:04 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:33:44 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 							path has not been declared.\n"
 # define ERROR_INVALID_TEXTURE_ARG_NAME "Texture declaration error.\n"
 # define ERROR_TEXTURE_DEFINED_TWICE "A texture path has been declared twice.\n"
+# define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
+							corrupted or inaccessible.\n"
 
 # define IMG_SIZE 48
 
@@ -148,5 +150,7 @@ void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
 int		create_trgb(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 double	ft_ray_length(t_cub3d *cub3d, double angle);
+
+void	ft_init_texture(t_cub3d *cub3d, char *texture_name, t_image *image_struc);
 
 #endif
