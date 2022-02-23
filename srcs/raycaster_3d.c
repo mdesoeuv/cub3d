@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:10:14 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:11:56 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
 		if (wall_size > WINDOW_HEIGHT)
 			wall_size = WINDOW_HEIGHT;
-		column = x + 400;
+		column = x + (WINDOW_WIDTH / 2);
 		y = offset - wall_size / 2;
 		while (y < wall_size / 2 + offset)
 		{
