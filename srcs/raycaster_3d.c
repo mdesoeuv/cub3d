@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 16:06:52 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:18:52 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ void	draw_rays_3d(t_cub3d *cub3d)
 
 void	draw_image_3d(t_cub3d *cub3d)
 {
-	mlx_destroy_image(cub3d->mlx, cub3d->render_3d.pointer);
-	cub3d->render_3d.pointer = mlx_new_image(cub3d->mlx, cub3d->win_width, \
+	mlx_destroy_image(cub3d->mlx, cub3d->render_3d.ptr);
+	cub3d->render_3d.ptr = mlx_new_image(cub3d->mlx, cub3d->win_width, \
 		cub3d->win_height);
-	cub3d->render_3d.data = mlx_get_data_addr(cub3d->render_3d.pointer, \
+	cub3d->render_3d.data = mlx_get_data_addr(cub3d->render_3d.ptr, \
 		&(cub3d->render_3d.bits_per_pixel), &(cub3d->render_3d.line_size), \
 		&(cub3d->render_3d.endian));
 	draw_rays_3d(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->window_ptr, \
-		cub3d->render_3d.pointer, 0, 0);
+		cub3d->render_3d.ptr, 0, 0);
 }

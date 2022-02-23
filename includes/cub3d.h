@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:06:32 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:17:04 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@
 
 typedef struct s_image
 {
-	void	*pointer;
+	void	*ptr;
 	int		height;
 	int		width;
 	char	*data;
@@ -103,8 +103,8 @@ typedef struct s_cub3d
 	t_image	texture_s;
 	t_image	texture_w;
 	t_image	texture_e;
-	int		*color_ground;
-	int		*color_ceiling;
+	int		color_ground[3];
+	int		color_ceiling[3];
 	int		win_height;
 	int		win_width;
 	double	player_angle;
