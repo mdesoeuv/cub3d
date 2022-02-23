@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 16:43:13 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:58:53 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	double	angle_tmp;
 	double	wall_size;
 	int		y;
-	int		offset;
+	int		offset_y;
+	int		offset_x;
 	double  angle_diff;
 
-	offset = WINDOW_HEIGHT / 2;
-	x = -(WINDOW_WIDTH / 2);
-	while (x < WINDOW_WIDTH / 2)
+	offset_y = WINDOW_HEIGHT / 2;
+	offset_x = WINDOW_WIDTH / 2;
+	x = 0;
+	while (x < WINDOW_WIDTH)
 	{
-		angle_tmp = cub3d->player_angle + M_PI / (WINDOW_WIDTH * 2.5) * x;
+		angle_tmp = cub3d->player_angle + M_PI / (WINDOW_WIDTH * 2.5) * (x - offset_x);
 		if (angle_tmp > 2 * M_PI)
 			angle_tmp -= 2 * M_PI;
 		ray_length = ft_ray_length(cub3d, angle_tmp);
@@ -53,11 +55,11 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
 		if (wall_size > WINDOW_HEIGHT)
 			wall_size = WINDOW_HEIGHT;
-		column = x + (WINDOW_WIDTH / 2);
+		column = (x - offset_x) + (WINDOW_WIDTH / 2);
 		y = -1;
-		while (++y < offset - wall_size / 2)
+		while (++y < offset_y - wall_size / 2)
 			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_ceiling[0], cub3d->color_ceiling[1], cub3d->color_ceiling[2]));
-		while (y < wall_size / 2 + offset)
+		while (y < wall_size / 2 + offset_y)
 		{
 			if (cub3d->map.ray_hit_x == 1  && angle_tmp > M_PI / 2 && angle_tmp < (3 * M_PI)/2)
 			{

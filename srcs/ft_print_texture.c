@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:05:14 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:51:10 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 17:00:00 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y)
 {
 	x = x % image.width;
 	y = y % image.height;
+	//dprintf(1, "x=%i, y=%i, image.width=%i, image.height=%i\n",x, y, image.width,image.height);
 	cub3d->color_texture[0] = image.data[y * image.line_size + \
 		x * image.bits_per_pixel / 8];
 	cub3d->color_texture[1] = image.data[(y * image.line_size + \
@@ -24,10 +25,10 @@ void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y)
 		x * image.bits_per_pixel / 8) + 2];
 }
 
-void	ft_init_texture(t_cub3d *cub3d, char *texture_name, t_image *image_struc)
+void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc)
 {
-	dprintf(1, "%s\n",texture_name);
-	image_struc->ptr = mlx_xpm_file_to_image(cub3d->mlx, "./textures/wall_1.xpm", &(image_struc->width), &(image_struc->height));
+	dprintf(1, "%s\n",texture_path);
+	image_struc->ptr = mlx_xpm_file_to_image(cub3d->mlx, texture_path, &(image_struc->width), &(image_struc->height));
 	if(!image_struc->ptr)
 		ft_print_error(ERROR_XPM_INIT, cub3d);
 	image_struc->data = mlx_get_data_addr(image_struc->ptr, \

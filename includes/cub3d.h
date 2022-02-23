@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:45:15 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:55:04 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,6 @@ int		create_trgb(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 double	ft_ray_length(t_cub3d *cub3d, double angle);
 
-void	ft_init_texture(t_cub3d *cub3d, char *texture_name, t_image *image_struc);
+void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc);
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
 #endif
