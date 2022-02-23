@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:55:04 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 17:08:05 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ corrupted or inaccessible.\n"
 # define ROT_LEFT 123
 # define ROT_RIGHT 124
 # define ESC 53
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 768
 
 typedef struct s_image
 {
