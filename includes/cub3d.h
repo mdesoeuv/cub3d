@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:41:36 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:45:15 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 # define W_RAND "assets/walls/wall_random.xpm"
 
 # define ERROR_FILE_EXTENSION_NAME "File given argument does not have \
-	 the .cub extension.\n"
+the .cub extension.\n"
 # define ERROR_FILE_OPENING "Can't open file given in argument.\n"
 # define ERROR_MALLOC "Malloc error. Please free memory space and retry.\n"
 # define ERROR_OTHER_CHARS "At least one character in the map is invalid.\
-		 (Not 0, 1, C, E or P)\n"
+(Not 0, 1, C, E or P)\n"
 # define ERROR_MISSING_PLAYER "Need one player.\n"
 # define ERROR_TOO_MANY_PLAYERS "Too many players in the map.\n"
 # define ERROR_NOT_A_RECTANGLE "The map is not a rectangle.\n"
@@ -45,11 +45,11 @@
 # define ERROR_EDGES "The edges of the map are invalid (must be walls -1-).\n"
 # define ERROR_FILENAME_MISSING "Please pass one filename in parameter.\n"
 # define ERROR_MISSING_TEXTURES "At least one texture \
-							path has not been declared.\n"
+path has not been declared.\n"
 # define ERROR_INVALID_TEXTURE_ARG_NAME "Texture declaration error.\n"
 # define ERROR_TEXTURE_DEFINED_TWICE "A texture path has been declared twice.\n"
 # define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
-							corrupted or inaccessible.\n"
+corrupted or inaccessible.\n"
 
 # define IMG_SIZE 48
 
@@ -153,5 +153,5 @@ int		create_trgb(unsigned char t, unsigned char r, \
 double	ft_ray_length(t_cub3d *cub3d, double angle);
 
 void	ft_init_texture(t_cub3d *cub3d, char *texture_name, t_image *image_struc);
-
+void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
 #endif
