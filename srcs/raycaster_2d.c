@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 10:59:49 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:20:36 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_map(t_cub3d *cub3d)
 	while (y < cub3d->win_height)
 	{
 		x = 0;
-		while (x < cub3d->win_width / 2)
+		while (x < cub3d->win_width)
 		{
 			if (y % CUBE_SIZE == 0 || x % CUBE_SIZE == 0)
 				put_pixel_to_image_2d(cub3d, x, y, create_trgb(0, 255, 0, 0));
@@ -189,8 +189,8 @@ void	draw_image_2d(t_cub3d *cub3d)
 
 void	ft_rendering(t_cub3d *cub3d)
 {
-	//draw_image_2d(cub3d);
-	draw_image_3d(cub3d);
+	draw_image_2d(cub3d);
+	//draw_image_3d(cub3d);
 	mlx_hook(cub3d->window_ptr, 02, 1L << 0, &handle_keypress, cub3d);
 	mlx_hook(cub3d->window_ptr, 17, 0L,
 		&handle_btnrealease, cub3d);

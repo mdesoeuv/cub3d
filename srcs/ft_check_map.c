@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 10:27:08 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:23:20 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static void	ft_get_start_direction(t_cub3d *cub3d)
 	int		i;
 	int		j;
 	int		count_direction;
+	int		start_x;
+	int		start_y;
 
 	i = 0;
 	j = 0;
@@ -73,6 +75,8 @@ static void	ft_get_start_direction(t_cub3d *cub3d)
 			{
 				cub3d->map.direction = cub3d->map.map[i][j];
 				count_direction++;
+				start_x = j;
+				start_y = i;
 			}	
 			j++;
 		}
@@ -83,9 +87,16 @@ static void	ft_get_start_direction(t_cub3d *cub3d)
 		ft_print_error(ERROR_MISSING_PLAYER, cub3d);
 	if (count_direction > 1)
 		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
-	cub3d->player.x = 6 * CUBE_SIZE + CUBE_SIZE / 2;
-	cub3d->player.y = 3 * CUBE_SIZE + CUBE_SIZE / 2;
-	cub3d->player_angle = 0; // donner orientation reelle parsée
+	cub3d->player.x = start_x * CUBE_SIZE + CUBE_SIZE / 2;
+	cub3d->player.y = start_y * CUBE_SIZE + CUBE_SIZE / 2;
+	if (cub3d->map.map[start_y][start_x] == 'E')
+		cub3d->player_angle = 2 * M_PI;
+	else if (cub3d->map.map[start_y][start_x] == 'S')
+		cub3d->player_angle = M_PI / 2;
+	else if (cub3d->map.map[start_y][start_x] == 'W')
+		cub3d->player_angle = M_PI;
+	else if (cub3d->map.map[start_y][start_x] == 'N')
+		cub3d->player_angle = 3 * M_PI / 2;
 }
 
 void	ft_check_map(t_cub3d *cub3d)
