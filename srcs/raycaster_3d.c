@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 10:53:19 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:03:59 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	double	angle_tmp;
 	double	wall_size;
 	int		y;
+	int		offset;
 	
 
+	offset = WINDOW_HEIGHT / 2;
 	x = -400;
 	while ( x < 400)
 	{
@@ -44,12 +46,12 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		ray_length = ft_ray_length(cub3d, angle_tmp);
 		 // dprintf(1, "%f\n", ray_length);
 		 // dprintf(1, "-------\n");
-		wall_size = (WINDOW_HEIGHT * 10) / ray_length;
+		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
 		if (wall_size > WINDOW_HEIGHT)
 			wall_size = WINDOW_HEIGHT;
 		column = x + 400;
-		y = 0;
-		while (y < wall_size)
+		y = offset - wall_size / 2;
+		while (y < wall_size / 2 + offset)
 		{
 			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 0, 255));
 			y++;
