@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:33:31 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:35:26 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void	draw_image_3d(t_cub3d *cub3d)
 		&(cub3d->render_3d.endian));
 	draw_rays_3d(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->window_ptr, \
-		cub3d->render_3d.pointer, 800, 0);
+		cub3d->render_3d.pointer, 0, 0);
 }

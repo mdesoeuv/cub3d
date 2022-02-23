@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 11:20:36 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:34:36 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,8 +189,8 @@ void	draw_image_2d(t_cub3d *cub3d)
 
 void	ft_rendering(t_cub3d *cub3d)
 {
-	draw_image_2d(cub3d);
-	//draw_image_3d(cub3d);
+	// draw_image_2d(cub3d);
+	draw_image_3d(cub3d);
 	mlx_hook(cub3d->window_ptr, 02, 1L << 0, &handle_keypress, cub3d);
 	mlx_hook(cub3d->window_ptr, 17, 0L,
 		&handle_btnrealease, cub3d);
