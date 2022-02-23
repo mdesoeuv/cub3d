@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 11:18:00 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 11:24:37 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 		cub3d->player.x += lround(MOVE_SIZE * cos(cub3d->player_angle));
 		cub3d->player.y += lround(MOVE_SIZE * sin(cub3d->player_angle));
 	}
-	draw_image_2d(cub3d);
-	//draw_image_3d(cub3d);
+	//draw_image_2d(cub3d);
+	draw_image_3d(cub3d);
 }
