@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 13:42:45 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:06:15 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ typedef struct s_cub3d
 	void	*mlx;
 	void	*window_ptr;
 	t_pos	player;
-	char	*texture_n;
-	char	*texture_s;
-	char	*texture_w;
-	char	*texture_e;
+	t_image	texture_n;
+	t_image	texture_s;
+	t_image	texture_w;
+	t_image	texture_e;
 	int		*color_ground;
 	int		*color_ceiling;
 	int		win_height;
