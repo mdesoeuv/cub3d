@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 13:53:12 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 15:35:46 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		while (y < wall_size / 2 + offset)
 		{
 			if (cub3d->map.ray_hit_x == 1  && angle_tmp > M_PI / 2 && angle_tmp < (3 * M_PI)/2)
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 0, 150));
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 0, 200));
 			else if (cub3d->map.ray_hit_x == 1)
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 150, 0));
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 50, 100));
 			else if (cub3d->map.ray_hit_x == 0  && angle_tmp > 0 && angle_tmp < M_PI)
 				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 150, 0, 0));
 			else
-				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 150, 150, 0));
+				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 0, 150, 0));
 				y++;
 		}
 		while (y < WINDOW_HEIGHT)
