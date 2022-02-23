@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 13:28:12 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 13:37:42 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		column = x + (WINDOW_WIDTH / 2);
 		y = -1;
 		while (++y < offset - wall_size / 2)
-			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_ceiling[0] - 'a', cub3d->color_ceiling[1] - 'a', cub3d->color_ceiling[2] - 'a'));
+			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_ceiling[0], cub3d->color_ceiling[1], cub3d->color_ceiling[2]));
 		while (y < wall_size / 2 + offset)
 		{
 			if (cub3d->map.ray_hit_x == 1  && angle_diff > M_PI / 2 && angle_diff < (3 * M_PI)/2)
@@ -68,7 +68,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 				y++;
 		}
 		while (y < WINDOW_HEIGHT)
-			put_pixel_to_image_3d(cub3d, column, y++, create_trgb(0, 150, 150, 150));
+			put_pixel_to_image_3d(cub3d, column, y++, create_trgb(0, cub3d->color_ground[0], cub3d->color_ground[1], cub3d->color_ground[2]));
 		x++;
 	}
 }

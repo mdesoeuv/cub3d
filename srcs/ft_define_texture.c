@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 13:23:09 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 13:36:54 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,39 @@ static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
 	return (ft_define_texture_4(cub3d, tab));
 }
 
+static int	*ft_define_colors(t_cub3d *cub3d, char *string)
+{
+	char	**color_split;
+	int		*result_tab;
+
+	color_split = ft_split(string, ',');
+	if (!color_split)
+		ft_print_error(ERROR_MALLOC, cub3d);
+	result_tab = malloc(3 * sizeof(int));
+	if (!result_tab)
+		ft_print_error(ERROR_MALLOC, cub3d);
+	result_tab[0] = ft_atoi(color_split[0]);
+	result_tab[1] = ft_atoi(color_split[1]);
+	result_tab[2] = ft_atoi(color_split[2]);
+	return(result_tab);
+}
+
+
 static int	ft_define_texture_2(t_cub3d *cub3d, char **tab)
 {
 	if (tab[0][0] == 'C')
 	{
 		if (!cub3d->color_ceiling)
-			cub3d->color_ceiling = ft_split(tab[1], ',');
+			cub3d->color_ceiling = ft_define_colors(cub3d, tab[1]);
 		else
 			return (1);
-		if (!cub3d->color_ceiling)
-			ft_print_error(ERROR_MALLOC, cub3d);
 	}
 	else if (tab[0][0] == 'F')
 	{
 		if (!cub3d->color_ground)
-			cub3d->color_ground = ft_split(tab[1], ',');
+			cub3d->color_ground = ft_define_colors(cub3d, tab[1]);
 		else
 			return (1);
-		if (!cub3d->color_ground)
-			ft_print_error(ERROR_MALLOC, cub3d);
 	}
 	return (ft_define_texture_3(cub3d, tab));
 }
