@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/22 14:22:07 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/23 10:18:24 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_cub3d
 	double	player_angle;
 	t_map	map;
 	t_image	win_render;
+	t_image	render_3d;
 }				t_cub3d;
 
 /* PARSING */
@@ -138,6 +139,8 @@ void	ft_rendering(t_cub3d *cub3d);
 void	draw_player(t_cub3d *cub3d);
 void	draw_image(t_cub3d *cub3d);
 void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
-
+int		create_trgb(unsigned char t, unsigned char r, \
+	unsigned char g, unsigned char b);
+void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
 
 #endif

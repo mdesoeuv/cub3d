@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/22 14:18:25 by vchevill         ###   ########.fr        #
+#    Updated: 2022/02/23 10:13:54 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS =	main.c \
 		get_next_line.c \
 		ft_rotate_map.c \
 		ft_define_texture.c \
-		raycaster.c \
+		raycaster_2d.c \
+		raycaster_3d.c \
 		ft_init_window_images.c \
 		ft_handlers.c \
 		ft_moves.c
