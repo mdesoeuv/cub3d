@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 11:36:04 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 13:25:22 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	display_map_and_textures(t_cub3d *cub3d)
 	dprintf(1, "texture S=%s=\n", cub3d->texture_s);
 	dprintf(1, "texture EAST=%s=\n", cub3d->texture_e);
 	dprintf(1, "texture WEST=%s=\n", cub3d->texture_w);
-	dprintf(1, "color ground=%s=\n", cub3d->color_ground);
-	dprintf(1, "color ceilling=%s=\n", cub3d->color_ceiling);
+	dprintf(1, "color ground=%s,%s,%s=\n", cub3d->color_ground[0],cub3d->color_ground[1],cub3d->color_ground[2]);
+	dprintf(1, "color ceiling=%s,%s,%s=\n", cub3d->color_ceiling[0],cub3d->color_ceiling[1],cub3d->color_ceiling[2]);
 	while (cub3d->map.map[i])
 	{
 		dprintf(1, "%s\n", cub3d->map.map[i]);

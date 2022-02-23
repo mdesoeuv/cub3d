@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 13:11:46 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 13:28:12 by vchevill         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	int		y;
 	int		offset;
 	double angle_diff;
-	
 
 	offset = WINDOW_HEIGHT / 2;
 	x = -(WINDOW_WIDTH / 2);
@@ -48,7 +47,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		angle_diff = cub3d->player_angle - angle_tmp;
 		if (angle_diff < 0)
 			angle_diff += 2 * M_PI;
-		if (angle_diff  > 2 * M_PI)
+		if (angle_diff > 2 * M_PI)
 			angle_diff -= 2 * M_PI;
 		ray_length = ray_length * cos(angle_diff);
 		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
@@ -57,7 +56,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		column = x + (WINDOW_WIDTH / 2);
 		y = -1;
 		while (++y < offset - wall_size / 2)
-			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, 150, 150, 0));
+			put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_ceiling[0] - 'a', cub3d->color_ceiling[1] - 'a', cub3d->color_ceiling[2] - 'a'));
 		while (y < wall_size / 2 + offset)
 		{
 			if (cub3d->map.ray_hit_x == 1  && angle_diff > M_PI / 2 && angle_diff < (3 * M_PI)/2)
