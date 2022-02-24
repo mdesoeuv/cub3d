@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/24 11:00:52 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:35:28 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ typedef struct s_cub3d
 	void	*mlx;
 	void	*window_ptr;
 	t_pos	player;
+	double	player_dist;
+	double	fov;
+	double	slice_ratio;
 	t_image	texture_n;
 	t_image	texture_s;
 	t_image	texture_w;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 11:02:42 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/24 11:50:09 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

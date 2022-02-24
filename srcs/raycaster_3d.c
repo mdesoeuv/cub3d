@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 11:43:58 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:21:45 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		if (angle_tmp > 2 * M_PI)
 			angle_tmp -= 2 * M_PI;
 		ray_length = ft_ray_length(cub3d, angle_tmp);
-		angle_diff = cub3d->player_angle - angle_tmp;
+		// fish eye correction ----
+		angle_diff = fabs(cub3d->player_angle) - fabs(angle_tmp);
 		if (angle_diff < 0)
 			angle_diff += 2 * M_PI;
 		if (angle_diff > 2 * M_PI)
 			angle_diff -= 2 * M_PI;
 		ray_length = ray_length * cos(angle_diff);
-		wall_size = (WINDOW_HEIGHT * 40) / ray_length;
+		wall_size = (WINDOW_HEIGHT * 34) / ray_length; // find real ratio
 		if (wall_size > WINDOW_HEIGHT)
 			wall_size = WINDOW_HEIGHT;
 		column = (x - offset_x) + (WINDOW_WIDTH / 2);
