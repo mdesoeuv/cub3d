@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 14:21:45 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 14:52:31 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	offset_x = WINDOW_WIDTH / 2;
 	x = 0;
 	x_wall = -1;
+	angle_tmp = (cub3d->player_angle - (cub3d->fov / 2)) - (cub3d->fov / WINDOW_WIDTH);
 	while (x < WINDOW_WIDTH)
 	{
+		
 		if (cub3d->newWall)
 			x_wall = -1;
-		x_wall ++;
-		angle_tmp = cub3d->player_angle + M_PI / (WINDOW_WIDTH * 2.5) * (x - offset_x);
+		x_wall++;
+		angle_tmp += cub3d->fov / WINDOW_WIDTH;
 		if (angle_tmp > 2 * M_PI)
 			angle_tmp -= 2 * M_PI;
 		ray_length = ft_ray_length(cub3d, angle_tmp);
@@ -60,7 +62,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		if (angle_diff > 2 * M_PI)
 			angle_diff -= 2 * M_PI;
 		ray_length = ray_length * cos(angle_diff);
-		wall_size = (WINDOW_HEIGHT * 34) / ray_length; // find real ratio
+		wall_size = cub3d->slice_ratio / ray_length;
 		if (wall_size > WINDOW_HEIGHT)
 			wall_size = WINDOW_HEIGHT;
 		column = (x - offset_x) + (WINDOW_WIDTH / 2);
