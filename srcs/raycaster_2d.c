@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/23 16:18:52 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 10:49:18 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	interesec_to_pass_x = 0;
 	interesec_to_pass_y = 0;
 	is_x_updated = -1;
-	
+
 	cub3d->map.ray_hit_x = -1;
 	// dprintf(2, "player angle %f\n", cub3d->player_angle);
 	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
