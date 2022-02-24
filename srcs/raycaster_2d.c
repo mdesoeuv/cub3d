@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 15:49:14 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:09:27 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,25 +104,25 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		{
 			is_x_updated = 1;
 			interesec_to_pass_x++;
-			cub3d->map.ray_has_hit_x = 1;
+			cub3d->map.ray_has_hit_x = 0;
 		}
 		else if (v_dy_length > v_dx_length)
 		{
 			is_x_updated = 1;
 			interesec_to_pass_x--;
-			cub3d->map.ray_has_hit_x = 1;
+			cub3d->map.ray_has_hit_x = 0;
 		}
 		else if (v_dy_length < v_dx_length && !( angle > 0 && angle < M_PI))
 		{
 			is_x_updated = 0;
 			interesec_to_pass_y--;
-			cub3d->map.ray_has_hit_x = 0;
+			cub3d->map.ray_has_hit_x = 1;
 		}
 		else 
 		{
 			is_x_updated = 0;
 			interesec_to_pass_y++;
-			cub3d->map.ray_has_hit_x = 0;
+			cub3d->map.ray_has_hit_x = 1;
 		}
 	}
 	// dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
