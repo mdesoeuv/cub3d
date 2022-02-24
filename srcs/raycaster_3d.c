@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 16:13:57 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 16:15:35 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_pixel_to_image_3d(t_cub3d *cub3d, int pos_x, int pos_y, int color)
 {
 	unsigned char	*tab;
-	
+
 	tab = (unsigned char *)&color;
 	cub3d->render_3d.data[pos_y * cub3d->render_3d.line_size + \
 		pos_x * cub3d->render_3d.bits_per_pixel / 8] = tab[0];
