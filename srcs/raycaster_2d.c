@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_2d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 10:49:18 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 11:02:42 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	is_x_updated = -1;
 
 	cub3d->map.ray_hit_x = -1;
+	cub3d->newWall = 0;
 	// dprintf(2, "player angle %f\n", cub3d->player_angle);
 	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
 	{
@@ -122,6 +123,12 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	}
 	// dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
 	// dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
+	if (((cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y) != cub3d->ray_hit_y  || ((cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x) != cub3d->ray_hit_x)
+	{
+		cub3d->ray_hit_x = (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x;
+		cub3d->ray_hit_y = (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y;
+		cub3d->newWall = 1;
+	}
 	if (v_dy_length > v_dx_length) // la longueur du rayon correspond à celle du vecteur qui a rencontré en premier un obstacle
 		return (v_dx_length);
 	else 
