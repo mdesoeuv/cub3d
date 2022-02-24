@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/24 14:35:28 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 15:46:44 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_map
 	int		line_start_map_in_cub;
 	char	*path;
 	char	**map;
-	int		ray_hit_x;
+	int		ray_has_hit_x;
 }				t_map;
 
 typedef struct s_pos
@@ -114,8 +114,9 @@ typedef struct s_cub3d
 	int		win_height;
 	int		win_width;
 	int		newWall;
-	int		ray_hit_x;
-	int		ray_hit_y;
+	int		ray_has_hit_x;
+	int		ray_hit_dy;
+	int		ray_hit_dx;
 	double	player_angle;
 	t_map	map;
 	t_image	win_render;
