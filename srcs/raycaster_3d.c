@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 10:56:59 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/24 11:43:58 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	offset_y = WINDOW_HEIGHT / 2;
 	offset_x = WINDOW_WIDTH / 2;
 	x = 0;
+	x_wall = -1;
 	while (x < WINDOW_WIDTH)
 	{
 		if (cub3d->newWall)
