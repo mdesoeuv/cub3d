@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/24 15:46:44 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:59:07 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ typedef struct s_cub3d
 	int		win_width;
 	int		newWall;
 	int		ray_has_hit_x;
-	int		ray_hit_dy;
-	int		ray_hit_dx;
 	double	player_angle;
 	t_map	map;
 	t_image	win_render;
