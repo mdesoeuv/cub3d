@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:39:56 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 16:28:25 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ static void	ft_define_colors(t_cub3d *cub3d, char *string, int is_ground)
 		cub3d->color_ceiling[0] = ft_atoi(color_split[0]);
 		cub3d->color_ceiling[1] = ft_atoi(color_split[1]);
 		cub3d->color_ceiling[2] = ft_atoi(color_split[2]);
-	}
-		
-	free(color_split);
+	}	
+	ft_free_split(color_split);
 }
 
 
