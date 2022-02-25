@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 17:33:59 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:34:59 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	put_pixel_to_image_2d(t_cub3d *cub3d, int pos_x, int pos_y, int color)
 	unsigned char	*tab;
 
 	tab = (unsigned char *)&color;
-	cub3d->win_render.data[pos_y * cub3d->win_render.line_size + \
-		pos_x * cub3d->win_render.bits_per_pixel / 8] = tab[0];
-	cub3d->win_render.data[(pos_y * cub3d->win_render.line_size + \
-		pos_x * cub3d->win_render.bits_per_pixel / 8) + 1] = tab[1];
-	cub3d->win_render.data[(pos_y * cub3d->win_render.line_size + \
-		pos_x * cub3d->win_render.bits_per_pixel / 8) + 2] = tab[2];
+	cub3d->render_3d.data[pos_y * cub3d->render_3d.line_size + \
+		pos_x * cub3d->render_3d.bits_per_pixel / 8] = tab[0];
+	cub3d->render_3d.data[(pos_y * cub3d->render_3d.line_size + \
+		pos_x * cub3d->render_3d.bits_per_pixel / 8) + 1] = tab[1];
+	cub3d->render_3d.data[(pos_y * cub3d->render_3d.line_size + \
+		pos_x * cub3d->render_3d.bits_per_pixel / 8) + 2] = tab[2];
 }
 
 void	draw_map(t_cub3d *cub3d)
