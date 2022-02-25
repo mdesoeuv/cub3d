@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/25 10:44:01 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/02/25 16:25:36 by vchevill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = gcc -Wall -Werror -Wextra -g3 -fsanitize=address
+CC = gcc -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS =	main.c \
 		ft_check_file_extension.c \
