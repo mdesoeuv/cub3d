@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 15:05:21 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:14:48 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		ray_abs_angle = ft_increment_ray_absolute_angle(cub3d, ray_abs_angle);
 		ray_length = ft_fish_eye_correction(cub3d->player_angle, ray_abs_angle, ft_ray_length(cub3d, ray_abs_angle));		
 		wall_size = cub3d->slice_ratio / ray_length;
-		if (wall_size > WINDOW_HEIGHT)//a retirer apres
-			wall_size = WINDOW_HEIGHT;
+		// if (wall_size > WINDOW_HEIGHT)
+		// 	wall_size = WINDOW_HEIGHT;
 		y_wind = -1;
 		while (++y_wind < offset_y - wall_size / 2)
 			put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_ceiling[0], cub3d->color_ceiling[1], cub3d->color_ceiling[2]));
 		y_wall = -1;
-		while (y_wind < wall_size / 2 + offset_y)
+		while (y_wind < wall_size / 2 + offset_y && y_wind < WINDOW_HEIGHT )
 		{
 			y_wall++;
 			if (cub3d->map.ray_has_hit_x == 0  && ray_abs_angle > M_PI / 2 && ray_abs_angle < (3 * M_PI)/2)
