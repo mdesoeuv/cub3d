@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 15:51:46 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:52:52 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int static		ft_fish_eye_correction(double player_angle, double ray_abs_angle, do
 {
 	double  ray_relative_angle;
 	
-	ray_relative_angle = fabs(player_angle) - fabs(ray_abs_angle);
-		if (ray_relative_angle < 0)
-			ray_relative_angle += 2 * M_PI;
-		if (ray_relative_angle > 2 * M_PI)
-			ray_relative_angle -= 2 * M_PI;
-		ray_length = ray_length * cos(ray_relative_angle);
+	ray_relative_angle = fabs(player_angle) - fabs(ray_abs_angle);	
+	if (ray_relative_angle < 0)
+		ray_relative_angle += 2 * M_PI;
+	if (ray_relative_angle > 2 * M_PI)
+		ray_relative_angle -= 2 * M_PI;
+	ray_length = ray_length * cos(ray_relative_angle);
 	return (ray_length);
 }
 
