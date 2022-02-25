@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 10:58:28 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 11:37:14 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ path has not been declared.\n"
 # define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
 corrupted or inaccessible.\n"
 
-# define IMG_SIZE 48
-
-# define CUBE_SIZE 32
+# define CUBE_SIZE 64
 # define TEST_MAP_SIZE 10
 # define MOVE_SIZE 5
 # define ANGLE_INC 0.1
