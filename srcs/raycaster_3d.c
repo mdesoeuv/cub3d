@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 12:31:23 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:53:13 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	double	ray_abs_angle;
 	double	wall_size;
 	int		offset_y;
-	double	ratio;
+	double	y_ratio;
+	double	x_ratio;
 	int		y_wall;
 
 	offset_y = WINDOW_HEIGHT / 2;
@@ -76,27 +77,30 @@ void	draw_rays_3d(t_cub3d *cub3d)
 			y_wall++;
 			if (cub3d->map.ray_has_hit_x == 0  && ray_abs_angle > M_PI / 2 && ray_abs_angle < (3 * M_PI)/2)
 			{
-				ratio = wall_size / cub3d->texture_e.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_e, ( CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE, y_wall / ratio);
+				y_ratio = wall_size / cub3d->texture_e.height;
+				x_ratio = CUBE_SIZE / cub3d->texture_e.height;
+				ft_pixel_texture_color(cub3d, cub3d->texture_e, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_has_hit_x == 0)
 			{
-				ratio = wall_size / cub3d->texture_w.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_w, (CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE, y_wall / ratio);
+				y_ratio = wall_size / cub3d->texture_w.height;
+				x_ratio = CUBE_SIZE / cub3d->texture_w.height;
+				ft_pixel_texture_color(cub3d, cub3d->texture_w, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_has_hit_x == 1  && ray_abs_angle > 0 && ray_abs_angle < M_PI)
 			{
-				ratio = wall_size / cub3d->texture_n.height;
-				//dprintf(1, "%d\n", ft_texture_x_offset(cub3d, ray_abs_angle, ray_length));
-				ft_pixel_texture_color(cub3d, cub3d->texture_n,  (CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE, y_wall / ratio);
+				y_ratio = wall_size / cub3d->texture_n.height;
+				x_ratio = CUBE_SIZE / cub3d->texture_n.height;
+				ft_pixel_texture_color(cub3d, cub3d->texture_n,  ((CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else
 			{
-				ratio = wall_size / cub3d->texture_s.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_s, (CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE, y_wall / ratio);
+				y_ratio = wall_size / cub3d->texture_s.height;
+				x_ratio = CUBE_SIZE / cub3d->texture_s.height;
+				ft_pixel_texture_color(cub3d, cub3d->texture_s, ((CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			y_wind++;
