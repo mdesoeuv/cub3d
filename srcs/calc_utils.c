@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 10:42:20 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 10:43:22 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ int	ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length)
 		return((int)(fabs(ray_length * cos(alpha)) - (cub3d->player.x % CUBE_SIZE)) % CUBE_SIZE);
 	}
 	else
-		return (ft_particular_angle(ray_abs_angle));
+		return (ft_particular_angle(cub3d->player.x, ray_abs_angle));
 }
