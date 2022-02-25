@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 14:34:16 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 14:45:20 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ int	ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length)
 	double	alpha;
 	if (ray_abs_angle > M_PI / 2 && ray_abs_angle < (M_PI))
 	{
-		alpha = ray_abs_angle;
+		alpha = ray_abs_angle - M_PI;
 		return(CUBE_SIZE - ((int)((ray_length * sin(alpha)) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);
 	}	
 	else if (ray_abs_angle > (0) && ray_abs_angle < M_PI / 2)
 	{
-		alpha = 2 * M_PI - ray_abs_angle;
+		alpha = ray_abs_angle;
 		return(CUBE_SIZE - ((int)(ray_length * sin(alpha) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);
 	}
 	else if (ray_abs_angle > M_PI && ray_abs_angle < 3 * M_PI / 2)
@@ -68,7 +68,7 @@ int	ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length)
 	}
 	else if (ray_abs_angle > 3 * M_PI / 2 && ray_abs_angle < 2 * M_PI)
 	{
-		alpha = ray_abs_angle - M_PI;
+		alpha = 2 * M_PI - ray_abs_angle;
 		return((int)((ray_length * sin(alpha)) - (cub3d->player.y % CUBE_SIZE)) % CUBE_SIZE);
 	}
 	else
