@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 17:39:31 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:35:39 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,38 @@ void	put_pixel_to_image_3d(t_cub3d *cub3d, int pos_x, int pos_y, int color)
 		pos_x * cub3d->render_3d.bits_per_pixel / 8) + 2] = tab[2];
 }
 
+double static	ft_increment_ray_absolute_angle(t_cub3d *cub3d, , double ray_abs_angle)
+{
+	ray_abs_angle += cub3d->fov / WINDOW_WIDTH;
+	if (ray_abs_angle > 2 * M_PI)
+		ray_abs_angle -= 2 * M_PI;
+	return (ray_abs_angle);
+}
+
+int static		ft_fish_eye_correction(double player_angle, double ray_abs_angle, double ray_length)
+{
+	double  ray_relative_angle;
+	
+	ray_relative_angle = fabs(player_angle) - fabs(ray_abs_angle);
+		if (ray_relative_angle < 0)
+			ray_relative_angle += 2 * M_PI;
+		if (ray_relative_angle > 2 * M_PI)
+			ray_relative_angle -= 2 * M_PI;
+		ray_length = ray_length * cos(ray_relative_angle);
+	return (ray_length);
+}
+
 void	draw_rays_3d(t_cub3d *cub3d)
 {
 	int		column;
 	double	ray_length;
 	int		x;
-	double	angle_tmp;
+	double	ray_abs_angle;
 	double	wall_size;
 	int		y;
 	int		offset_y;
 	int		offset_x;
-	double  angle_diff;
+
 	double	ratio;
 	int		y_wall;
 	int		x_wall;
@@ -44,25 +65,14 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	offset_x = WINDOW_WIDTH / 2;
 	x = 0;
 	x_wall = -1;
-	angle_tmp = (cub3d->player_angle - (cub3d->fov / 2)) - (cub3d->fov / WINDOW_WIDTH);
+	ray_abs_angle = (cub3d->player_angle - (cub3d->fov / 2)) - (cub3d->fov / WINDOW_WIDTH);
 	while (x < WINDOW_WIDTH)
 	{
-		
 		if (cub3d->newWall)
 			x_wall = -1;
 		x_wall++;
-		angle_tmp += cub3d->fov / WINDOW_WIDTH;
-		if (angle_tmp > 2 * M_PI)
-			angle_tmp -= 2 * M_PI;
-		ray_length = ft_ray_length(cub3d, angle_tmp);
-
-		// fish eye correction ----
-		angle_diff = fabs(cub3d->player_angle) - fabs(angle_tmp);
-		if (angle_diff < 0)
-			angle_diff += 2 * M_PI;
-		if (angle_diff > 2 * M_PI)
-			angle_diff -= 2 * M_PI;
-		ray_length = ray_length * cos(angle_diff);
+		ray_abs_angle = ft_increment_ray_absolute_angle(t_cub3d cub3d fov, ray_abs_angle);
+		ray_length = ft_fish_eye_correction(cub3d->player_angle, ray_abs_angle, ft_ray_length(cub3d, ray_abs_angle));		
 		wall_size = cub3d->slice_ratio / ray_length;
 		if (wall_size > WINDOW_HEIGHT)//a retirer apres
 			wall_size = WINDOW_HEIGHT;
@@ -74,29 +84,29 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		while (y < wall_size / 2 + offset_y)
 		{
 			y_wall++;
-			if (cub3d->map.ray_has_hit_x == 0  && angle_tmp > M_PI / 2 && angle_tmp < (3 * M_PI)/2)
+			if (cub3d->map.ray_has_hit_x == 0  && ray_abs_angle > M_PI / 2 && ray_abs_angle < (3 * M_PI)/2)
 			{
 				ratio = wall_size / cub3d->texture_e.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_e, (int)(fabs(ray_length * sin(angle_tmp)) - (cub3d->player.x % CUBE_SIZE)) % CUBE_SIZE, y_wall / ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_e, ft_texture_x_offset(cub3d, ray_abs_angle, ray_length) / ratio, y_wall / ratio);
 				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_has_hit_x == 0)
 			{
 				ratio = wall_size / cub3d->texture_w.height;
-				dprintf(1, "%d\n", ((int)(fabs(ray_length * sin(angle_tmp)) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE)) % CUBE_SIZE)));
-				ft_pixel_texture_color(cub3d, cub3d->texture_w, (int)(fabs(ray_length * sin(angle_tmp)) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE))) % CUBE_SIZE, y_wall / ratio);
+				dprintf(1, "%d\n", ((int)(fabs(ray_length * sin(ray_abs_angle)) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE)) % CUBE_SIZE)));
+				ft_pixel_texture_color(cub3d, cub3d->texture_w,  ft_texture_x_offset(cub3d, ray_abs_angle, ray_length) / ratio, y_wall / ratio);
 				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
-			else if (cub3d->map.ray_has_hit_x == 1  && angle_tmp > 0 && angle_tmp < M_PI)
+			else if (cub3d->map.ray_has_hit_x == 1  && ray_abs_angle > 0 && ray_abs_angle < M_PI)
 			{
 				ratio = wall_size / cub3d->texture_n.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_n, (int)(fabs(ray_length * cos(angle_tmp)) - (cub3d->player.y % CUBE_SIZE)) % CUBE_SIZE, y_wall / ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_n,  ft_texture_x_offset(cub3d, ray_abs_angle, ray_length) / ratio, y_wall / ratio);
 				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else
 			{
 				ratio = wall_size / cub3d->texture_s.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_s, (int)(fabs(ray_length * cos(angle_tmp)) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE, y_wall / ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_s,  ft_texture_x_offset(cub3d, ray_abs_angle, ray_length) / ratio, y_wall / ratio);
 				put_pixel_to_image_3d(cub3d, column, y, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			y++;
