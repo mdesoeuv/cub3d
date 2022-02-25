@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_vars.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:40:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/24 14:35:53 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 15:38:31 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_init_vars(t_cub3d *cub3d)
 	cub3d->map.longest_line = 0;
 	cub3d->win_height = WINDOW_HEIGHT;
 	cub3d->win_width = WINDOW_WIDTH;
-	cub3d->fov = M_PI / 4;
+	cub3d->fov = (FOV * (M_PI / 180));
 	cub3d->player_dist = (WINDOW_WIDTH / 2) / tan(cub3d->fov / 2);
 	cub3d->slice_ratio = CUBE_SIZE * cub3d->player_dist;
 }

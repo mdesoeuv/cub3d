@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/24 14:35:28 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 15:40:37 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ path has not been declared.\n"
 # define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
 corrupted or inaccessible.\n"
 
-# define IMG_SIZE 48
-
-# define CUBE_SIZE 32
-# define TEST_MAP_SIZE 10
-# define MOVE_SIZE 5
-# define ANGLE_INC 0.1
+# define CUBE_SIZE 258
+# define MOVE_SIZE 60
+# define ANGLE_INC 0.2
+# define FOV 45
 # define UP 13
 # define DOWN 1
 # define LEFT 0
@@ -87,7 +85,7 @@ typedef struct s_map
 	int		line_start_map_in_cub;
 	char	*path;
 	char	**map;
-	int		ray_hit_x;
+	int		ray_has_hit_x;
 }				t_map;
 
 typedef struct s_pos
@@ -113,9 +111,7 @@ typedef struct s_cub3d
 	int		color_texture[3];
 	int		win_height;
 	int		win_width;
-	int		newWall;
-	int		ray_hit_x;
-	int		ray_hit_y;
+	int		ray_has_hit_x;
 	double	player_angle;
 	t_map	map;
 	t_image	win_render;
@@ -146,6 +142,9 @@ int		render(t_cub3d *so_long);
 void	loop_images(t_cub3d so_long);
 void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
+int		ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length);
+int		ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length);
+
 
 /*RAYCASTING*/
 void	ft_init_render_image(t_cub3d *cub3d);

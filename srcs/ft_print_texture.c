@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:05:14 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/24 11:44:24 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:05:45 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y)
 {
-	//dprintf(1, "x=%i, y=%i, image.width=%i, image.height=%i\n",x, y, image.width,image.height);
-	x = x % image.height;
-	//if (x >= image.height)
-	//x = image.height - 1;
-	cub3d->color_texture[0] = image.data[y * image.line_size + \
-		x * image.bits_per_pixel / 8];
+	cub3d->color_texture[0] = image.data[(y * image.line_size + \
+		x * image.bits_per_pixel / 8) + 2];
 	cub3d->color_texture[1] = image.data[(y * image.line_size + \
 		x * image.bits_per_pixel / 8) + 1];
-	cub3d->color_texture[2] = image.data[(y * image.line_size + \
-		x * image.bits_per_pixel / 8) + 2];
+	cub3d->color_texture[2] = image.data[y * image.line_size + \
+		x * image.bits_per_pixel / 8];
 }
 
 void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc)

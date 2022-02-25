@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/24 16:07:33 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:31:32 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,12 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 	int			interesec_to_pass_x;
 	int			interesec_to_pass_y;
 	int			is_x_updated;
-
+	int			a;
 	interesec_to_pass_x = 0;
 	interesec_to_pass_y = 0;
 	is_x_updated = -1;
 
-	cub3d->map.ray_hit_x = -1;
-	cub3d->newWall = 0;
+	cub3d->map.ray_has_hit_x = -1;
 	// dprintf(2, "player angle %f\n", cub3d->player_angle);
 	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
 	{
@@ -75,22 +74,26 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		//dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
 		if ( angle > 0 && angle < M_PI && is_x_updated != 1) // vecteur vers le haut (y positif)
 		{
-			v_dy_length = fabs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
+			a = abs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))));
+			v_dy_length =  fabs(a / sin(angle));
 			// dprintf(1, "dy=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))), angle);
 		}
 		else if (is_x_updated != 1)// vecteur vers le haut (y negatif)
 		{
-			v_dy_length = fabs(((cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
+			a = abs(((cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))));
+			v_dy_length =  fabs(a / sin(angle));
 			// dprintf(1, "dy=%d, angle=%f\n", (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y)), angle);
 		}
-		if ( angle > M_PI / 2 && angle < (3 * M_PI)/2 && is_x_updated != 0) // vecteur vers le bas ?? (y positif ?)
+		if ( angle > M_PI / 2 && angle < (3 * M_PI)/2 && is_x_updated != 0) // vecteur vers le bas (x positif)
 		{
-			v_dx_length = fabs(((cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))) / cos(angle));
+			a = abs(((cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))));
+			v_dx_length =  fabs(a / cos(angle));
 			// dprintf(1, "dx=%d, angle=%f\n", ((cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))), angle);
 		}
-		else if (is_x_updated != 0) // vecteur vers le haut (y negatif)
+		else if (is_x_updated != 0) // vecteur vers le haut (x negatif)
 		{
-			v_dx_length = fabs((CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))) / cos(angle));
+			a= abs((CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))));
+			v_dx_length = fabs(a / cos(angle));
 			// dprintf(1, "dx=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))), angle);
 		}
 		// dprintf(1, "v_dy_length=%f\n", v_dy_length);
@@ -100,35 +103,29 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		{
 			is_x_updated = 1;
 			interesec_to_pass_x++;
-			cub3d->map.ray_hit_x = 0;
+			cub3d->map.ray_has_hit_x = 0;
 		}
 		else if (v_dy_length > v_dx_length)
 		{
 			is_x_updated = 1;
 			interesec_to_pass_x--;
-			cub3d->map.ray_hit_x = 0;
+			cub3d->map.ray_has_hit_x = 0;
 		}
 		else if (v_dy_length < v_dx_length && !( angle > 0 && angle < M_PI))
 		{
 			is_x_updated = 0;
 			interesec_to_pass_y--;
-			cub3d->map.ray_hit_x = 1;
+			cub3d->map.ray_has_hit_x = 1;
 		}
 		else 
 		{
 			is_x_updated = 0;
 			interesec_to_pass_y++;
-			cub3d->map.ray_hit_x = 1;
+			cub3d->map.ray_has_hit_x = 1;
 		}
 	}
 	// dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
 	// dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
-	if (((cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y) != cub3d->ray_hit_y  || ((cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x) != cub3d->ray_hit_x)
-	{
-		cub3d->ray_hit_x = (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x;
-		cub3d->ray_hit_y = (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y;
-		cub3d->newWall = 1;
-	}
 	if (v_dy_length > v_dx_length) // la longueur du rayon correspond à celle du vecteur qui a rencontré en premier un obstacle
 		return (v_dx_length);
 	else 
