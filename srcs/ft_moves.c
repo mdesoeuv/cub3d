@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:03:33 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 17:04:10 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,33 @@ static int	check_if_can_move(t_cub3d *cub3d, int direction, char tile)
 		return (0);
 }
 
-/*
-** W = 13, A = 0, S = 1, D = 2, ESC = 53
-*/
+void	ft_get_move(t_cub3d *cub3d, int direction)
+{
+	if (direction == DOWN)
+	{
+		cub3d->player.x -= (int)(MOVE_SIZE * cos(cub3d->player_angle));
+		cub3d->player.y -= (int)(MOVE_SIZE * sin(cub3d->player_angle));
+	}
+	else if (direction == UP)
+	{
+		cub3d->player.x += (int)(MOVE_SIZE * cos(cub3d->player_angle));
+		cub3d->player.y += (int)(MOVE_SIZE * sin(cub3d->player_angle));
+	}
+	else if (direction == LEFT)
+	{
+		cub3d->player.x += (int)(MOVE_SIZE \
+			* cos(cub3d->player_angle - M_PI / 2));
+		cub3d->player.y += (int)(MOVE_SIZE \
+			* sin(cub3d->player_angle - M_PI / 2));
+	}
+	else if (direction == RIGHT)
+	{
+		cub3d->player.x += (int)(MOVE_SIZE \
+			* cos(cub3d->player_angle + M_PI / 2));
+		cub3d->player.y += (int)(MOVE_SIZE \
+			* sin(cub3d->player_angle + M_PI / 2));
+	}
+}
 
 void	ft_move_player(t_cub3d *cub3d, int direction)
 {
@@ -59,25 +83,12 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 			cub3d->player_angle += M_PI * 2;
 	}
 	else if (direction == DOWN)
-	{
-		cub3d->player.x -= lround(MOVE_SIZE * cos(cub3d->player_angle));
-		cub3d->player.y -= lround(MOVE_SIZE * sin(cub3d->player_angle));
-	}
+		ft_get_move(cub3d, DOWN);
 	else if (direction == UP)
-	{
-		cub3d->player.x += lround(MOVE_SIZE * cos(cub3d->player_angle));
-		cub3d->player.y += lround(MOVE_SIZE * sin(cub3d->player_angle));
-	}
+		ft_get_move(cub3d, UP);
 	else if (direction == LEFT)
-	{
-		cub3d->player.x += lround(MOVE_SIZE * cos(cub3d->player_angle - M_PI / 2));
-		cub3d->player.y += lround(MOVE_SIZE * sin(cub3d->player_angle - M_PI / 2));
-	}
+		ft_get_move(cub3d, LEFT);
 	else if (direction == RIGHT)
-	{
-		cub3d->player.x += lround(MOVE_SIZE * cos(cub3d->player_angle + M_PI / 2));
-		cub3d->player.y += lround(MOVE_SIZE * sin(cub3d->player_angle + M_PI / 2));
-	}
-	// draw_image_2d(cub3d);
+		ft_get_move(cub3d, RIGHT);
 	draw_image_3d(cub3d);
 }
