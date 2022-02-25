@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 14:46:44 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 14:56:05 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,24 @@ int	ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length)
 	if (ray_abs_angle > M_PI / 2 && ray_abs_angle < (M_PI))
 	{
 		alpha = ray_abs_angle - M_PI;
-		return(CUBE_SIZE - ((int)((ray_length * sin(alpha)) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);
+				return((int)((ray_length * sin(alpha)) - (cub3d->player.y % CUBE_SIZE)) % CUBE_SIZE);// droite fond
+
 	}	
 	else if (ray_abs_angle > (0) && ray_abs_angle < M_PI / 2)
 	{
 		alpha = ray_abs_angle;
-		return(CUBE_SIZE - ((int)(ray_length * sin(alpha) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);
+		return(CUBE_SIZE - ((int)(ray_length * sin(alpha) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);// mur gauche devant
 	}
 	else if (ray_abs_angle > M_PI && ray_abs_angle < 3 * M_PI / 2)
 	{
 		alpha = M_PI - ray_abs_angle;
-		return((int)((ray_length * sin(alpha)) - (cub3d->player.y % CUBE_SIZE)) % CUBE_SIZE);
+				return(CUBE_SIZE - ((int)((ray_length * sin(alpha)) - (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);// droite devant
+
 	}
 	else if (ray_abs_angle > 3 * M_PI / 2 && ray_abs_angle < 2 * M_PI)
 	{
 		alpha = 2 * M_PI - ray_abs_angle;
-		return((int)((ray_length * sin(alpha)) - (cub3d->player.y % CUBE_SIZE)) % CUBE_SIZE);
+		return((int)((ray_length * sin(alpha)) - (cub3d->player.y % CUBE_SIZE)) % CUBE_SIZE);// mur gauche derrier
 	}
 	else
 		return (ft_particular_angle(cub3d->player.y, ray_abs_angle));
