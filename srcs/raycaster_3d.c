@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 15:26:04 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:51:46 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ double static	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_ang
 	ray_abs_angle += cub3d->fov / WINDOW_WIDTH;
 	if (ray_abs_angle > 2 * M_PI)
 		ray_abs_angle -= 2 * M_PI;
+	else if (ray_abs_angle < 0)
+		ray_abs_angle += 2 * M_PI;
 	return (ray_abs_angle);
 }
 
