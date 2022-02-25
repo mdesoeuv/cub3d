@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_vars.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:40:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 16:52:42 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 17:17:48 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_init_vars(t_cub3d *cub3d)
 	cub3d->texture_w.ptr = NULL;
 	cub3d->window_ptr = NULL;
 	cub3d->render_3d.ptr = NULL;
+	cub3d->map.map = NULL;
 	cub3d->color_ceiling[0] = -1;
 	cub3d->color_ground[0] = -1;
 	cub3d->map.longest_line = 0;

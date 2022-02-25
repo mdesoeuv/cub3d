@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:59:47 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 16:52:08 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 17:24:59 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_init_window(t_cub3d *cub3d)
 {
-	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
 		ft_print_error(ERROR_MINILIBX, cub3d);
 	cub3d->window_ptr = mlx_new_window(cub3d->mlx, cub3d->win_width,
