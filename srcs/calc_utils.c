@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 14:34:16 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 14:41:33 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

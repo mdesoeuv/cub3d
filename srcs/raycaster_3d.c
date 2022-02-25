@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 14:23:28 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:43:40 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,6 @@ void	draw_rays_3d(t_cub3d *cub3d)
 			{
 				y_ratio = wall_size / cub3d->texture_e.height;
 				x_ratio = (double)CUBE_SIZE / (double)cub3d->texture_e.width;
-				//dprintf(1,"%d\n", CUBE_SIZE);//ici
-				//dprintf(1,"%d\n", cub3d->texture_e.width);//ici
-				//dprintf(1,"%f\n", x_ratio);//ici
 				ft_pixel_texture_color(cub3d, cub3d->texture_e, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
