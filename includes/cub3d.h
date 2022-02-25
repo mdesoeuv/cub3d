@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 15:35:47 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:38:48 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ corrupted or inaccessible.\n"
 # define CUBE_SIZE 258
 # define MOVE_SIZE 100
 # define ANGLE_INC 0.3
-# define FOV 140
+# define FOV 45
 # define UP 13
 # define DOWN 1
 # define LEFT 0
