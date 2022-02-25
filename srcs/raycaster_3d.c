@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 12:25:39 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:31:23 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,12 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	int		offset_y;
 	double	ratio;
 	int		y_wall;
-	int		x_wall;
 
 	offset_y = WINDOW_HEIGHT / 2;
 	x_wind = 0;
-	x_wall = -1;
 	ray_abs_angle = (cub3d->player_angle - (cub3d->fov / 2)) - (cub3d->fov / WINDOW_WIDTH);
 	while (x_wind < WINDOW_WIDTH)
 	{
-		if (cub3d->newWall)
-			x_wall = -1;
-		x_wall++;
 		ray_abs_angle = ft_increment_ray_absolute_angle(cub3d, ray_abs_angle);
 		ray_length = ft_fish_eye_correction(cub3d->player_angle, ray_abs_angle, ft_ray_length(cub3d, ray_abs_angle));		
 		wall_size = cub3d->slice_ratio / ray_length;
