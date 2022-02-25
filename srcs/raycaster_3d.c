@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 15:16:01 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 15:26:04 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	double	y_ratio;
 	double	x_ratio;
 	int		y_wall;
-
+	int		y_wall_offset;
 	offset_y = WINDOW_HEIGHT / 2;
 	x_wind = 0;
 	ray_abs_angle = (cub3d->player_angle - (cub3d->fov / 2)) - (cub3d->fov / WINDOW_WIDTH);
@@ -70,14 +70,17 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		while (++y_wind < offset_y - wall_size / 2)
 			put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_ceiling[0], cub3d->color_ceiling[1], cub3d->color_ceiling[2]));
 		y_wall = -1;
-		while (y_wind < wall_size / 2 + offset_y && y_wind < WINDOW_HEIGHT )
+		y_wall_offset = 0;
+		if (wall_size > WINDOW_HEIGHT)
+			y_wall_offset = (wall_size - WINDOW_HEIGHT) / 2; 
+		while (y_wind < wall_size / 2 + offset_y && y_wind < WINDOW_HEIGHT)
 		{
 			y_wall++;
 			if (cub3d->map.ray_has_hit_x == 0  && ray_abs_angle > M_PI / 2 && ray_abs_angle < (3 * M_PI)/2)
 			{
 				y_ratio = wall_size / cub3d->texture_e.height;
 				x_ratio = (double)CUBE_SIZE / (double)cub3d->texture_e.width;
-				ft_pixel_texture_color(cub3d, cub3d->texture_e, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_e, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, (y_wall + y_wall_offset) / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_has_hit_x == 0)
@@ -85,7 +88,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 				y_ratio = wall_size / cub3d->texture_w.height;
 				x_ratio = (double)CUBE_SIZE / (double)cub3d->texture_w.width;
 
-				ft_pixel_texture_color(cub3d, cub3d->texture_w, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_w, ((CUBE_SIZE + ft_texture_y_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, (y_wall + y_wall_offset) / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else if (cub3d->map.ray_has_hit_x == 1  && ray_abs_angle > 0 && ray_abs_angle < M_PI)
@@ -93,7 +96,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 				y_ratio = wall_size / cub3d->texture_n.height;
 				x_ratio = (double)CUBE_SIZE / (double)cub3d->texture_n.width;
 
-				ft_pixel_texture_color(cub3d, cub3d->texture_n,  ((CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_n,  ((CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, (y_wall + y_wall_offset) / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else
@@ -101,7 +104,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 				y_ratio = wall_size / cub3d->texture_s.height;
 				x_ratio = (double)CUBE_SIZE / (double)cub3d->texture_s.width;
 
-				ft_pixel_texture_color(cub3d, cub3d->texture_s, ((CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, y_wall / y_ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_s, ((CUBE_SIZE + ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)) % CUBE_SIZE) / x_ratio, (y_wall + y_wall_offset) / y_ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			y_wind++;
