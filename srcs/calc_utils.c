@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 12:07:05 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:18:09 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length)
 	if (ray_abs_angle > 0 && ray_abs_angle < (M_PI / 2))
 	{
 		alpha = ray_abs_angle;
-		return((int)((ray_length * cos(alpha)) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE))) % CUBE_SIZE);
+		return(CUBE_SIZE - ((int)((ray_length * cos(alpha)) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE))) % CUBE_SIZE)% CUBE_SIZE);
 	}	
 	else if (ray_abs_angle > (3 * M_PI / 2) && ray_abs_angle < 2 * M_PI)
 	{
 		alpha = 2 * M_PI - ray_abs_angle;
-		return((int)(ray_length * cos(alpha) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE))) % CUBE_SIZE);
+		return(CUBE_SIZE - ((int)(ray_length * cos(alpha) - (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE))) % CUBE_SIZE) % CUBE_SIZE);
 	}
 	else if (ray_abs_angle > M_PI / 2 && ray_abs_angle < M_PI)
 	{
