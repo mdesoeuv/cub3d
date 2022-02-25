@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 16:32:44 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:55:51 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	main(int argc, char **argv)
 	cub3d.map.map = NULL;
 	if (argc == 2)
 	{
-		ft_check_file_extension(argv[1], &cub3d);
 		ft_init_vars(&cub3d);
+		ft_check_file_extension(argv[1], &cub3d);
 		ft_init_window(&cub3d);
 		ft_create_map(argv[1], &cub3d);
 		ft_check_map(&cub3d);
@@ -48,5 +48,6 @@ int	main(int argc, char **argv)
 		ft_rendering(&cub3d);
 	}
 	else
-		ft_print_error(ERROR_FILENAME_MISSING, &cub3d);
+		ft_putstr_fd("Error\n", 2);
+	return (0);
 }
