@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 10:59:44 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:27:01 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,13 @@ void	draw_rays_3d(t_cub3d *cub3d)
 			{
 				ratio = wall_size / cub3d->texture_n.height;
 				//dprintf(1, "%d\n", ft_texture_x_offset(cub3d, ray_abs_angle, ray_length));
-				ft_pixel_texture_color(cub3d, cub3d->texture_n,  abs(ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)), y_wall / ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_n,  (ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)), y_wall / ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			else
 			{
 				ratio = wall_size / cub3d->texture_s.height;
-				ft_pixel_texture_color(cub3d, cub3d->texture_s,  abs(ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)), y_wall / ratio);
+				ft_pixel_texture_color(cub3d, cub3d->texture_s,  (ft_texture_x_offset(cub3d, ray_abs_angle, ray_length)), y_wall / ratio);
 				put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_texture[0], cub3d->color_texture[1], cub3d->color_texture[2]));
 			}
 			y_wind++;
