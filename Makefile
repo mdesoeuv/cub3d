@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/23 16:43:35 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/02/25 10:44:01 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS =	main.c \
 		ft_init_window_images.c \
 		ft_handlers.c \
 		ft_moves.c \
-		ft_print_texture.c
+		ft_print_texture.c \
+		calc_utils.c
 
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 
