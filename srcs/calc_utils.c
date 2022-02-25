@@ -6,12 +6,13 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 14:46:44 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/25 14:48:02 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "../includes/cub3d.h"
+
 
 int	ft_particular_angle(int player_x, double ray_abs_angle)
 {
