@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 10:40:27 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:40:47 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	draw_rays_3d(t_cub3d *cub3d)
 {
 	double	ray_length;
 	int		x_wind;
+	int		y_wind;
 	double	ray_abs_angle;
 	double	wall_size;
-	int		y_wind;
 	int		offset_y;
 	double	ratio;
 	int		y_wall;
