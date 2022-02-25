@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:03:16 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 17:22:13 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:27:25 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_free_image(void *mlx_ptr, t_image *image)
 {
-	(void)mlx_ptr;
-	(void)(image->data);
+	mlx_destroy_image(mlx_ptr, image->ptr);
+	//free(image->data);
 }
 
 void	ft_free(t_cub3d *cub3d)

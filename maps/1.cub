@@ -2,11 +2,11 @@
 
 
 NO ./textures/wall_1.xpm
-SO ./textures/wall_1.xpm              
+SO ./textures/wall_2.xpm              
 
 
-WE ./textures/wall_1.xpm
-EA ./textures/wall_2.xpm
+WE ./textures/wall_3.xpm
+EA ./textures/wal_4.xpm
 F 152,164,166 
 C 101,215,230 
 
