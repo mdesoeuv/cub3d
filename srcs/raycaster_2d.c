@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 12:31:32 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:33:59 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void	draw_image_2d(t_cub3d *cub3d)
 	draw_player(cub3d);
 	draw_rays(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->window_ptr, \
-		cub3d->win_render.ptr, 0, 0);
+		cub3d->render_3d.ptr, 0, 0);
 }
 
 void	ft_rendering(t_cub3d *cub3d)
