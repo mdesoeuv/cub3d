@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:52:46 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 17:25:20 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:26:06 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 		ft_init_vars(&cub3d);
 		ft_check_file_extension(argv[1], &cub3d);
 		cub3d.mlx = mlx_init();
+		if (!cub3d.mlx)
+			ft_print_error(ERROR_MINILIBX, cub3d);
 		ft_create_map(argv[1], &cub3d);
 		ft_check_map(&cub3d);
 		ft_init_window(&cub3d);
