@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 10:35:39 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:36:39 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	put_pixel_to_image_3d(t_cub3d *cub3d, int pos_x, int pos_y, int color)
 		pos_x * cub3d->render_3d.bits_per_pixel / 8) + 2] = tab[2];
 }
 
-double static	ft_increment_ray_absolute_angle(t_cub3d *cub3d, , double ray_abs_angle)
+double static	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle)
 {
 	ray_abs_angle += cub3d->fov / WINDOW_WIDTH;
 	if (ray_abs_angle > 2 * M_PI)
@@ -71,7 +71,7 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		if (cub3d->newWall)
 			x_wall = -1;
 		x_wall++;
-		ray_abs_angle = ft_increment_ray_absolute_angle(t_cub3d cub3d fov, ray_abs_angle);
+		ray_abs_angle = ft_increment_ray_absolute_angle(cub3d, ray_abs_angle);
 		ray_length = ft_fish_eye_correction(cub3d->player_angle, ray_abs_angle, ft_ray_length(cub3d, ray_abs_angle));		
 		wall_size = cub3d->slice_ratio / ray_length;
 		if (wall_size > WINDOW_HEIGHT)//a retirer apres
