@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:06:02 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:25:06 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
 int		ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length);
 int		ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length);
-
 
 /*RAYCASTING*/
 void	ft_init_render_image(t_cub3d *cub3d);

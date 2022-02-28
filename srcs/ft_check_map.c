@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/23 13:26:29 by vchevill         ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 15:30:19 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,27 @@ static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 	}
 }
 
-static void	ft_get_start_direction(t_cub3d *cub3d)
+static void	ft_init_player_angle(t_cub3d *cub3d, int count_direction)
+{
+	if (!count_direction)
+		ft_print_error(ERROR_MISSING_PLAYER, cub3d);
+	if (count_direction > 1)
+		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
+	if (cub3d->map.map[start_y][start_x] == 'E')
+		cub3d->player_angle = 2 * M_PI;
+	else if (cub3d->map.map[start_y][start_x] == 'S')
+		cub3d->player_angle = M_PI / 2;
+	else if (cub3d->map.map[start_y][start_x] == 'W')
+		cub3d->player_angle = M_PI;
+	else if (cub3d->map.map[start_y][start_x] == 'N')
+		cub3d->player_angle = 3 * M_PI / 2;
+}
+
+static int	ft_get_start_direction(t_cub3d *cub3d)
 {
 	int		i;
 	int		j;
 	int		count_direction;
-	int		start_x;
-	int		start_y;
 
 	i = 0;
 	j = 0;
@@ -75,28 +89,15 @@ static void	ft_get_start_direction(t_cub3d *cub3d)
 			{
 				cub3d->map.direction = cub3d->map.map[i][j];
 				count_direction++;
-				start_x = j;
-				start_y = i;
+				cub3d->player.x = j * CUBE_SIZE + CUBE_SIZE / 2;
+				cub3d->player.y = i * CUBE_SIZE + CUBE_SIZE / 2;
 			}	
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	if (!count_direction)
-		ft_print_error(ERROR_MISSING_PLAYER, cub3d);
-	if (count_direction > 1)
-		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
-	cub3d->player.x = start_x * CUBE_SIZE + CUBE_SIZE / 2;
-	cub3d->player.y = start_y * CUBE_SIZE + CUBE_SIZE / 2;
-	if (cub3d->map.map[start_y][start_x] == 'E')
-		cub3d->player_angle = 2 * M_PI;
-	else if (cub3d->map.map[start_y][start_x] == 'S')
-		cub3d->player_angle = M_PI / 2;
-	else if (cub3d->map.map[start_y][start_x] == 'W')
-		cub3d->player_angle = M_PI;
-	else if (cub3d->map.map[start_y][start_x] == 'N')
-		cub3d->player_angle = 3 * M_PI / 2;
+	ft_init_player_angle(cub3d, count_direction);
 }
 
 void	ft_check_map(t_cub3d *cub3d)
