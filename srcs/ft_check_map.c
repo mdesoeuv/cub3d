@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:30:19 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:33:29 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ static void	ft_init_player_angle(t_cub3d *cub3d, int count_direction)
 		ft_print_error(ERROR_MISSING_PLAYER, cub3d);
 	if (count_direction > 1)
 		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
-	if (cub3d->map.map[start_y][start_x] == 'E')
+	if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'E')
 		cub3d->player_angle = 2 * M_PI;
-	else if (cub3d->map.map[start_y][start_x] == 'S')
+	else if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'S')
 		cub3d->player_angle = M_PI / 2;
-	else if (cub3d->map.map[start_y][start_x] == 'W')
+	else if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'W')
 		cub3d->player_angle = M_PI;
-	else if (cub3d->map.map[start_y][start_x] == 'N')
+	else if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'N')
 		cub3d->player_angle = 3 * M_PI / 2;
 }
 
-static int	ft_get_start_direction(t_cub3d *cub3d)
+static void	ft_get_start_direction(t_cub3d *cub3d)
 {
 	int		i;
 	int		j;
