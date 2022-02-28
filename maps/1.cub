@@ -6,7 +6,7 @@ SO ./textures/wall_2.xpm
 
 
 WE ./textures/wall_3.xpm
-EA ./textures/wal_4.xpm
+EA ./textures/wall_4.xpm
 F 152,164,166 
 C 101,215,230 
 
