@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/25 16:28:56 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 10:04:02 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	put_pixel_to_image_3d(t_cub3d *cub3d, int pos_x, int pos_y, int color)
 		pos_x * cub3d->render_3d.bits_per_pixel / 8) + 2] = tab[2];
 }
 
-double static	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle)
+double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle)
 {
 	ray_abs_angle += cub3d->fov / WINDOW_WIDTH;
 	if (ray_abs_angle > 2 * M_PI)
