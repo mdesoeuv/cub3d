@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 10:20:50 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 15:03:01 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 		return ;
 	if (direction == ROT_RIGHT)
 	{
-		cub3d->player_angle += ANGLE_INC;
+		cub3d->player_angle += M_PI / ANGLE_INC;
 		if (cub3d->player_angle > M_PI * 2)
 			cub3d->player_angle -= M_PI * 2;
 	}
 	else if (direction == ROT_LEFT)
 	{
-		cub3d->player_angle -= ANGLE_INC;
+		cub3d->player_angle -= M_PI / ANGLE_INC;
 		if (cub3d->player_angle < 0)
 			cub3d->player_angle += M_PI * 2;
 	}
