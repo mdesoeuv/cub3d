@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:56:29 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:32:20 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ typedef struct s_cub3d
 	int		pass_block_x;
 	int		pass_block_y;
 	double	player_angle;
+	double	ray_length;
+	int		y_wall;
 	t_map	map;
 	t_image	render_3d;
 }				t_cub3d;
@@ -142,8 +144,8 @@ int		render(t_cub3d *so_long);
 void	loop_images(t_cub3d so_long);
 void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
-int		ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length);
-int		ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle, double ray_length);
+int		ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle);
+int		ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle);
 
 /*RAYCASTING*/
 void	ft_init_render_image(t_cub3d *cub3d);
