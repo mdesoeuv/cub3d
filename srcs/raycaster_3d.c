@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 15:58:04 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:02:49 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	create_trgb(unsigned char t, unsigned char r, \
 	return (*(int *)(unsigned char [4]){b, g, r, t});
 }
 
-double static	ft_fish_eye_correction(double player_angle, double ray_abs_angle, double ray_length)
+double static	ft_fish_eye_correction(double player_angle,
+			double ray_abs_angle, double ray_length)
 {
 	double	ray_relative_angle;
 

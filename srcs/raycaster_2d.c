@@ -6,14 +6,14 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 16:01:56 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:03:29 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static void
-	ft_incr_pass_block(t_cub3d *cub3d, double v_dy_length, double v_dx_length)
+	ft_incr_pass_block(t_cub3d *cub3d, double v_dy_length, double v_dx_length, double angle)
 {
 	if (v_dy_length > v_dx_length
 		&& !(angle > M_PI / 2 && angle < (3 * M_PI) / 2))
@@ -70,7 +70,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		else if (cub3d->ray_has_hit_y != 0)
 			v_dx_length = fabs((CUB_SIZE - (cub3d->player.x % CUB_SIZE)
 						+ (CUB_SIZE * abs(cub3d->pass_block_x))) / cos(angle));
-		ft_incr_pass_block(cub3d, v_dy_length, v_dx_length);
+		ft_incr_pass_block(cub3d, v_dy_length, v_dx_length, angle);
 	}
 	return (ft_longest_vector(v_dy_length, v_dx_length));
 }
