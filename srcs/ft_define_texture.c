@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 16:28:25 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:30:56 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	ft_define_colors(t_cub3d *cub3d, char *string, int is_ground)
 	}	
 	ft_free_split(color_split);
 }
-
 
 static int	ft_define_texture_2(t_cub3d *cub3d, char **tab)
 {
