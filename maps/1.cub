@@ -5,8 +5,8 @@ NO ./textures/WM_Marble-125_1024.xpm
 SO ./textures/WM_BrickWork-50_1024.xpm              
 
 
-WE ./textures/WM_Marble-125_1024.xpm
-EA ./textures/WM_BrickWork-50_1024.xpm
+WE ./textures/FloorTreadPattern-3v2_UR_1024.xpm
+EA ./textures/arroway.de_plaster-03_d100-_g050_.xpm
 F 152,164,166 
 C 101,215,230 
 
