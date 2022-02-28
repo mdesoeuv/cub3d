@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_utils.c                                       :+:      :+:    :+:   */
+/*   ft_textures_offset.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:21:43 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 15:22:57 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:24:22 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ double static	ft_calc_alpha_x(double ray_abs_angle)
 	else if (ray_abs_angle > (3 * M_PI / 2) && ray_abs_angle < 2 * M_PI)
 		return (2 * M_PI - ray_abs_angle);
 	else if (ray_abs_angle > M_PI / 2 && ray_abs_angle < M_PI)
-		return ( M_PI - ray_abs_angle);
+		return( M_PI - ray_abs_angle);
 	else if (ray_abs_angle > M_PI && ray_abs_angle < 3 * M_PI / 2)
 		return (ray_abs_angle - M_PI);
 	return (ray_abs_angle);
