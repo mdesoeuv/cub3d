@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:30:56 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:54:18 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ static int	ft_define_texture_3(t_cub3d *cub3d, char **tab)
 	if (ft_strncmp(tab[0], "SO", 2) == 0)
 	{
 		if (!cub3d->texture_s.ptr)
-			ft_init_texture(cub3d, tab[1], &(cub3d->texture_s));
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_s), 1);
 		else
 			return (1);
 	}
 	if (ft_strncmp(tab[0], "WE", 2) == 0)
 	{
 		if (!cub3d->texture_w.ptr)
-			ft_init_texture(cub3d, tab[1], &(cub3d->texture_w));
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_w), 3);
 		else
 			return (1);
 	}
 	else if (ft_strncmp(tab[0], "EA", 2) == 0)
 	{
 		if (!cub3d->texture_e.ptr)
-			ft_init_texture(cub3d, tab[1], &(cub3d->texture_e));
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_e), 2);
 		else
 			return (1);
 	}
@@ -79,7 +79,7 @@ static int	ft_define_texture_2(t_cub3d *cub3d, char **tab)
 	else if (ft_strncmp(tab[0], "NO", 2) == 0)
 	{
 		if (!cub3d->texture_n.ptr)
-			ft_init_texture(cub3d, tab[1], &(cub3d->texture_n));
+			ft_init_texture(cub3d, tab[1], &(cub3d->texture_n), 0);
 		else
 			return (1);
 	}
