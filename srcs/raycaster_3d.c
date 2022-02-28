@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 17:21:02 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:31:39 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,23 @@ static void	ft_get_pixel_in_texture(t_cub3d *cub3d, int y_wind,
 	x_ratio = (double)CUB_SIZE / (double)texture.width;
 	if (texture.orientation == 'n' || texture.orientation == 's')
 	{
-			ft_pixel_texture_color(cub3d, texture, ((CUB_SIZE
+		ft_pixel_texture_color(cub3d, texture, ((CUB_SIZE
 					+ ft_texture_x_offset(cub3d, cub3d->ray_abs_angle))
 				% CUB_SIZE) / x_ratio,
 			(cub3d->y_wall + cub3d->y_wall_offset) / y_ratio);
-	}
+		put_pixel_to_image_3d(cub3d, x_wind, y_wind,
+			create_trgb(0, cub3d->color_texture[0],
+				cub3d->color_texture[1], cub3d->color_texture[2]));
+	}	
 	else
 	{
 		ft_pixel_texture_color(cub3d, texture, ((CUB_SIZE
 					+ ft_texture_y_offset(cub3d, cub3d->ray_abs_angle))
 				% CUB_SIZE) / x_ratio,
 			(cub3d->y_wall + cub3d->y_wall_offset) / y_ratio);
-	put_pixel_to_image_3d(cub3d, x_wind, y_wind,
-		create_trgb(0, cub3d->color_texture[0],
-			cub3d->color_texture[1], cub3d->color_texture[2]));
+		put_pixel_to_image_3d(cub3d, x_wind, y_wind,
+			create_trgb(0, cub3d->color_texture[0],
+				cub3d->color_texture[1], cub3d->color_texture[2]));
 	}
 }
 
@@ -88,6 +91,7 @@ static void	ft_draw_wall(t_cub3d *cub3d, int y_wind,
 	if (cub3d->wall_size > WINDOW_HEIGHT)
 		cub3d->y_wall_offset = (cub3d->wall_size - WINDOW_HEIGHT) / 2;
 	cub3d->y_wall++;
+	
 	if (cub3d->ray_has_hit_y == 1 && cub3d->ray_abs_angle > M_PI / 2
 		&& cub3d->ray_abs_angle < (3 * M_PI) / 2)
 		ft_get_pixel_in_texture(cub3d, y_wind, x_wind, cub3d->texture_e);
