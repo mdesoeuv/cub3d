@@ -6,13 +6,11 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 17:41:50 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:46:01 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-
 
 static void	ft_get_pixel_in_texture(t_cub3d *cub3d, int y_wind,
 		double x_wind, t_image texture)
