@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:41:19 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:43:07 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,4 +163,11 @@ double	ft_ray_length(t_cub3d *cub3d, double angle);
 void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc, char orientaion);
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
 double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
+
+void	put_pixel_to_image_3d(t_cub3d *cub3d, int pos_x, int pos_y, int color);
+double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
+int		create_trgb(unsigned char t, unsigned char r, \
+	unsigned char g, unsigned char b);
+double	ft_fish_eye_correction(double player_angle,
+			double ray_abs_angle, double ray_length);
 #endif

@@ -6,7 +6,7 @@
 #    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/28 15:33:55 by vchevill         ###   ########.fr        #
+#    Updated: 2022/02/28 17:43:18 by vchevill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS =	main.c \
 		ft_handlers.c \
 		ft_moves.c \
 		ft_print_texture.c \
-		ft_textures_offset.c
+		ft_textures_offset.c \
+		ft_raycaster_utils.c
 
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 
