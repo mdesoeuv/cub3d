@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 10:04:02 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/02/28 10:56:46 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int static	ft_fish_eye_correction(double player_angle, double ray_abs_angle, dou
 {
 	double	ray_relative_angle;
 
-	ray_relative_angle = fabs(player_angle) - fabs(ray_abs_angle);
+	ray_relative_angle = player_angle - ray_abs_angle;
 	if (ray_relative_angle < 0)
 		ray_relative_angle += 2 * M_PI;
 	if (ray_relative_angle > 2 * M_PI)
@@ -50,6 +50,7 @@ int static	ft_fish_eye_correction(double player_angle, double ray_abs_angle, dou
 
 void	draw_rays_3d(t_cub3d *cub3d)
 {
+	double	ray_length_fish_eye_correc;
 	double	ray_length;
 	int		x_wind;
 	int		y_wind;
@@ -67,8 +68,9 @@ void	draw_rays_3d(t_cub3d *cub3d)
 	while (x_wind < WINDOW_WIDTH)
 	{
 		ray_abs_angle = ft_increment_ray_absolute_angle(cub3d, ray_abs_angle);
-		ray_length = ft_fish_eye_correction(cub3d->player_angle, ray_abs_angle, ft_ray_length(cub3d, ray_abs_angle));		
-		wall_size = cub3d->slice_ratio / ray_length;
+		ray_length =  ft_ray_length(cub3d, ray_abs_angle);
+		ray_length_fish_eye_correc = ft_fish_eye_correction(cub3d->player_angle, ray_abs_angle, ray_length);		
+		wall_size = cub3d->slice_ratio / ray_length_fish_eye_correc;
 		y_wind = -1;
 		while (++y_wind < offset_y - wall_size / 2)
 			put_pixel_to_image_3d(cub3d, x_wind, y_wind, create_trgb(0, cub3d->color_ceiling[0], cub3d->color_ceiling[1], cub3d->color_ceiling[2]));
