@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:33:29 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:36:28 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,20 @@ static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 	}
 }
 
-static void	ft_init_player_angle(t_cub3d *cub3d, int count_direction)
+static void	ft_init_player_angle(t_cub3d *cub3d, int count_direction, int i, int j)
 {
-	if (!count_direction)
-		ft_print_error(ERROR_MISSING_PLAYER, cub3d);
 	if (count_direction > 1)
 		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
-	if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'E')
+	if (cub3d->map.map[i][j] == 'E')
 		cub3d->player_angle = 2 * M_PI;
-	else if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'S')
+	else if (cub3d->map.map[i][j] == 'S')
 		cub3d->player_angle = M_PI / 2;
-	else if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'W')
+	else if (cub3d->map.map[i][j] == 'W')
 		cub3d->player_angle = M_PI;
-	else if (cub3d->map.map[cub3d->player.y][cub3d->player.x] == 'N')
+	else if (cub3d->map.map[i][j] == 'N')
 		cub3d->player_angle = 3 * M_PI / 2;
+	cub3d->player.x = j * CUBE_SIZE + CUBE_SIZE / 2;
+	cub3d->player.y = i * CUBE_SIZE + CUBE_SIZE / 2;
 }
 
 static void	ft_get_start_direction(t_cub3d *cub3d)
@@ -89,15 +89,15 @@ static void	ft_get_start_direction(t_cub3d *cub3d)
 			{
 				cub3d->map.direction = cub3d->map.map[i][j];
 				count_direction++;
-				cub3d->player.x = j * CUBE_SIZE + CUBE_SIZE / 2;
-				cub3d->player.y = i * CUBE_SIZE + CUBE_SIZE / 2;
+				ft_init_player_angle(cub3d, count_direction, i, j);
 			}	
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	ft_init_player_angle(cub3d, count_direction);
+	if (!count_direction)
+		ft_print_error(ERROR_MISSING_PLAYER, cub3d);
 }
 
 void	ft_check_map(t_cub3d *cub3d)
