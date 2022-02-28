@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:05:14 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 16:55:31 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:18:51 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y)
 }
 
 void	ft_init_texture(t_cub3d *cub3d, char *texture_path,
-	t_image *image_struc, int orientation)
+	t_image *image_struc, char orientation)
 {
 	image_struc->ptr = mlx_xpm_file_to_image(cub3d->mlx, texture_path,
 			&(image_struc->width), &(image_struc->height));

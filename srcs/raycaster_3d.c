@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 16:56:07 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:21:02 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,23 @@ static void	ft_get_pixel_in_texture(t_cub3d *cub3d, int y_wind,
 
 	y_ratio = cub3d->wall_size / texture.height;
 	x_ratio = (double)CUB_SIZE / (double)texture.width;
-	if (texture.orientation == 0 || texture.orientation == 1)
-		ft_pixel_texture_color(cub3d, texture, ((CUB_SIZE
-					+ ft_texture_y_offset(cub3d, cub3d->ray_abs_angle))
+	if (texture.orientation == 'n' || texture.orientation == 's')
+	{
+			ft_pixel_texture_color(cub3d, texture, ((CUB_SIZE
+					+ ft_texture_x_offset(cub3d, cub3d->ray_abs_angle))
 				% CUB_SIZE) / x_ratio,
 			(cub3d->y_wall + cub3d->y_wall_offset) / y_ratio);
+	}
 	else
+	{
 		ft_pixel_texture_color(cub3d, texture, ((CUB_SIZE
-					+ ft_texture_x_offset(cub3d, cub3d->ray_abs_angle))
+					+ ft_texture_y_offset(cub3d, cub3d->ray_abs_angle))
 				% CUB_SIZE) / x_ratio,
 			(cub3d->y_wall + cub3d->y_wall_offset) / y_ratio);
 	put_pixel_to_image_3d(cub3d, x_wind, y_wind,
 		create_trgb(0, cub3d->color_texture[0],
 			cub3d->color_texture[1], cub3d->color_texture[2]));
+	}
 }
 
 static void	ft_draw_wall(t_cub3d *cub3d, int y_wind,
@@ -96,7 +100,7 @@ static void	ft_draw_wall(t_cub3d *cub3d, int y_wind,
 		ft_get_pixel_in_texture(cub3d, y_wind, x_wind, cub3d->texture_s);
 }
 
-static void	ft_draw_vertical_line(t_cub3d *cub3d, double ray_abs_angle, double x_wind)
+static void	ft_draw_vertical_line(t_cub3d *cub3d, double x_wind)
 {
 	int		y_wind;
 	double	ray_length_fish_eye_correc;
@@ -105,7 +109,7 @@ static void	ft_draw_vertical_line(t_cub3d *cub3d, double ray_abs_angle, double x
 	y_wind = -1;
 	offset_y = WINDOW_HEIGHT / 2;
 	ray_length_fish_eye_correc = ft_fish_eye_correction
-		(cub3d->player_angle, ray_abs_angle, cub3d->ray_length);
+		(cub3d->player_angle, cub3d->ray_abs_angle, cub3d->ray_length);
 	cub3d->wall_size = (cub3d->player_dist / ray_length_fish_eye_correc)
 		* CUB_SIZE;
 	while (++y_wind < offset_y - cub3d->wall_size / 2)
@@ -124,16 +128,16 @@ static void	ft_draw_vertical_line(t_cub3d *cub3d, double ray_abs_angle, double x
 void	draw_rays_3d(t_cub3d *cub3d)
 {
 	int		x_wind;
-	double	ray_abs_angle;
 
 	x_wind = 0;
-	ray_abs_angle = (cub3d->player_angle - (cub3d->fov / 2))
+	cub3d->ray_abs_angle = (cub3d->player_angle - (cub3d->fov / 2))
 		- (cub3d->fov / WINDOW_WIDTH);
 	while (x_wind < WINDOW_WIDTH)
 	{
-		ray_abs_angle = ft_increment_ray_absolute_angle(cub3d, ray_abs_angle);
-		cub3d->ray_length = ft_ray_length(cub3d, ray_abs_angle);
-		ft_draw_vertical_line(cub3d, ray_abs_angle, x_wind);
+		cub3d->ray_abs_angle =
+			ft_increment_ray_absolute_angle(cub3d, cub3d->ray_abs_angle);
+		cub3d->ray_length = ft_ray_length(cub3d, cub3d->ray_abs_angle);
+		ft_draw_vertical_line(cub3d, x_wind);
 		x_wind++;
 	}
 }

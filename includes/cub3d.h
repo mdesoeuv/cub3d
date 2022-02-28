@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 16:54:53 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:19:08 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct s_image
 	int		bits_per_pixel;
 	int		line_size;
 	int		endian;
-	int		orientation;
+	char	orientation;
 }	t_image;
 
 typedef struct s_map
@@ -162,7 +162,7 @@ int		create_trgb(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 double	ft_ray_length(t_cub3d *cub3d, double angle);
 
-void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc, int orientaion);
+void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc, char orientaion);
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
 double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
 #endif
