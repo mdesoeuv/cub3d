@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:36:50 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:41:19 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,7 @@ int		ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle);
 /*RAYCASTING*/
 void	ft_init_render_image(t_cub3d *cub3d);
 void	ft_rendering(t_cub3d *cub3d);
-void	draw_player(t_cub3d *cub3d);
-void	draw_image_2d(t_cub3d *cub3d);
-void	draw_image_3d(t_cub3d *cub3d);
+void	ft_draw_image(t_cub3d *cub3d);
 void	put_pixel_to_image(t_cub3d *cub3d, int pos_x, int pos_y, int color);
 int		create_trgb(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);

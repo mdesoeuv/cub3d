@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:55:32 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:41:06 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,5 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 		ft_get_move(cub3d, LEFT);
 	else if (direction == RIGHT)
 		ft_get_move(cub3d, RIGHT);
-	draw_image_3d(cub3d);
+	ft_draw_image(cub3d);
 }

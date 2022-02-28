@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 16:03:29 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:41:06 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 
 void	ft_rendering(t_cub3d *cub3d)
 {
-	draw_image_3d(cub3d);
+	ft_draw_image(cub3d);
 	mlx_hook(cub3d->window_ptr, 02, 1L << 0, &handle_keypress, cub3d);
 	mlx_hook(cub3d->window_ptr, 17, 0L,
 		&handle_btnrealease, cub3d);
