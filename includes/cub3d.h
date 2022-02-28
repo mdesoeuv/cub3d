@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/25 17:34:09 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 10:03:56 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,4 +158,5 @@ double	ft_ray_length(t_cub3d *cub3d, double angle);
 
 void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc);
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
+double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
 #endif
