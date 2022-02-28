@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:25:06 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:56:29 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ path has not been declared.\n"
 # define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
 corrupted or inaccessible.\n"
 
-# define CUBE_SIZE 258
+# define CUB_SIZE 258
 # define MOVE_SIZE 60
 # define ANGLE_INC 20
 # define FOV 45
@@ -85,7 +85,6 @@ typedef struct s_map
 	int		line_start_map_in_cub;
 	char	*path;
 	char	**map;
-	int		ray_has_hit_x;
 }				t_map;
 
 typedef struct s_pos
@@ -111,7 +110,9 @@ typedef struct s_cub3d
 	int		color_texture[3];
 	int		win_height;
 	int		win_width;
-	int		ray_has_hit_x;
+	int		ray_has_hit_y;
+	int		pass_block_x;
+	int		pass_block_y;
 	double	player_angle;
 	t_map	map;
 	t_image	render_3d;

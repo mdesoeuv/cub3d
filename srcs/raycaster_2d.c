@@ -6,69 +6,73 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 15:44:51 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:01:56 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-double	ft_ray_length(t_cub3d *cub3d, double angle)
+static void
+	ft_incr_pass_block(t_cub3d *cub3d, double v_dy_length, double v_dx_length)
 {
-	double		v_dy_length;
-	double		v_dx_length;
-	int			interesec_to_pass_x;
-	int			interesec_to_pass_y;
-	int			is_x_updated;
-
-	interesec_to_pass_x = 0;
-	interesec_to_pass_y = 0;
-	is_x_updated = -1;
-	cub3d->map.ray_has_hit_x = -1;
-	while (cub3d->map.map[(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y]
-		[(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
+	if (v_dy_length > v_dx_length
+		&& !(angle > M_PI / 2 && angle < (3 * M_PI) / 2))
 	{
-		if (angle > 0 && angle < M_PI && is_x_updated != 1)
-			v_dy_length = fabs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE)
-						+ (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
-		else if (is_x_updated != 1)
-			v_dy_length = fabs(((cub3d->player.y % CUBE_SIZE)
-						+ (CUBE_SIZE * abs(interesec_to_pass_y))) / sin(angle));
-		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2 && is_x_updated != 0)
-			v_dx_length = fabs(((cub3d->player.x % CUBE_SIZE)
-						+ (CUBE_SIZE * abs(interesec_to_pass_x))) / cos(angle));
-		else if (is_x_updated != 0)
-			v_dx_length = fabs((CUBE_SIZE - (cub3d->player.x % CUBE_SIZE)
-						+ (CUBE_SIZE * abs(interesec_to_pass_x))) / cos(angle));
-		if (v_dy_length > v_dx_length
-			&& !(angle > M_PI / 2 && angle < (3 * M_PI) / 2))
-		{
-			is_x_updated = 1;
-			interesec_to_pass_x++;
-			cub3d->map.ray_has_hit_x = 0;
-		}
-		else if (v_dy_length > v_dx_length)
-		{
-			is_x_updated = 1;
-			interesec_to_pass_x--;
-			cub3d->map.ray_has_hit_x = 0;
-		}
-		else if (v_dy_length < v_dx_length && !(angle > 0 && angle < M_PI))
-		{
-			is_x_updated = 0;
-			interesec_to_pass_y--;
-			cub3d->map.ray_has_hit_x = 1;
-		}
-		else
-		{
-			is_x_updated = 0;
-			interesec_to_pass_y++;
-			cub3d->map.ray_has_hit_x = 1;
-		}
+		cub3d->ray_has_hit_y = 1;
+		cub3d->pass_block_x++;
 	}
+	else if (v_dy_length > v_dx_length)
+	{
+		cub3d->pass_block_x--;
+		cub3d->ray_has_hit_y = 1;
+	}
+	else if (v_dy_length < v_dx_length && !(angle > 0 && angle < M_PI))
+	{
+		cub3d->pass_block_y--;
+		cub3d->ray_has_hit_y = 0;
+	}
+	else
+	{
+		cub3d->pass_block_y++;
+		cub3d->ray_has_hit_y = 0;
+	}
+}
+
+static double	ft_longest_vector(double v_dy_length, double v_dx_length)
+{
 	if (v_dy_length > v_dx_length)
 		return (v_dx_length);
 	else
 		return (v_dy_length);
+}
+
+double	ft_ray_length(t_cub3d *cub3d, double angle)
+{
+	double		v_dy_length;
+	double		v_dx_length;
+
+	cub3d->pass_block_x = 0;
+	cub3d->pass_block_y = 0;
+	cub3d->ray_has_hit_y = -1;
+	while (cub3d->map.map[(cub3d->player.y / CUB_SIZE) + cub3d->pass_block_y]
+		[(cub3d->player.x / CUB_SIZE) + cub3d->pass_block_x] != '1')
+	{
+		if (angle > 0 && angle < M_PI && cub3d->ray_has_hit_y != 1)
+			v_dy_length = fabs((CUB_SIZE - (cub3d->player.y % CUB_SIZE)
+						+ (CUB_SIZE * abs(cub3d->pass_block_y))) / sin(angle));
+		else if (cub3d->ray_has_hit_y != 1)
+			v_dy_length = fabs(((cub3d->player.y % CUB_SIZE)
+						+ (CUB_SIZE * abs(cub3d->pass_block_y))) / sin(angle));
+		if (angle > M_PI / 2 && angle < (3 * M_PI) / 2
+			&& cub3d->ray_has_hit_y != 0)
+			v_dx_length = fabs(((cub3d->player.x % CUB_SIZE)
+						+ (CUB_SIZE * abs(cub3d->pass_block_x))) / cos(angle));
+		else if (cub3d->ray_has_hit_y != 0)
+			v_dx_length = fabs((CUB_SIZE - (cub3d->player.x % CUB_SIZE)
+						+ (CUB_SIZE * abs(cub3d->pass_block_x))) / cos(angle));
+		ft_incr_pass_block(cub3d, v_dy_length, v_dx_length);
+	}
+	return (ft_longest_vector(v_dy_length, v_dx_length));
 }
 
 void	ft_rendering(t_cub3d *cub3d)
@@ -105,9 +109,9 @@ void	draw_map(t_cub3d *cub3d)
 		x = 0;
 		while (x < cub3d->win_width)
 		{
-			if (y % CUBE_SIZE == 0 || x % CUBE_SIZE == 0)
+			if (y % CUB_SIZE == 0 || x % CUB_SIZE == 0)
 				put_pixel_to_image_2d(cub3d, x, y, create_trgb(0, 255, 0, 0));
-			else if (cub3d->map.map[y / CUBE_SIZE][x / CUBE_SIZE] == '1')
+			else if (cub3d->map.map[y / CUB_SIZE][x / CUB_SIZE] == '1')
 				put_pixel_to_image_2d(cub3d, x, y, create_trgb(0, 0, 0, 0));
 			else
 				put_pixel_to_image_2d(cub3d, x, y, create_trgb(0, 255, 255, 255));

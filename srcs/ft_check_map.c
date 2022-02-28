@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 10:42:35 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 15:36:28 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:58:46 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	ft_check_line_edges(char **map, t_cub3d *cub3d)
 	}
 }
 
-static void	ft_init_player_angle(t_cub3d *cub3d, int count_direction, int i, int j)
+static void
+	ft_init_player_angle(t_cub3d *cub3d, int count_direction, int i, int j)
 {
 	if (count_direction > 1)
 		ft_print_error(ERROR_TOO_MANY_PLAYERS, cub3d);
@@ -68,8 +69,8 @@ static void	ft_init_player_angle(t_cub3d *cub3d, int count_direction, int i, int
 		cub3d->player_angle = M_PI;
 	else if (cub3d->map.map[i][j] == 'N')
 		cub3d->player_angle = 3 * M_PI / 2;
-	cub3d->player.x = j * CUBE_SIZE + CUBE_SIZE / 2;
-	cub3d->player.y = i * CUBE_SIZE + CUBE_SIZE / 2;
+	cub3d->player.x = j * CUB_SIZE + CUB_SIZE / 2;
+	cub3d->player.y = i * CUB_SIZE + CUB_SIZE / 2;
 }
 
 static void	ft_get_start_direction(t_cub3d *cub3d)
