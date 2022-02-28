@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:19:08 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:36:50 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ path has not been declared.\n"
 # define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
 corrupted or inaccessible.\n"
 
-# define CUB_SIZE 258
-# define MOVE_SIZE 60
-# define ANGLE_INC 20
+# define CUB_SIZE 64
+# define MOVE_SIZE 30
+# define ANGLE_INC 14
 # define FOV 45
 # define UP 13
 # define DOWN 1

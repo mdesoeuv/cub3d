@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 17:32:29 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:35:41 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ void	draw_rays_3d(t_cub3d *cub3d)
 		- (cub3d->fov / WINDOW_WIDTH);
 	while (x_wind < WINDOW_WIDTH)
 	{
-		cub3d->ray_abs_angle =
-			ft_increment_ray_absolute_angle(cub3d, cub3d->ray_abs_angle);
+		cub3d->ray_abs_angle
+			= ft_increment_ray_absolute_angle(cub3d, cub3d->ray_abs_angle);
 		cub3d->ray_length = ft_ray_length(cub3d, cub3d->ray_abs_angle);
 		ft_draw_vertical_line(cub3d, x_wind);
 		x_wind++;
