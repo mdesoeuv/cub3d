@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 12:20:44 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:25:39 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 			v_dx_length =  fabs(a / cos(angle));
 			// dprintf(1, "dx=%d, angle=%f\n", ((cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))), angle);
 		}
-		else if ((angle < M_PI / 2 || angle > (3 * M_PI)/2) && is_x_updated != 0) // vecteur vers le haut (x negatif) pb ici
+		else if (is_x_updated != 0) // vecteur vers le haut (x negatif) pb ici
 		{
 			a= abs((CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))));
 			v_dx_length = fabs(a / cos(angle));
