@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 17:31:39 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:32:29 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static void	ft_draw_wall(t_cub3d *cub3d, int y_wind,
 	if (cub3d->wall_size > WINDOW_HEIGHT)
 		cub3d->y_wall_offset = (cub3d->wall_size - WINDOW_HEIGHT) / 2;
 	cub3d->y_wall++;
-	
 	if (cub3d->ray_has_hit_y == 1 && cub3d->ray_abs_angle > M_PI / 2
 		&& cub3d->ray_abs_angle < (3 * M_PI) / 2)
 		ft_get_pixel_in_texture(cub3d, y_wind, x_wind, cub3d->texture_e);
