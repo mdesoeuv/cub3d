@@ -6,7 +6,7 @@
 /*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 09:13:42 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/02/28 13:25:39 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 14:43:29 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 
 	cub3d->map.ray_has_hit_x = -1;
 	// dprintf(2, "player angle %f\n", cub3d->player_angle);
-	while (cub3d->map.map[(int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
+	while (cub3d->map.map[(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y][(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x] != '1')
 	{
 		//dprintf(1, "y_to_check=%i\n", (int)(cub3d->player.y / CUBE_SIZE) + interesec_to_pass_y);
 		//dprintf(1, "x_to_check=%i\n", (int)(cub3d->player.x / CUBE_SIZE) + interesec_to_pass_x);
@@ -76,6 +76,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		{
 			a = abs((CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))));
 			v_dy_length =  fabs(a / sin(angle));
+			dprintf(1, "dx=%d, v_dx_length=%f\n", a, v_dy_length);
 			// dprintf(1, "dy=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.y % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_y))), angle);
 		}
 		else if (is_x_updated != 1)// vecteur vers le haut (y negatif)
@@ -94,7 +95,7 @@ double	ft_ray_length(t_cub3d *cub3d, double angle)
 		{
 			a= abs((CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))));
 			v_dx_length = fabs(a / cos(angle));
-			// dprintf(1, "dx=%d, angle=%f\n", (CUBE_SIZE - (cub3d->player.x % CUBE_SIZE) + (CUBE_SIZE * abs(interesec_to_pass_x))), angle);
+			dprintf(1, "dx=%d, v_dx_length=%f\n", a, v_dx_length);
 		}
 		// dprintf(1, "v_dy_length=%f\n", v_dy_length);
 		// dprintf(1, "v_dx_length=%f\n", v_dx_length);
