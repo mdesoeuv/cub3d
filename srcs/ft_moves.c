@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:41:06 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:49:42 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static int	check_if_can_move(t_cub3d *cub3d, int direction, char tile)
 		angle -= 2 * M_PI;
 	else if (angle < 0)
 		angle += 2 * M_PI;
-	step_move = 1;
+	step_move = MOVE_SIZE;
 	i = 0;
-	while (i < 7)
+	while (i < 1)
 	{
 		while (step_move < MOVE_SIZE)
 		{
-			if (step_move_check(cub3d, direction, step_move, angle) == 1)
+			if (step_move_check(cub3d, direction, step_move, cub3d->player_angle) == 1)
 				return (1);
 			step_move++;
 		}
