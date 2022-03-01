@@ -3,20 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:41:06 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:21:58 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+double	angle_normalize(double angle)
+{
+	if (angle > 2 * M_PI)
+		angle -= 2 * M_PI;
+	else if (angle < 0)
+		angle += 2 * M_PI;
+	return (angle);
+}
 
 int	step_move_check(t_cub3d *cub3d, int direction, int step_move, double angle)
 {
 	double	x;
 	double	y;
 
+	angle = angle_normalize(angle);
 	x = cub3d->player.x;
 	y = cub3d->player.y;
 	if ((direction == DOWN && \
@@ -38,30 +48,26 @@ int	step_move_check(t_cub3d *cub3d, int direction, int step_move, double angle)
 		return (0);
 }
 
-static int	check_if_can_move(t_cub3d *cub3d, int direction, char tile)
+static int	check_if_can_move(t_cub3d *cub3d, int direction)
 {
 	int		step_move;
 	int		i;
-	double	angle;
 
-	tile = '1';
-	angle = cub3d->player_angle - (3 * (cub3d->fov / WINDOW_WIDTH));
-	if (angle > 2 * M_PI)
-		angle -= 2 * M_PI;
-	else if (angle < 0)
-		angle += 2 * M_PI;
 	step_move = 1;
-	i = 0;
-	while (i < 7)
+	while (step_move < MOVE_SIZE)
 	{
-		while (step_move < MOVE_SIZE)
+		i = 2;
+		while (i >= 0)
 		{
-			if (step_move_check(cub3d, direction, step_move, angle) == 1)
+			if (step_move_check(cub3d, direction, \
+				step_move, cub3d->player_angle - (0.05 * i)) == 1)
 				return (1);
-			step_move++;
+			if (step_move_check(cub3d, direction, \
+				step_move, cub3d->player_angle + (0.05 * i)) == 1)
+				return (1);
+			i--;
 		}
-		ft_increment_ray_absolute_angle(cub3d, angle);
-		i++;
+		step_move++;
 	}
 	return (0);
 }
@@ -96,7 +102,7 @@ void	ft_get_move(t_cub3d *cub3d, int direction)
 
 void	ft_move_player(t_cub3d *cub3d, int direction)
 {
-	if (check_if_can_move(cub3d, direction, '1') == 1)
+	if (check_if_can_move(cub3d, direction) == 1)
 		return ;
 	if (direction == ROT_RIGHT)
 	{
