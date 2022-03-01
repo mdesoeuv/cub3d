@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_define_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:26:01 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:19:00 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/03/01 14:52:21 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
