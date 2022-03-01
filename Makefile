@@ -6,7 +6,7 @@
 #    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/03/01 10:54:06 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/03/01 11:04:48 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ GNL = libft/libft.a
 all : libft minilibx $(NAME)
 
 $(NAME)	:	$(OBJS_FILES) $(LIB) Makefile
-			$(CC) $(OBJS_FILES) -Lminilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME) libft/libft.a minilibx/libmlx.a
+			$(CC) $(DEBUG) $(OBJS_FILES) -Lminilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME) libft/libft.a minilibx/libmlx.a
 
 libft	:	
 			make -C libft
@@ -73,8 +73,6 @@ fclean	:	clean
 			rm -f $(NAME)
 			make fclean -C libft
 
-re		:
-	$(MAKE) fclean
-	$(MAKE) all
-
+re		:	fclean all
+	
 .PHONY	:	libft all clean re fclean minilibx
