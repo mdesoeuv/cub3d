@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/01 11:21:58 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 11:25:51 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	step_move_check(t_cub3d *cub3d, int direction, int step_move, double angle)
 	x = cub3d->player.x;
 	y = cub3d->player.y;
 	if ((direction == DOWN && \
-	cub3d->map.map[lround((y - (step_move * \
-	sin(angle)))) / CUB_SIZE][lround((x - \
+	cub3d->map.map[(int)((y - (step_move * \
+	sin(angle)))) / CUB_SIZE][(int)((x - \
 	step_move * cos(angle))) / CUB_SIZE] == '1')
 	|| (direction == UP && \
-	cub3d->map.map[lround((y + (step_move * \
-	sin(angle)))) / CUB_SIZE][lround((x + step_move * \
+	cub3d->map.map[(int)((y + (step_move * \
+	sin(angle)))) / CUB_SIZE][(int)((x + step_move * \
 	cos(angle))) / CUB_SIZE] == '1')
-	|| (direction == RIGHT && cub3d->map.map[lround((y + (step_move * \
-	sin(angle + M_PI / 2)))) / CUB_SIZE][lround((x + \
+	|| (direction == RIGHT && cub3d->map.map[(int)((y + (step_move * \
+	sin(angle + M_PI / 2)))) / CUB_SIZE][(int)((x + \
 	step_move * cos(angle + M_PI / 2))) / CUB_SIZE] == '1')
-	|| (direction == LEFT && cub3d->map.map[lround((y + (step_move * \
-	sin(angle - M_PI / 2)))) / CUB_SIZE][lround((x + \
+	|| (direction == LEFT && cub3d->map.map[(int)((y + (step_move * \
+	sin(angle - M_PI / 2)))) / CUB_SIZE][(int)((x + \
 	step_move * cos(angle - M_PI / 2))) / CUB_SIZE] == '1'))
 		return (1);
 	else
