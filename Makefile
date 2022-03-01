@@ -6,13 +6,17 @@
 #    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/03/01 10:36:16 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/03/01 10:54:06 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = gcc -Wall -Werror -Wextra -g3 -fsanitize=address -Ofast -march=native -ffast-math
+CC = gcc -Wall -Werror -Wextra -g3 
+
+OPTI = -Ofast -march=native -ffast-math
+
+DEBUG = -fsanitize=address
 
 SRCS =	main.c \
 		ft_check_file_extension.c \
@@ -58,7 +62,7 @@ minilibx	:
 
 objs/%.o:	srcs/%.c	 includes/get_next_line.h includes/cub3d.h libft/libft.h minilibx/mlx.h minilibx/mlx_int.h minilibx/mlx_new_window.h minilibx/mlx_opengl.h minilibx/mlx_png.h
 			@mkdir -p objs
-			$(CC) -c $< -o $@ 
+			$(CC) $(DEBUG) $(OPTI) -c $< -o $@ 
 			
 clean	:
 			rm -rf objs/
