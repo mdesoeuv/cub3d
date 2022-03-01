@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/02/28 17:43:18 by vchevill         ###   ########.fr        #
+#    Updated: 2022/03/01 10:36:16 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = gcc -Wall -Werror -Wextra -g3 -fsanitize=address
+CC = gcc -Wall -Werror -Wextra -g3 -fsanitize=address -Ofast -march=native -ffast-math
 
 SRCS =	main.c \
 		ft_check_file_extension.c \
@@ -51,10 +51,10 @@ $(NAME)	:	$(OBJS_FILES) $(LIB) Makefile
 			$(CC) $(OBJS_FILES) -Lminilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME) libft/libft.a minilibx/libmlx.a
 
 libft	:	
-			$(MAKE) -C libft
+			make -C libft
 
 minilibx	:	
-			$(MAKE) -C minilibx 
+			make -C minilibx 
 
 objs/%.o:	srcs/%.c	 includes/get_next_line.h includes/cub3d.h libft/libft.h minilibx/mlx.h minilibx/mlx_int.h minilibx/mlx_new_window.h minilibx/mlx_opengl.h minilibx/mlx_png.h
 			@mkdir -p objs
@@ -69,6 +69,8 @@ fclean	:	clean
 			rm -f $(NAME)
 			make fclean -C libft
 
-re		:	fclean all
+re		:
+	$(MAKE) fclean
+	$(MAKE) all
 
 .PHONY	:	libft all clean re fclean minilibx

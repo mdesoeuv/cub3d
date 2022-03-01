@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 15:49:39 by mdesoeuv          #+#    #+#              #
-#    Updated: 2022/02/14 11:03:37 by vchevill         ###   ########lyon.fr    #
+#    Updated: 2022/03/01 10:00:02 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ clean:
 fclean:		clean
 			rm -f $(NAME)
 
-re:			fclean all
+re:			
+	$(MAKE) fclean
+	$(MAKE) all
 			
 .PHONY: 	all re clean fclean

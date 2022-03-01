@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/02/28 17:44:59 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:06:20 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ corrupted or inaccessible.\n"
 # define ROT_LEFT 123
 # define ROT_RIGHT 124
 # define ESC 53
-# define WINDOW_WIDTH 1024
-# define WINDOW_HEIGHT 768
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
 
 typedef struct s_image
 {
