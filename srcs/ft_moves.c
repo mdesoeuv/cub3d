@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:36:34 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/01 11:25:51 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 11:43:10 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ void	ft_move_player(t_cub3d *cub3d, int direction)
 		if (cub3d->player_angle < 0)
 			cub3d->player_angle += M_PI * 2;
 	}
-	else if (direction == DOWN)
+	else if (direction == DOWN || direction == DOWN_BIS)
 		ft_get_move(cub3d, DOWN);
-	else if (direction == UP)
+	else if (direction == UP || direction == UP_BIS)
 		ft_get_move(cub3d, UP);
 	else if (direction == LEFT)
 		ft_get_move(cub3d, LEFT);
