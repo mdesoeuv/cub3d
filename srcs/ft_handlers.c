@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:13:53 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/01 11:46:07 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 12:08:59 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	handle_keypress(int keysym, t_cub3d *cub3d)
 {
+	if (keysym == DOWN_BIS)
+		keysym = DOWN;
+	if (keysym == UP_BIS)
+		keysym = UP;
 	if (keysym == 53)
 	{
 		mlx_destroy_window(cub3d->mlx, cub3d->window_ptr);
@@ -21,7 +25,7 @@ int	handle_keypress(int keysym, t_cub3d *cub3d)
 		exit(0);
 	}
 	else if (keysym == 0 || keysym == 1 || keysym == 2 || keysym == 13
-		|| keysym == 123 || keysym == 124 || keysym == 125 || keysym == 126)
+		|| keysym == 123 || keysym == 124)
 		ft_move_player(cub3d, keysym);
 	return (0);
 }
