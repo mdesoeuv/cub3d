@@ -6,7 +6,7 @@
 #    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/03/01 13:30:50 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/03/02 08:40:07 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc -Wall -Werror -Wextra -g3
 
 OPTI = -Ofast -march=native -ffast-math
 
-#DEBUG = -fsanitize=address
+DEBUG = -fsanitize=address
 
 SRCS =	main.c \
 		ft_check_file_extension.c \

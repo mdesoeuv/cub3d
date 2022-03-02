@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/01 11:42:10 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/02 08:44:06 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void	display_map_and_textures(t_cub3d *cub3d);
 void	ft_check_file_extension(char *path, t_cub3d *so_long);
 char	**ft_rotate_map(char **map, t_cub3d *cub3d);
 void	ft_define_texture(t_cub3d *cub3d, char *line);
+void	ft_free(t_cub3d *cub3d);
 
 /*TEXTURES*/
 int		ft_all_textures_declared(t_cub3d *cub3d);
