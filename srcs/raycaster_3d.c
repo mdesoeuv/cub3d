@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:13:32 by mdesoeuv          #+#    #+#             */
-/*   Updated: 2022/03/01 11:39:12 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/15 11:29:28 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static void	ft_draw_vertical_line(t_cub3d *cub3d, double x_wind)
 				cub3d->color_ground[2]));
 }
 
-// x_wind créé en tant que int et appelé en tant que double dans les fonctions suivantes ?
 void	ft_draw_image(t_cub3d *cub3d)
 {
 	int		x_wind;
