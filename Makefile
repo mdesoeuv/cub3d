@@ -6,7 +6,7 @@
 #    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/03/02 08:40:07 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/03/15 11:50:41 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc -Wall -Werror -Wextra -g3
 
 OPTI = -Ofast -march=native -ffast-math
 
-DEBUG = -fsanitize=address
+#DEBUG = -fsanitize=address
 
 SRCS =	main.c \
 		ft_check_file_extension.c \
@@ -51,7 +51,7 @@ GNL = libft/libft.a
 
 all : libft minilibx $(NAME)
 
-$(NAME)	:	$(OBJS_FILES) $(LIB) Makefile
+$(NAME)	:	$(OBJS_FILES) $(LIB)
 			$(CC) $(DEBUG) $(OBJS_FILES) -Lminilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME) libft/libft.a minilibx/libmlx.a
 
 libft	:	
@@ -60,7 +60,7 @@ libft	:
 minilibx	:	
 			make -C minilibx 
 
-objs/%.o:	srcs/%.c	 includes/get_next_line.h includes/cub3d.h libft/libft.h minilibx/mlx.h minilibx/mlx_int.h minilibx/mlx_new_window.h minilibx/mlx_opengl.h minilibx/mlx_png.h
+objs/%.o:	srcs/%.c Makefile includes/get_next_line.h includes/cub3d.h libft/libft.h minilibx/mlx.h minilibx/mlx_int.h minilibx/mlx_new_window.h minilibx/mlx_opengl.h minilibx/mlx_png.h
 			@mkdir -p objs
 			$(CC) $(DEBUG) $(OPTI) -c $< -o $@ 
 			
