@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/02 08:44:06 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/15 11:30:54 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,8 @@ int		create_trgb(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 double	ft_ray_length(t_cub3d *cub3d, double angle);
 
-void	ft_init_texture(t_cub3d *cub3d, char *texture_path, t_image *image_struc, char orientaion);
+void	ft_init_texture(t_cub3d *cub3d, char *texture_path, \
+	t_image *image_struc, char orientaion);
 void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
 double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
 
