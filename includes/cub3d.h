@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/15 13:06:56 by vchevill         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:02:28 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ the .cub extension.\n"
 # define ERROR_FILE_OPENING "Can't open file given in argument.\n"
 # define ERROR_MALLOC "Malloc error. Please free memory space and retry.\n"
 # define ERROR_OTHER_CHARS "At least one character in the map is invalid.\
-(Not 0, 1, C, E or P)\n"
+(Not 0, 1, N, S, E, W or space)\n"
 # define ERROR_MISSING_PLAYER "Need one player.\n"
 # define ERROR_TOO_MANY_PLAYERS "Too many players in the map.\n"
 # define ERROR_NOT_A_RECTANGLE "The map is not a rectangle.\n"
