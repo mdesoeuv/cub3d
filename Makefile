@@ -6,11 +6,11 @@
 #    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/03/15 11:50:41 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/03/17 09:37:05 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc -Wall -Werror -Wextra -g3 
 
