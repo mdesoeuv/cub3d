@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vchevill <vchevill@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/15 11:30:54 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/03/15 13:06:56 by vchevill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@
 # include "get_next_line.h"
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
-
-# define PLAYER "assets/player.xpm"
-# define EXIT "assets/chest_unlocked.xpm"
-# define LOCKED "assets/chest_locked.xpm"
-# define WALL "assets/wall.xpm"
-# define GROUND "assets/ground.xpm"
-# define COIN1 "assets/coin/coin1.xpm"
-# define W_RAND "assets/walls/wall_random.xpm"
 
 # define ERROR_FILE_EXTENSION_NAME "File given argument does not have \
 the .cub extension.\n"
@@ -127,7 +119,6 @@ typedef struct s_cub3d
 }				t_cub3d;
 
 /* PARSING */
-void	display_map_and_textures(t_cub3d *cub3d);
 void	ft_check_file_extension(char *path, t_cub3d *so_long);
 char	**ft_rotate_map(char **map, t_cub3d *cub3d);
 void	ft_define_texture(t_cub3d *cub3d, char *line);
@@ -142,14 +133,10 @@ void	ft_init_vars(t_cub3d *so_long);
 void	ft_create_map(char *path, t_cub3d *so_long);
 void	ft_check_map(t_cub3d *so_long);
 void	ft_init_window(t_cub3d *so_long);
-void	ft_init_images(t_cub3d *so_long);
 
-int		handle_resize(t_cub3d *so_long);
 int		handle_keypress(int keysym, t_cub3d *so_long);
 int		handle_btnrealease(t_cub3d *so_long);
 int		render(t_cub3d *so_long);
-void	loop_images(t_cub3d so_long);
-void	destroy_images(t_cub3d *so_long);
 void	ft_move_player(t_cub3d *so_long, int direction);
 int		ft_texture_x_offset(t_cub3d *cub3d, double ray_abs_angle);
 int		ft_texture_y_offset(t_cub3d *cub3d, double ray_abs_angle);
@@ -169,9 +156,6 @@ void	ft_pixel_texture_color(t_cub3d *cub3d, t_image image, int x, int y);
 double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
 
 void	put_pixel_to_image_3d(t_cub3d *cub3d, int pos_x, int pos_y, int color);
-double	ft_increment_ray_absolute_angle(t_cub3d *cub3d, double ray_abs_angle);
-int		create_trgb(unsigned char t, unsigned char r, \
-	unsigned char g, unsigned char b);
 double	ft_fish_eye_correction(double player_angle,
 			double ray_abs_angle, double ray_length);
 #endif
