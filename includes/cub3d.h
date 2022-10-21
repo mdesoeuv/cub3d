@@ -6,7 +6,7 @@
 /*   By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:54:12 by vchevill          #+#    #+#             */
-/*   Updated: 2022/03/17 10:02:28 by mdesoeuv         ###   ########lyon.fr   */
+/*   Updated: 2022/10/21 16:58:55 by mdesoeuv         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ the .cub extension.\n"
 # define ERROR_MISSING_TEXTURES "At least one texture \
 path has not been declared.\n"
 # define ERROR_INVALID_TEXTURE_ARG_NAME "Texture declaration error.\n"
+# define ERROR_INVALID_COLOR "Color declaration error.\n"
 # define ERROR_TEXTURE_DEFINED_TWICE "A texture path has been declared twice.\n"
 # define ERROR_XPM_INIT "Error while initialised texture. XPM file must be \
 corrupted or inaccessible.\n"
+
 
 # define CUB_SIZE 64
 # define MOVE_SIZE 25

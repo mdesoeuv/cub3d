@@ -6,17 +6,17 @@
 #    By: mdesoeuv <mdesoeuv@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/18 11:13:54 by vchevill          #+#    #+#              #
-#    Updated: 2022/03/15 11:50:41 by mdesoeuv         ###   ########lyon.fr    #
+#    Updated: 2022/10/21 17:18:29 by mdesoeuv         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = gcc -Wall -Werror -Wextra -g3 
+CC = gcc -Wall -Werror -Wextra 
 
 OPTI = -Ofast -march=native -ffast-math
 
-#DEBUG = -fsanitize=address
+#DEBUG = -fsanitize=address -g3 
 
 SRCS =	main.c \
 		ft_check_file_extension.c \
